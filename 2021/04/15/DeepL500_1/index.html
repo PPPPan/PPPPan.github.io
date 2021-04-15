@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2021 | the blog of Xinjian Pan</title>
+  <title>DL_Note_Math | the blog of Xinjian Pan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="the blog of Xinjian Pan">
-<meta property="og:url" content="http://example.com/archives/2021/index.html">
+  <meta name="description" content="第一章 数学基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DL_Note_Math">
+<meta property="og:url" content="http://example.com/2021/04/15/DeepL500_1/index.html">
 <meta property="og:site_name" content="the blog of Xinjian Pan">
+<meta property="og:description" content="第一章 数学基础">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-15T18:07:25.834Z">
+<meta property="article:modified_time" content="2021-04-15T18:58:54.247Z">
 <meta property="article:author" content="Xinjian Pan">
+<meta property="article:tag" content="DL_Note">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="the blog of Xinjian Pan" type="application/atom+xml">
@@ -129,36 +134,74 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-DeepL500_1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/15/DeepL500_1/" class="archive-article-date">
-  	<time datetime="2021-04-15T18:07:25.834Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-15</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/15/DeepL500_1/">DL_Note_Math</a>
+    <h1 class="article-title" itemprop="name">
+      DL_Note_Math
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2021/04/15/DeepL500_1/" class="archive-article-date">
+  	<time datetime="2021-04-15T18:07:25.834Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="第一章-数学基础"><a href="#第一章-数学基础" class="headerlink" title="第一章 数学基础"></a>第一章 数学基础</h1><span id="more"></span>
+
+<h2 id="向量和矩阵"><a href="#向量和矩阵" class="headerlink" title="向量和矩阵"></a>向量和矩阵</h2><p><strong>标量（scalar)</strong>: 一个标量表示一个单独的数</p>
+<p><strong>向量(vector)</strong>: 一个向量表示一组有序排列的数。</p>
+<p><strong>矩阵（matrix)</strong>: 矩阵是具有相同特征和纬度的对象的集合，表现为一张二维数据表。</p>
+<p><strong>张量（tensor)</strong>: 一个数组中的元素分布在若干维坐标的规则网格中，我们将其称之为张量。</p>
+<p><strong>矩阵乘法后矩阵的大小</strong>: $$ a_{ik}*b_{kj}=c_{ij}$$ </p>
+<h2 id="向量的范数-norm"><a href="#向量的范数-norm" class="headerlink" title="向量的范数(norm)"></a>向量的范数(norm)</h2><p>定义一个向量为：$\vec{a}=[-5, 6, 8, -10]$。任意一组向量设为$\vec{x}=(x_1,x_2,…,x_N)$。其不同范数求解如下：</p>
+<ul>
+<li>向量的1范数：向量的各个元素的绝对值之和，上述向量$\vec{a}$的1范数结果就是：29。</li>
+</ul>
+<p>$$<br>\Vert\vec{x}\Vert_1=\sum_{i=1}^N\vert{x_i}\vert<br>$$</p>
+<ul>
+<li>向量的2范数：向量的每个元素的平方和再开平方根，上述$\vec{a}$的2范数结果就是：15。</li>
+</ul>
+<p>$$<br>\Vert\vec{x}\Vert_2=\sqrt{\sum_{i=1}^N{\vert{x_i}\vert}^2}<br>$$</p>
+<ul>
+<li>向量的负无穷范数：向量的所有元素的绝对值中最小的：上述向量$\vec{a}$的负无穷范数结果就是：5。  </li>
+</ul>
+<p>$$<br>\Vert\vec{x}\Vert_{-\infty}=\min{|{x_i}|}<br>$$</p>
+<ul>
+<li>向量的正无穷范数：向量的所有元素的绝对值中最大的：上述向量$\vec{a}$的正无穷范数结果就是：10。 </li>
+</ul>
+<p>$$<br>\Vert\vec{x}\Vert_{+\infty}=\max{|{x_i}|}<br>$$</p>
+<ul>
+<li>向量的p范数：</li>
+</ul>
+<p>$$<br>L_p=\Vert\vec{x}\Vert_p=\sqrt[p]{\sum_{i=1}^{N}|{x_i}|^p}<br>$$</p>
+<ul>
+<li>两个向量的点积（dot product）可以用范数来表示:</li>
+</ul>
+<p>$$<br>x^Ty=\lVert x\rVert_2\lVert y\rVert_2cos\theta<br>$$</p>
+<h2 id="逆矩阵-matrix-inversion"><a href="#逆矩阵-matrix-inversion" class="headerlink" title="逆矩阵(matrix inversion)"></a>逆矩阵(matrix inversion)</h2><p>$$<br>A^{-1}A=I<br>$$</p>
+<p>or:<br>$$<br>AA^{-1}=I<br>$$</p>
+<h2 id="单位向量"><a href="#单位向量" class="headerlink" title="单位向量"></a>单位向量</h2><p>单位向量（unit vector）是具有单位范数（unit norm）的向量：<br>$$<br>\lVert x \rVert_2=1<br>$$</p>
+<h2 id="正交矩阵（orthogonal-matrix）"><a href="#正交矩阵（orthogonal-matrix）" class="headerlink" title="正交矩阵（orthogonal matrix）"></a>正交矩阵（orthogonal matrix）</h2><p>是指行向量和列向量是分别标准正交的方阵：<br>$$<br>A^TA=AA^T=1<br>$$<br>即:<br>$$<br>A^{-1}=A^T<br>$$</p>
+<h2 id="特征分解"><a href="#特征分解" class="headerlink" title="特征分解"></a>特征分解</h2><p>方阵A 的特征向量（eigenvector）是指与A 相乘后相当于对该向量进行缩放<br>的非零向量v：<br>$$<br>Av=\lambda v<br>$$</p>
+<blockquote>
+<p>v为右特征向量，$\lambda$为特征值</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -170,57 +213,68 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/15/Plan/" class="archive-article-date">
-  	<time datetime="2021-04-15T09:29:42.726Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-15</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/04/15/Plan/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Schedule(SS2021 TUB)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/15/Plan/">Schedule(SS2021 TUB)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SS2021</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">第一章 数学基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%91%E9%87%8F%E5%92%8C%E7%9F%A9%E9%98%B5"><span class="toc-number">1.1.</span> <span class="toc-text">向量和矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%91%E9%87%8F%E7%9A%84%E8%8C%83%E6%95%B0-norm"><span class="toc-number">1.2.</span> <span class="toc-text">向量的范数(norm)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%86%E7%9F%A9%E9%98%B5-matrix-inversion"><span class="toc-number">1.3.</span> <span class="toc-text">逆矩阵(matrix inversion)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E4%BD%8D%E5%90%91%E9%87%8F"><span class="toc-number">1.4.</span> <span class="toc-text">单位向量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E4%BA%A4%E7%9F%A9%E9%98%B5%EF%BC%88orthogonal-matrix%EF%BC%89"><span class="toc-number">1.5.</span> <span class="toc-text">正交矩阵（orthogonal matrix）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E5%88%86%E8%A7%A3"><span class="toc-number">1.6.</span> <span class="toc-text">特征分解</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -243,8 +297,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
