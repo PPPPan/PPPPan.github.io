@@ -8,15 +8,21 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>svm | The blog of Xinjian Pan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="Notes">
+<meta property="og:type" content="article">
 <meta property="og:title" content="svm">
 <meta property="og:url" content="http://example.com/2022/02/13/svm/index.html">
 <meta property="og:site_name" content="The blog of Xinjian Pan">
+<meta property="og:description" content="Notes">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-9523e1bb2f7dea2df8d798f993071fa2_r.jpg">
 <meta property="article:published_time" content="2022-02-13T19:34:23.000Z">
-<meta property="article:modified_time" content="2022-02-13T19:34:23.431Z">
+<meta property="article:modified_time" content="2022-02-13T20:05:19.084Z">
 <meta property="article:author" content="Xinjian Pan">
+<meta property="article:tag" content="ML">
+<meta property="article:tag" content="SVM">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic3.zhimg.com/v2-9523e1bb2f7dea2df8d798f993071fa2_r.jpg">
   
     <link rel="alternative" href="/atom.xml" title="The blog of Xinjian Pan" type="application/atom+xml">
   
@@ -159,7 +165,45 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h1><span id="more"></span>
+
+<h2 id="简单概括一下SVM："><a href="#简单概括一下SVM：" class="headerlink" title="简单概括一下SVM："></a>简单概括一下SVM：</h2><p>SVM 是一种二类分类模型。它的基本思想是在特征空间中寻找间隔最大的分离超平面使数据得到高效的二分类，具体来讲，有三种情况（不加核函数的话就是个线性模型，加了之后才会升级为一个非线性模型）：</p>
+<ul>
+<li>当训练样本线性可分时，通过硬间隔最大化，学习一个线性分类器，即线性可分支持向量机；</li>
+<li>当训练数据近似线性可分时，引入松弛变量，通过软间隔最大化，学习一个线性分类器，即线性支持向量机；</li>
+<li>当训练数据线性不可分时，通过使用核技巧及软间隔最大化，学习非线性支持向量机。</li>
+</ul>
+<h2 id="SVM解决多分类问题"><a href="#SVM解决多分类问题" class="headerlink" title="SVM解决多分类问题"></a>SVM解决多分类问题</h2><p>a.一对多法（one-versus-rest,简称1-v-r SVMs）。训练时依次把某个类别的样本归为一类,其他剩余的样本归为另一类，这样k个类别的样本就构造出了k个SVM。分类时将未知样本分类为具有最大分类函数值的那类。</p>
+<p>b.一对一法（one-versus-one,简称1-v-1 SVMs）。其做法是在任意两类样本之间设计一个SVM，因此k个类别的样本就需要设计k(k-1)/2个SVM。当对一个未知样本进行分类时，最后得票最多的类别即为该未知样本的类别。Libsvm中的多类分类就是根据这个方法实现的。</p>
+<p>c.层次支持向量机（H-SVMs）。层次分类法首先将所有类别分成两个子类，再将子类进一步划分成两个次级子类，如此循环，直到得到一个单独的类别为止。</p>
+<h2 id="SMO算法能够保证收敛吗"><a href="#SMO算法能够保证收敛吗" class="headerlink" title="SMO算法能够保证收敛吗"></a>SMO算法能够保证收敛吗</h2><p>SMO将整个QP问题分解为QP子问题，利用Osuna‘s定理保证收敛性。Osuna’s theorem简单的意思就是每次将QP问题分解成QP子问题迭代执行，当每次迭代求解的QP子问题中至少包含一个不满足KKT条件的example的时候，这个算法最终会收敛。</p>
+<h2 id="SVM为什么要将原问题转换为对偶问题？"><a href="#SVM为什么要将原问题转换为对偶问题？" class="headerlink" title="SVM为什么要将原问题转换为对偶问题？"></a>SVM为什么要将原问题转换为对偶问题？</h2><p>要注意用拉格朗日对偶并没有改变最优解，而是<strong>改变了算法复杂度</strong>：</p>
+<ol>
+<li>在原问题下，求解算法的复杂度与样本维度（等于权值w的维度）有关；</li>
+<li>而在对偶问题下，求解算法的复杂度与样本数量（等于拉格朗日算子a的数量）有关</li>
+<li>方便核函数的引入</li>
+</ol>
+<h2 id="SVM的优缺点："><a href="#SVM的优缺点：" class="headerlink" title="SVM的优缺点："></a>SVM的优缺点：</h2><p><strong>优点：</strong></p>
+<ol>
+<li>由于SVM是一个凸优化问题，所以求得的解一定是全局最优而不是局部最优。</li>
+<li>不仅适用于线性线性问题还适用于非线性问题(用核技巧)。</li>
+<li>拥有高维样本空间的数据也能用SVM，这是因为数据集的复杂度只取决于支持向量而不是数据集的维度，这在某种意义上避免了“维数灾难”。</li>
+<li>理论基础比较完善(例如神经网络就更像一个黑盒子)。</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li>二次规划问题求解将涉及m阶矩阵的计算(m为样本的个数), 因此SVM不适用于超大数据集。(SMO算法可以缓解这个问题)</li>
+<li>只适用于二分类问题。(SVM的推广SVR也适用于回归问题；可以通过多个SVM的组合来解决多分类问题)</li>
+</ol>
+<h2 id="为什么SVM对缺失数据敏感？"><a href="#为什么SVM对缺失数据敏感？" class="headerlink" title="为什么SVM对缺失数据敏感？"></a>为什么SVM对缺失数据敏感？</h2><p>这里说的缺失数据是指缺失某些特征数据，向量数据不完整。SVM 没有处理缺失值的策略。而 SVM 希望样本在特征空间中线性可分，所以特征空间的好坏对SVM的性能很重要。缺失特征数据将影响训练结果的好坏。</p>
+<h2 id="如何选择核函数："><a href="#如何选择核函数：" class="headerlink" title="如何选择核函数："></a>如何选择核函数：</h2><ul>
+<li>当特征维数 d 超过样本数 m 时 (文本分类问题通常是这种情况), 使用线性核;</li>
+<li>当特征维数 d 比较小. 样本数 m 中等时, 使用RBF核;</li>
+<li>当特征维数 d 比较小. 样本数 m 特别大时, 支持向量机性能通常不如深度神经网络</li>
+</ul>
+<p><img src="https://pic3.zhimg.com/v2-9523e1bb2f7dea2df8d798f993071fa2_r.jpg" alt="avatar"></p>
+<p>在SVM不论是硬间隔还是软间隔在计算过程中，都有X转置点积X，若X的维度低一点还好算，但当我们想把X从低维映射到高维的时候（让数据变得线性可分时），这一步计算很困难，等于说在计算时，需要先计算把X映射到高维的的ϕ(x)，再计算ϕ(x1)和ϕ(x2)的点积，这一步计算起来开销很大，难度也很大，此时引入核函数，这两步的计算便成了一步计算</p>
+
       
 
       
@@ -167,6 +211,21 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ML</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SVM</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -190,8 +249,8 @@
     </a>
   
   
-    <a href="/2022/02/13/svm-md/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">svm.md</div>
+    <a href="/2021/06/27/spark/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">spark</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -218,7 +277,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    menu
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Notes"><span class="toc-number">1.</span> <span class="toc-text">Notes</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E6%A6%82%E6%8B%AC%E4%B8%80%E4%B8%8BSVM%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">简单概括一下SVM：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SVM%E8%A7%A3%E5%86%B3%E5%A4%9A%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98"><span class="toc-number">1.2.</span> <span class="toc-text">SVM解决多分类问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SMO%E7%AE%97%E6%B3%95%E8%83%BD%E5%A4%9F%E4%BF%9D%E8%AF%81%E6%94%B6%E6%95%9B%E5%90%97"><span class="toc-number">1.3.</span> <span class="toc-text">SMO算法能够保证收敛吗</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SVM%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%B0%86%E5%8E%9F%E9%97%AE%E9%A2%98%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-number">1.4.</span> <span class="toc-text">SVM为什么要将原问题转换为对偶问题？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SVM%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%9A"><span class="toc-number">1.5.</span> <span class="toc-text">SVM的优缺点：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88SVM%E5%AF%B9%E7%BC%BA%E5%A4%B1%E6%95%B0%E6%8D%AE%E6%95%8F%E6%84%9F%EF%BC%9F"><span class="toc-number">1.6.</span> <span class="toc-text">为什么SVM对缺失数据敏感？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E6%A0%B8%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="toc-number">1.7.</span> <span class="toc-text">如何选择核函数：</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -343,19 +402,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">English</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">spark</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SS2021</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Pandas</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -367,7 +422,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Pandas</a>
+                <a href="javascript:void(0)" class="js-tag color1">spark</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">English</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SVM</a>
               </li>
             
             <div class="clearfix"></div>
