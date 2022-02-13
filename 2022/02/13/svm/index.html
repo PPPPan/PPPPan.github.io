@@ -6,19 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>scikit-learn | The blog of Xinjian Pan</title>
+  <title>svm | The blog of Xinjian Pan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Notes">
-<meta property="og:type" content="article">
-<meta property="og:title" content="scikit-learn">
-<meta property="og:url" content="http://example.com/2021/06/09/scikit-learn/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="svm">
+<meta property="og:url" content="http://example.com/2022/02/13/svm/index.html">
 <meta property="og:site_name" content="The blog of Xinjian Pan">
-<meta property="og:description" content="Notes">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-06-09T20:10:00.024Z">
-<meta property="article:modified_time" content="2022-02-13T13:04:33.033Z">
+<meta property="article:published_time" content="2022-02-13T19:34:23.000Z">
+<meta property="article:modified_time" content="2022-02-13T19:34:23.431Z">
 <meta property="article:author" content="Xinjian Pan">
-<meta property="article:tag" content="scikit">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="The blog of Xinjian Pan" type="application/atom+xml">
@@ -142,49 +139,27 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-scikit-learn" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-svm" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      scikit-learn
+      svm
     </h1>
   
 
         
-        <a href="/2021/06/09/scikit-learn/" class="archive-article-date">
-  	<time datetime="2021-06-09T20:10:00.024Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-09</time>
+        <a href="/2022/02/13/svm/" class="archive-article-date">
+  	<time datetime="2022-02-13T19:34:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a><u>Notes</u></h1><span id="more"></span>
-
-<h3 id="Save-amp-Open-Model"><a href="#Save-amp-Open-Model" class="headerlink" title="Save&amp;Open Model"></a>Save&amp;Open Model</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.externals import joblib</span><br><span class="line">filename &#x3D; &#39;model.sav&#39;</span><br><span class="line">joblib.dump(clf,filename)</span><br><span class="line"></span><br><span class="line">clf &#x3D; joblib.load(filename)</span><br></pre></td></tr></table></figure>
-
-<h2 id="import-datasets"><a href="#import-datasets" class="headerlink" title="import datasets"></a>import datasets</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import datasets</span><br><span class="line"></span><br><span class="line">iris &#x3D; datasets.load_iris()</span><br><span class="line">X &#x3D; iris.data</span><br><span class="line">y &#x3D; iris.target</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="split-Dataset"><a href="#split-Dataset" class="headerlink" title="split Dataset"></a>split Dataset</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">X_train,X_test,y_train,y_test &#x3D; train_test_split(X,y,test_size&#x3D;0.2)</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Encoder"><a href="#Encoder" class="headerlink" title="Encoder"></a>Encoder</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.preprocessing import LabelEncoder</span><br><span class="line">Le &#x3D; LabelEncoder()</span><br><span class="line">for i in range(len(X[0])):</span><br><span class="line">    X[:, i] &#x3D; Le.fit_transform(X[:, i])</span><br><span class="line"></span><br><span class="line">label_mapping &#x3D; &#123;</span><br><span class="line">    &#39;unacc&#39;:0,</span><br><span class="line">    &#39;acc&#39;:1,</span><br><span class="line">    &#39;good&#39;:2,</span><br><span class="line">    &#39;vgood&#39;:3</span><br><span class="line">&#125;</span><br><span class="line">y[&#39;class&#39;] &#x3D; y[&#39;class&#39;].map(label_mapping)</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="SVM"><a href="#SVM" class="headerlink" title="SVM"></a>SVM</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import neighbors, metrics, svm</span><br><span class="line">knn &#x3D; svm.SVC()</span><br><span class="line">X_train, X_test, y_train, y_test &#x3D;  train_test_split(X, y, test_size&#x3D;0.2)</span><br><span class="line">knn.fit(X_train, y_train)</span><br><span class="line">prediction &#x3D; knn.predict(X_test)</span><br><span class="line"></span><br><span class="line">accuracy &#x3D; metrics.accuracy_score(y_test, prediction)</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="LinearRegression"><a href="#LinearRegression" class="headerlink" title="LinearRegression"></a>LinearRegression</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import linear_model</span><br><span class="line"></span><br><span class="line">l_reg &#x3D; linear_model.LinearRegression()</span><br><span class="line">model &#x3D; l_reg.fit(X_train, y_train)</span><br><span class="line">predictions &#x3D; model.predict(X_test)</span><br><span class="line">print(&quot;predictions: &quot;, predictions)</span><br><span class="line">print(&quot;R^2: &quot;, l_reg.score(X, y))</span><br><span class="line">print(&quot;coeff: &quot;, l_reg.coef_)</span><br><span class="line">print(&quot;intercept: &quot;, l_reg.intercept_) %截距</span><br></pre></td></tr></table></figure>
-
-
+        
       
 
       
@@ -192,17 +167,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">scikit</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -216,18 +180,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/06/20/english/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/02/13/ML/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          English (Vocabulary)
+          Machine Learning
         
       </div>
     </a>
   
   
-    <a href="/2021/05/24/pandas/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Pandas</div>
+    <a href="/2022/02/13/svm-md/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">svm.md</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -254,7 +218,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Notes"><span class="toc-number">1.</span> <span class="toc-text">Notes</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Save-amp-Open-Model"><span class="toc-number">1.0.1.</span> <span class="toc-text">Save&amp;Open Model</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#import-datasets"><span class="toc-number">1.1.</span> <span class="toc-text">import datasets</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#split-Dataset"><span class="toc-number">1.2.</span> <span class="toc-text">split Dataset</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Encoder"><span class="toc-number">1.3.</span> <span class="toc-text">Encoder</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SVM"><span class="toc-number">1.4.</span> <span class="toc-text">SVM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LinearRegression"><span class="toc-number">1.5.</span> <span class="toc-text">LinearRegression</span></a></li></ol></li></ol>
+                    menu
                     </div>
                 </span>
             </div>
