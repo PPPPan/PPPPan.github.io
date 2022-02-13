@@ -6,26 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Pandas | The blog of Xinjian Pan</title>
+  <title>Tag: sql | The blog of Xinjian Pan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Notes">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Pandas">
-<meta property="og:url" content="http://example.com/2021/05/24/pandas/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="The blog of Xinjian Pan">
+<meta property="og:url" content="http://example.com/tags/sql/index.html">
 <meta property="og:site_name" content="The blog of Xinjian Pan">
-<meta property="og:description" content="Notes">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/.com//Users/xinji/AppData/Roaming/Typora/typora-user-images/image-20210524162520172.png">
-<meta property="og:image" content="http://example.com/.com//1.JPG">
-<meta property="og:image" content="http://example.com/.com//Users/xinji/AppData/Roaming/Typora/typora-user-images/image-20210524170443523.png">
-<meta property="og:image" content="http://example.com/.com//Users/xinji/AppData/Roaming/Typora/typora-user-images/image-20210524171529385.png">
-<meta property="og:image" content="http://example.com/.com//Users/xinji/AppData/Roaming/Typora/typora-user-images/image-20210524175037621.png">
-<meta property="article:published_time" content="2021-05-24T09:10:31.021Z">
-<meta property="article:modified_time" content="2022-02-13T13:04:16.943Z">
 <meta property="article:author" content="Xinjian Pan">
-<meta property="article:tag" content="Pandas">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/.com//Users/xinji/AppData/Roaming/Typora/typora-user-images/image-20210524162520172.png">
   
     <link rel="alternative" href="/atom.xml" title="The blog of Xinjian Pan" type="application/atom+xml">
   
@@ -154,263 +143,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-pandas" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Pandas
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2021" class="archive-year">2021</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2021/04/19/sql/" class="archive-article-date">
+  	<time datetime="2021-04-19T19:07:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-19</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2021/04/19/sql/">sql</a>
     </h1>
   
 
-        
-        <a href="/2021/05/24/pandas/" class="archive-article-date">
-  	<time datetime="2021-05-24T09:10:31.021Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a><u>Notes</u></h1><span id="more"></span>
-
-<h2 id="查看数据"><a href="#查看数据" class="headerlink" title="查看数据"></a>查看数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_.head(10)  #前10行</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_.info()   #基本信息</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.describe() #基本信息</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="Series"><a href="#Series" class="headerlink" title="Series"></a>Series</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">obj &#x3D; pd.Series([4, 7, -5, 3])</span><br><span class="line">obj.values #array([ 4, 7, -5, 3])</span><br><span class="line">obj.index ## like range(4)</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj2 &#x3D; pd.Series([4, 7, -5, 3], index&#x3D;[&#39;d&#39;, &#39;b&#39;, &#39;a&#39;, &#39;c&#39;]) #自定义index</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sdata &#x3D; &#123;&#39;Ohio&#39;: 35000, &#39;Texas&#39;: 71000, &#39;Oregon&#39;: 16000, &#39;Utah&#39;: 5000&#125; #利用字典定义,行定义</span><br><span class="line">obj3 &#x3D; pd.Series(sdata)</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj3 + obj4 # 自动对齐，类似join</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">obj4.name &#x3D; &#39;population&#39;</span><br><span class="line">obj4.index.name &#x3D; &#39;state&#39;</span><br><span class="line">Out:</span><br><span class="line">state</span><br><span class="line">California NaN</span><br><span class="line">Ohio 35000.0</span><br><span class="line">Oregon 16000.0</span><br><span class="line">Texas 71000.0</span><br><span class="line">Name: population, dtype: float64</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj2 &#x3D; obj.reindex([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;]) #重定义行名</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="DataFrame"><a href="#DataFrame" class="headerlink" title="DataFrame"></a>DataFrame</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">data &#x3D; &#123;&#39;state&#39;: [&#39;Ohio&#39;, &#39;Ohio&#39;, &#39;Ohio&#39;, &#39;Nevada&#39;, &#39;Nevada&#39;, &#39;Nevada&#39;],</span><br><span class="line">&#39;year&#39;: [2000, 2001, 2002, 2001, 2002, 2003],</span><br><span class="line">&#39;pop&#39;: [1.5, 1.7, 3.6, 2.4, 2.9, 3.2]&#125; #利用字典定义,列定义</span><br><span class="line">frame &#x3D; pd.DataFrame(data)</span><br><span class="line"></span><br><span class="line">or: pop &#x3D; &#123;&#39;Nevada&#39;: &#123;2001: 2.4, 2002: 2.9&#125;,</span><br><span class="line">&#39;Ohio&#39;: &#123;2000: 1.5, 2001: 1.7, 2002: 3.6&#125;&#125;</span><br><span class="line"></span><br><span class="line">or: frame &#x3D; pd.DataFrame(np.arange(9).reshape((3, 3)),</span><br><span class="line">....: index&#x3D;[&#39;a&#39;, &#39;c&#39;, &#39;d&#39;],</span><br><span class="line">....: columns&#x3D;[&#39;Ohio&#39;, &#39;Texas&#39;, &#39;California&#39;])</span><br><span class="line">Out[]:</span><br><span class="line">Ohio Texas California</span><br><span class="line">a 0 1 2</span><br><span class="line">c 3 4 5</span><br><span class="line">d 6 7 8</span><br><span class="line">frame2 &#x3D; frame.reindex([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]) #修改行名</span><br><span class="line"></span><br><span class="line">states &#x3D; [&#39;Texas&#39;, &#39;Utah&#39;, &#39;California&#39;] #修改列名</span><br><span class="line">frame.reindex(columns&#x3D;states)</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame2.columns #获取列名</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">frame2[&#39;state&#39;] &#x3D; frame2.state #获取指定列</span><br><span class="line">data[[&#39;three&#39;, &#39;one&#39;]] #获取多个列</span><br><span class="line"></span><br><span class="line">frame2.loc[&#39;three&#39;] #获取指定行</span><br><span class="line">data[:2] #切片获取行</span><br><span class="line"></span><br><span class="line">data.loc[&#39;Colorado&#39;, [&#39;two&#39;, &#39;three&#39;]] #选取指定行列</span><br><span class="line">data.iloc[2, [3, 0, 1]] #选取指定行列</span><br><span class="line"></span><br><span class="line">data.iloc[:, :3][data.three &gt; 5] #带条件的选取</span><br></pre></td></tr></table></figure>
-
-
-
-<p><img src="/.com//Users\xinji\AppData\Roaming\Typora\typora-user-images\image-20210524162520172.png" alt="image-20210524162520172"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.DataFrame(data, columns&#x3D;[&#39;year&#39;, &#39;state&#39;, &#39;pop&#39;]) #按指定设定的列输出</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">val &#x3D; pd.Series([-1.2, -1.5, -1.7], index&#x3D;[&#39;two&#39;, &#39;four&#39;, &#39;five&#39;])</span><br><span class="line">frame2[&#39;debt&#39;] &#x3D; val #讲Serial作为一列 加入DF</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame2[&#39;eastern&#39;] &#x3D; frame2.state &#x3D;&#x3D; &#39;Ohio&#39; # 新增一列，内容为是否为Ohio</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">del frame2[&#39;eastern&#39;] #删除指定列</span><br><span class="line">obj.drop([&#39;d&#39;, &#39;c&#39;]) #删除指定列</span><br><span class="line">data.drop([&#39;two&#39;, &#39;four&#39;], axis&#x3D;&#39;columns&#39;,inplace&#x3D;True) #删除列</span><br><span class="line">data.drop(&#39;two&#39;, axis&#x3D;1) # or</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame3.T #转置</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">frame3.index.name &#x3D; &#39;year&#39;; frame3.columns.name &#x3D; &#39;state&#39; #定义行列名</span><br><span class="line">Out[]:</span><br><span class="line">state Nevada Ohio</span><br><span class="line">year</span><br><span class="line">2000 NaN 1.5</span><br><span class="line">2001 2.4 1.7</span><br><span class="line">2002 2.9 3.6</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="检测NULL"><a href="#检测NULL" class="headerlink" title="检测NULL"></a>检测NULL</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pd.isnull(obj4) #NULL</span><br><span class="line">Out[32]:</span><br><span class="line">California True</span><br><span class="line">Ohio False</span><br><span class="line">Oregon False</span><br><span class="line">Texas False</span><br><span class="line">dtype: bool</span><br><span class="line"></span><br><span class="line">pd.notnull(obj4) #Not NULL</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="DF-操作"><a href="#DF-操作" class="headerlink" title="DF 操作"></a>DF 操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df1 + df2 #两个df连接，如果没有的会填充nan</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df1.add(df2, fill_value&#x3D;0) #两个df连接，如果没有的会填充0</span><br></pre></td></tr></table></figure>
-
-
-
-<p><img src="/.com//1.JPG" alt="avatar"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df1.reindex(columns&#x3D;df2.columns, fill_value&#x3D;0) #重排序，缺少补0</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">f &#x3D; lambda x: x.max() - x.min() #使用自定义func 来处理</span><br><span class="line">frame.apply(f) #默认为行</span><br><span class="line">frame.apply(f, axis&#x3D;&#39;columns&#39;) #可用于列</span><br><span class="line"></span><br><span class="line">format &#x3D; lambda x: &#39;%.2f&#39; % x</span><br><span class="line">frame.applymap(format)</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">frame.sort_index() #行index排序</span><br><span class="line">frame.sort_index(axis&#x3D;1，ascending&#x3D;False) #列index排序</span><br><span class="line"></span><br><span class="line">frame.sort_values(by&#x3D;[&#39;a&#39;, &#39;b&#39;]) #列值排序</span><br><span class="line"></span><br><span class="line">frame.rank(axis&#x3D;&#39;columns&#39;) #列排序</span><br></pre></td></tr></table></figure>
-
-
-
-<p><img src="/.com//Users\xinji\AppData\Roaming\Typora\typora-user-images\image-20210524170443523.png" alt="image-20210524170443523"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj.index.is_unique #index是否独一</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.sum() #行求和</span><br><span class="line">df.sum(axis&#x3D;1) #列求和</span><br></pre></td></tr></table></figure>
-
-<p><img src="/.com//Users\xinji\AppData\Roaming\Typora\typora-user-images\image-20210524171529385.png" alt="image-20210524171529385"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pd.value_counts(obj.values, sort&#x3D;False) #统计每个出现的频率</span><br><span class="line">result &#x3D; data.apply(pd.value_counts).fillna(0)</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="清洗"><a href="#清洗" class="headerlink" title="清洗"></a>清洗</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string_data.isnull() #是否包含null</span><br></pre></td></tr></table></figure>
-
-
-
-<p><img src="/.com//Users\xinji\AppData\Roaming\Typora\typora-user-images\image-20210524175037621.png" alt="image-20210524175037621"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data.dropna() #丢弃含有na</span><br><span class="line">data.dropna(axis&#x3D;1, how&#x3D;&#39;all&#39;) #丢弃列全为null</span><br><span class="line">data[data.notnull()] #提取非null的</span><br><span class="line">df.fillna(0, inplace&#x3D;True) #填充na为0</span><br><span class="line">df.fillna(method&#x3D;&#39;ffill&#39;) #根据前面的值填充na</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data.drop_duplicates() #丢弃连续重复的</span><br><span class="line">data.drop_duplicates([&#39;k1&#39;]) #丢弃k1重复的值</span><br><span class="line">data.drop_duplicates([&#39;k1&#39;, &#39;k2&#39;], keep&#x3D;&#39;last&#39;) #保留最后一个值</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.replace([-999, -1000], [np.nan, 0]) #替换</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Pandas</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">sql</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2021/06/09/scikit-learn/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          scikit-learn
-        
-      </div>
-    </a>
   
   
-    <a href="/2021/04/19/sql/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">sql</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Notes"><span class="toc-number">1.</span> <span class="toc-text">Notes</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE"><span class="toc-number">1.1.</span> <span class="toc-text">查看数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Series"><span class="toc-number">1.2.</span> <span class="toc-text">Series</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DataFrame"><span class="toc-number">1.3.</span> <span class="toc-text">DataFrame</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%B5%8BNULL"><span class="toc-number">1.4.</span> <span class="toc-text">检测NULL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DF-%E6%93%8D%E4%BD%9C"><span class="toc-number">1.5.</span> <span class="toc-text">DF 操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%85%E6%B4%97"><span class="toc-number">1.6.</span> <span class="toc-text">清洗</span></a></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -433,9 +219,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
