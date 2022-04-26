@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- Minima -->
+  <!-- Hexo theme created by @adisaktijrs -->
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+
+  
+  <title>Statistics</title>
+  
+  <link rel="canonical" href="http://example.com/2022/04/10/statistic/">
+  
+  <meta name="description" content="Notes   Outlier有特别大或者特别小的值，相对于其他剩余数据 Skewed DataOutlier把整体数据往左或者往右偏移。 左偏移：Mean&amp;lt;Median 右偏移：Mean&amp;gt;Median Bimodal (双峰分布)众数有两个，通常用于分类数据 变化如果每个数增加200，">
+  
+  
+  <meta name="author" content="Xinjian Pan">
+  
+  
+  
+  <meta property="og:site_name" content="The blog of Xinjian Pan" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Statistics" />
+  
+  <meta property="og:description" content="Notes   Outlier有特别大或者特别小的值，相对于其他剩余数据 Skewed DataOutlier把整体数据往左或者往右偏移。 左偏移：Mean&amp;lt;Median 右偏移：Mean&amp;gt;Median Bimodal (双峰分布)众数有两个，通常用于分类数据 变化如果每个数增加200，">
+  
+  <meta property="og:url" content="http://example.com/2022/04/10/statistic/" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Statistics">
+  
+  <meta name="twitter:description" content="Notes   Outlier有特别大或者特别小的值，相对于其他剩余数据 Skewed DataOutlier把整体数据往左或者往右偏移。 左偏移：Mean&amp;lt;Median 右偏移：Mean&amp;gt;Median Bimodal (双峰分布)众数有两个，通常用于分类数据 变化如果每个数增加200，">
+  
+  
+  
+  
+  <meta name="twitter:url" content="http://example.com/2022/04/10/statistic/" />
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Preload fonts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="preload" href="/fonts/dm-serif-display-v4-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/inter-v2-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+<link rel="stylesheet" href="/css/normalize.css">
+
+  
+<link rel="stylesheet" href="/css/skeleton.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+<link rel="stylesheet" href="/css/prism-dark.css">
+
+  
+<link rel="stylesheet" href="/css/prism-line-numbers.css">
+
+  <!-- User css -->
+  
+  
+<link rel="stylesheet" href="/css/user.css">
+
+  
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+  <!-- Custom Theme Color Style
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <style>
+  a:not(.icon) {
+    text-decoration-color: #0FA0CE;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 50%,
+      #0FA0CE 50%
+    );
+  }
+  blockquote {
+    border-left: 8px solid #0FA0CE;
+  }
+  .nanobar .bar {
+    background: #0FA0CE;
+  }
+  .button.button-primary:hover,
+  button.button-primary:hover,
+  input[type="submit"].button-primary:hover,
+  input[type="reset"].button-primary:hover,
+  input[type="button"].button-primary:hover,
+  .button.button-primary:focus,
+  button.button-primary:focus,
+  input[type="submit"].button-primary:focus,
+  input[type="reset"].button-primary:focus,
+  input[type="button"].button-primary:focus {
+    background-color: #0FA0CE;
+    border-color: #0FA0CE;
+  }
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="search"]:focus,
+  input[type="text"]:focus,
+  input[type="tel"]:focus,
+  input[type="url"]:focus,
+  input[type="password"]:focus,
+  textarea:focus,
+  select:focus {
+    border: 1px solid #0FA0CE;
+  }
+</style>
+
+  <!-- Google Analytics (With Privacy Settings On)
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+
+  
+  <script src="/js/pic.min.js" defer></script>
+  
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div>
+
+        <div class="row">
+  <div class="two columns" style="max-width: 50px">
+    <h1 class="mt-2 mode">
+      <div onclick=setDarkMode(true) id="darkBtn">🌑</div>
+      <div onclick=setDarkMode(false) id="lightBtn" class=hidden>☀️</div>
+      <script >
+        if (localStorage.getItem('preferredTheme') == 'dark') {
+          setDarkMode(true)
+        }
+        function setDarkMode(isDark) {
+          var darkBtn = document.getElementById('darkBtn')
+          var lightBtn = document.getElementById('lightBtn')
+          if (isDark) {
+            lightBtn.style.display = "block"
+            darkBtn.style.display = "none"
+            localStorage.setItem('preferredTheme', 'dark');
+          } else {
+            lightBtn.style.display = "none"
+            darkBtn.style.display = "block"
+            localStorage.removeItem('preferredTheme');
+          }
+          document.body.classList.toggle("darkmode");
+        }
+      </script>
+    </h1>
+  </div>
+
+  <div class="six columns ml-1">
+    <h1 class="mt-2">
+      Hi! Welcome to my Blog. 😎
+    </h1>
+  </div>
+
+  <div class="twelve columns">
+    <div class="row">
+      <div class="nine columns left">
+        <a href="/">Home</a>
+        
+        
+          
+            <a href="mailto:xinjianpanstudent@gmail.com" target="_blank" class="ml">Email</a>
+          
+        
+      </div>
+    </div>
+    <hr style="margin-bottom: 2.6rem">
+  </div>
+</div>
+
+        <div class="trans">
+            <h2>Statistics</h2>
+
+  <h1 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a><u>Notes</u></h1> <span id="more"></span>
+
+<h2 id="Outlier"><a href="#Outlier" class="headerlink" title="Outlier"></a>Outlier</h2><p>有特别大或者特别小的值，相对于其他剩余数据</p>
+<h2 id="Skewed-Data"><a href="#Skewed-Data" class="headerlink" title="Skewed Data"></a>Skewed Data</h2><p>Outlier把整体数据往左或者往右偏移。</p>
+<p>左偏移：Mean&lt;Median</p>
+<p>右偏移：Mean&gt;Median</p>
+<h2 id="Bimodal-双峰分布"><a href="#Bimodal-双峰分布" class="headerlink" title="Bimodal (双峰分布)"></a>Bimodal (双峰分布)</h2><p>众数有两个，通常用于分类数据</p>
+<h2 id="变化"><a href="#变化" class="headerlink" title="变化"></a>变化</h2><p>如果每个数增加200，mean=mean+200, mode=mode+200, median=median+200</p>
+<p>如果每个数增加10%，mean=mean*1.1, mode=mode*1.1, median=median*1.1</p>
+<h2 id="box-plot"><a href="#box-plot" class="headerlink" title="box plot"></a>box plot</h2><p>Lower quartile: N/4</p>
+<p>Upper quartile: 3*N/4</p>
+<p>中间线：Median</p>
+<h2 id="Variance"><a href="#Variance" class="headerlink" title="Variance"></a>Variance</h2><p>$$<br>\frac{\sum(x-\mu)^2}{n}=\frac{\sum x^2}{n}-\mu^2<br>$$</p>
+<h2 id="Z-Score，Standard-scores"><a href="#Z-Score，Standard-scores" class="headerlink" title="Z-Score，Standard scores"></a>Z-Score，Standard scores</h2><p>$$<br>z=\frac{x-\mu}{\sigma}<br>$$</p>
+<p>主要用于比较来自不同分布的数据</p>
+<h2 id="conditional-probabilities-Bayes’-Theorem"><a href="#conditional-probabilities-Bayes’-Theorem" class="headerlink" title="conditional probabilities, Bayes’ Theorem"></a>conditional probabilities, Bayes’ Theorem</h2><p>$$<br>P(A|B)=\frac{P(A\bigcap B)}{P(B)}=\frac{P(B|A)P(A)}{P(B)}=\frac{P(B|A)P(A)}{P(B|A)P(A)+P(B|A^{‘})P(A^{‘})}<br>$$</p>
+<p>if A and B independent,<br>$$<br>P(A) = \frac{P(A\bigcap B)}{P(B)}<br>$$</p>
+<h2 id="discrete-Expectation-and-Variance"><a href="#discrete-Expectation-and-Variance" class="headerlink" title="discrete Expectation and Variance"></a>discrete Expectation and Variance</h2><p>$$<br>E(X) = \sum xP(X=x)<br>$$</p>
+<p>$$<br>V(X) = E(X-\mu)^2=\sum (X-\mu)^2P(X=x)<br>$$</p>
+<p>$$<br>V(X)=E(X^2)-E(X)^2<br>$$</p>
+<p>General formulas:<br>$$<br>E(aX+b) = aE(x)+b<br>$$</p>
+<p>$$<br>Var(aX+b)=a^2Var(x)<br>$$</p>
+<h2 id="Independent-Obersavation"><a href="#Independent-Obersavation" class="headerlink" title="Independent Obersavation"></a>Independent Obersavation</h2><p>$$<br>E(X_1+X_2…+X_n) = nE(X)<br>$$</p>
+<p>$$<br>Var(X_1+X_2+…+X_n) = nVar(X)<br>$$</p>
+<h2 id="if-two-variables-are-independent"><a href="#if-two-variables-are-independent" class="headerlink" title="if two variables are independent"></a>if two variables are independent</h2><p>$$<br>E(X-Y) = E(X) - E(Y)<br>$$</p>
+<p>$$<br>Var(X-Y) = Var(X) + Var(Y)<br>$$</p>
+<h2 id="安排n个元素"><a href="#安排n个元素" class="headerlink" title="安排n个元素"></a>安排n个元素</h2><p>圆圈：<br>$$<br>(n-1)!<br>$$<br>如果是非圆圈，则<br>$$<br>n!<br>$$<br>如果按种类安排：<br>$$<br>\frac{n!}{j!k!m!….}<br>$$</p>
+<blockquote>
+<p>n为总个数，j为种类1的个数，k为种类2的个数…..</p>
+</blockquote>
+<p>5只骆驼，2只马，3只斑马，如果5只骆驼先后完成，则有多少种情况：<br>$$<br>\frac{6!}{2!3!1!}<br>$$</p>
+<h2 id="Permutation"><a href="#Permutation" class="headerlink" title="Permutation"></a>Permutation</h2><p>Oder matters</p>
+<p>按顺序无放回排列：<strong>有 n 匹马，有次序的前k匹马</strong><br>$$<br>\frac{n!}{(n-k)!}<br>$$</p>
+<h2 id="Combination"><a href="#Combination" class="headerlink" title="Combination"></a>Combination</h2><p>Oder doesn’t matter</p>
+<p>不考虑顺序无放回排列: 有n匹马，<strong>不考虑次序的前k匹马</strong><br>$$<br>\frac{n!}{(n-k)!k!}<br>$$</p>
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>总共12名队员，只允许5人上场，有三人投篮准，这三人同时被选的概率<br>$$<br>\frac{C_2^9}{C_5^{12}}<br>$$</p>
+<h2 id="geometric-distribution-几何分布"><a href="#geometric-distribution-几何分布" class="headerlink" title="geometric distribution (几何分布)"></a>geometric distribution (几何分布)</h2><p>取样直到成功：<br>$$<br>P(X=r) = q^{r-1}p<br>$$<br>几何分布的众数永远是1</p>
+<p>如果需要计算至少有r次失败则：<br>$$<br>P(X&gt;r) = q^r<br>$$<br>期望：<br>$$<br>E(X)=\frac{1}{p}<br>$$<br>方差：<br>$$<br>Var(X)=\frac{q}{p^2}<br>$$</p>
+<h2 id="binomial-distribution-二项分布"><a href="#binomial-distribution-二项分布" class="headerlink" title="binomial distribution (二项分布)"></a>binomial distribution (二项分布)</h2><p>不考虑顺序，有n次实验，r次成功,每一次都是伯努利试验<br>$$<br>P(X=r) = C_r^np^rq^{n-r}<br>$$<br>期望：<br>$$<br>E(X) = np<br>$$<br>方差：<br>$$<br>Var(X) = npq<br>$$</p>
+<h2 id="Poission-distribution"><a href="#Poission-distribution" class="headerlink" title="Poission distribution"></a>Poission distribution</h2><ol>
+<li>互相独立的事件，在一段时间或者在空间中</li>
+<li>平均值已知，$\lambda$已知</li>
+<li>用于计算在这段时间内，发生次数的概率</li>
+<li>泊松分布是二项分布n(n&gt;50)很大，p(p&lt;0.1)很小的一种特殊形式</li>
+<li>$\lambda$ = np, 即， np接近npq，可以代替二项分布，因为二项分布有n!,计算量非常大，可以用泊松分布代替</li>
+</ol>
+<p>$$<br>P(X=r) = \frac{e^{-\lambda}\lambda^k}{k!}<br>$$</p>
+<blockquote>
+<p>e=2.718</p>
+</blockquote>
+<p>期望：$\lambda$ ， 方差：$\lambda$ </p>
+<h2 id="Continuous-Proability-Distribution"><a href="#Continuous-Proability-Distribution" class="headerlink" title="Continuous Proability Distribution"></a>Continuous Proability Distribution</h2><p>Probability Density Function(pdf): f(x), 积分为1，即f(x)下的面积为1</p>
+<h3 id="Z-Score-for-Normal-Distribution"><a href="#Z-Score-for-Normal-Distribution" class="headerlink" title="Z Score for Normal Distribution"></a>Z Score for Normal Distribution</h3><p>因为正态分布有很多形式，计算起来非常不方便，所以我们可以先将其转换为标准形态，然后查表得出概率<br>$$<br>Z=\frac{x-\mu}{\sigma}<br>$$</p>
+<h3 id="合并两个正态分布"><a href="#合并两个正态分布" class="headerlink" title="合并两个正态分布"></a>合并两个正态分布</h3><p>$N_1(\mu_1,\sigma_1^2), N_2(\mu_2,\sigma_2^2)$</p>
+<p>$N_1+N_2$:<br>$$<br>N_{new} = N(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2)<br>$$<br> $N_1-N_2$:<br>$$<br>N_{new} = N(\mu_1-\mu_2,\sigma_1^2+\sigma_2^2)<br>$$</p>
+<h3 id="使用正态分布来拟合二项分布，通常是一段连续的"><a href="#使用正态分布来拟合二项分布，通常是一段连续的" class="headerlink" title="使用正态分布来拟合二项分布，通常是一段连续的"></a>使用正态分布来拟合二项分布，通常是一段连续的</h3><ol>
+<li>np&gt;5 and nq&gt;5</li>
+<li>需要修正</li>
+</ol>
+<p>列子：</p>
+<p>二项分布求P(X&lt;6) = P(X=0)+….P(X=5)，需要把每个加起来</p>
+<p>转换成N(np,npq),转换成Z-Score, 求P(X&lt;5.5)</p>
+<p>continuity correction:  3&lt;=x&lt;10  -&gt; 2.5&lt;x&lt;9.5,  x=0 -&gt; -0.5&lt;x&lt;0.5</p>
+<h3 id="使用正态分布来拟合泊松分布，通常是一段连续的"><a href="#使用正态分布来拟合泊松分布，通常是一段连续的" class="headerlink" title="使用正态分布来拟合泊松分布，通常是一段连续的"></a>使用正态分布来拟合泊松分布，通常是一段连续的</h3><ol>
+<li>$\lambda$ &gt;15</li>
+<li>需要修正</li>
+</ol>
+<p>Po($\lambda$) -&gt; N($\lambda$, $\lambda$)</p>
+<h2 id="抽样"><a href="#抽样" class="headerlink" title="抽样"></a>抽样</h2><p>均值：<br>$$<br>\tilde{\mu} = \frac{\sum x}{n}<br>$$<br>方差：<br>$$<br>\tilde{\sigma}^2=\frac{\sum(x-\bar{x})}{n-1}<br>$$<br>单次二项分布取样：</p>
+<p>期望：<br>$$<br>E(\frac{X}{n}) = \frac{E(X)}{n}=\frac{np}{n}=p<br>$$<br>方差：<br>$$<br>Var(\frac{X}{n})=\frac{Var(X)}{n^2}=\frac{npq}{n^2}=\frac{pq}{n}<br>$$<br>如果要用Continuity Correction:<br>$$<br>\frac{\pm0.5}{n}=\pm\frac{1}{2n}<br>$$<br>多次抽样：<br>$$<br>E(\frac{x_1+x_2…+x_n}{n})=\mu<br>$$</p>
+<p>$$<br>Var(\frac{x1+x2…+x_n}{n})=\frac{\sigma^2}{n}<br>$$</p>
+<p>如果n足够大，则其分布一定服从正态分布，即中央极限定理（n&gt;30）</p>
+<h2 id="Confidence-Interval-置信区间"><a href="#Confidence-Interval-置信区间" class="headerlink" title="Confidence Interval (置信区间)"></a>Confidence Interval (置信区间)</h2><p>正态分布或者非正态分布：<br>$$<br>(\bar{x}-c\frac{s}{\sqrt{n}},\bar{x}+c\frac{s}{\sqrt{n}})<br>$$<br>二项分布：<br>$$<br>(\bar{x}-c\sqrt{\frac{pq}{n}}, \bar{x}+c\sqrt{\frac{pq}{n}})<br>$$</p>
+<blockquote>
+<p>c与置信区间的level有关，90%-&gt;1.64, 95%-&gt; 1.96</p>
+<p>n&gt;30</p>
+</blockquote>
+<p>如果n&lt;30，则需要使用t分布<br>$$<br>(\bar{x}-t\frac{s}{\sqrt{n}},\bar{x}+t\frac{s}{\sqrt{n}})<br>$$</p>
+<h3 id="P-Value"><a href="#P-Value" class="headerlink" title="P-Value"></a>P-Value</h3><p>其实是计算Z-Score,p值越小，越不可能发生，但是却发生了，所以如果p-value &lt; $\alpha$ 那我们就拒绝原假设</p>
+<h3 id="一类错误，二类错误"><a href="#一类错误，二类错误" class="headerlink" title="一类错误，二类错误"></a>一类错误，二类错误</h3><p>一类错误：错误的拒绝原假设，一类错误的概率即为$\alpha$</p>
+<p>二类错误：错误的接受原假设，满足一类错误的情况下，也满足二类错误，为$\beta$ 。首先计算满足原假设的X,然后将其带入替代假设，求出$\beta$ </p>
+<h2 id="卡方检验"><a href="#卡方检验" class="headerlink" title="卡方检验"></a>卡方检验</h2><p>用于检验，得到的结果与实际分布的区别<br>$$<br>X^2 = \sum\frac{(O-E)^2}{E}<br>$$</p>
+<blockquote>
+<p>O为实际的，E为期望的</p>
+<p>卡方检验的值越大，说明偏离原分布越大，越有可能被拒绝</p>
+<p>比较的值是根据自由度查表得到</p>
+<p>一般自由度为（行数-1）*（列数-1）</p>
+<p>可以测试，比如结果对性别是否有影响</p>
+</blockquote>
+
+  <p><a class="classtest-link" href="/tags/Statistics/" rel="tag">Statistics</a> — Apr 10, 2022</p>
+  
+
+
+        </div>
+         <div class="row mt-2">
+  <h3>------------------------------------------------------------------------------------------</h3>
+  <!--<div><input id="search-text" title="search" class="search-text" type="text" placeholder="search......"></div>
+  <div style="margin-top: 1.5rem;">
+    <ul id="result"></ul>
+  </div>-->
+  <div></div>
+</div>
+        <div class="row mt-2">
+  
+    <div class="eight columns">
+      <p id="madewith">Made with ❤ and
+        <a class="footer-link icon" href="https://hexo.io" target="_blank" style="text-decoration: none;" rel="noreferrer" aria-label="Hexo.io">
+        <svg class="hexo svg-hov" width="14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Hexo.js</title><path d="M12 .007L1.57 6.056V18.05L12 23.995l10.43-6.049V5.952L12 .007zm4.798 17.105l-.939.521-.939-.521V12.94H9.08v4.172l-.94.521-.938-.521V6.89l.939-.521.939.521v4.172h5.84V6.89l.94-.521.938.521v10.222z"/></svg>
+        </a>
+        
+    </div>
+
+    <!-- Sepcial thanks to https://simpleicons.org/ for the icons -->
+    <div class="four columns mb-3 posisi" >
+      
+      <a class="ml-0 footer-link icon" href="https://github.com/PPPPan" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="GitHub">
+        <svg class="github svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+      
+
+      
+
+      
+
+      
+
+      
+
+    </div>
+  
+</div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <script src="/js/nanobar.min.js"></script>
+
+  <script>
+    var options = {
+      classname: 'nanobar',
+      id: 'myNanobar'
+    };
+    var nanobar = new Nanobar(options);
+    nanobar.go(30);
+    nanobar.go(76);
+    nanobar.go(100);
+  </script>
+
+</body>
+
+</html>
