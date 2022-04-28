@@ -15,7 +15,7 @@
   
   <link rel="canonical" href="http://example.com/2022/04/10/statistic/">
   
-  <meta name="description" content="Notes#   Outlier#有特别大或者特别小的值，相对于其他剩余数据 Skewed Data#Outlier把整体数据往左或者往右偏移。 左偏移：Mean&amp;lt;Median 右偏移：Mean&amp;gt;Median Bimodal (双峰分布)#众数有两个，通常用于分类数据 变化#如果每个数增">
+  <meta name="description" content="Outlier Skewed Data Bimodal (双峰分布) 变化 box plot Variance Z-Score，Standard scores conditional probabilities, Bayes’ Theorem discrete Expectation and Var">
   
   
   <meta name="author" content="Xinjian Pan">
@@ -26,14 +26,14 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Statistics" />
   
-  <meta property="og:description" content="Notes#   Outlier#有特别大或者特别小的值，相对于其他剩余数据 Skewed Data#Outlier把整体数据往左或者往右偏移。 左偏移：Mean&amp;lt;Median 右偏移：Mean&amp;gt;Median Bimodal (双峰分布)#众数有两个，通常用于分类数据 变化#如果每个数增">
+  <meta property="og:description" content="Outlier Skewed Data Bimodal (双峰分布) 变化 box plot Variance Z-Score，Standard scores conditional probabilities, Bayes’ Theorem discrete Expectation and Var">
   
   <meta property="og:url" content="http://example.com/2022/04/10/statistic/" />
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Statistics">
   
-  <meta name="twitter:description" content="Notes#   Outlier#有特别大或者特别小的值，相对于其他剩余数据 Skewed Data#Outlier把整体数据往左或者往右偏移。 左偏移：Mean&amp;lt;Median 右偏移：Mean&amp;gt;Median Bimodal (双峰分布)#众数有两个，通常用于分类数据 变化#如果每个数增">
+  <meta name="twitter:description" content="Outlier Skewed Data Bimodal (双峰分布) 变化 box plot Variance Z-Score，Standard scores conditional probabilities, Bayes’ Theorem discrete Expectation and Var">
   
   
   
@@ -165,12 +165,12 @@
   </div>
 
   <div class="six columns ml-1">
-    <h1 class="mt-2" style="font-size: 35px;width: 500px;">
+    <h1 class="mt-2" style="font-size: 35px;width: 450px;">
       Hi! Welcome to my Blog 😎
     </h1>
   </div>
 
-  <div class="twelve columns">
+  <div class="twelve columns" >
     <div class="row">
       <div class="nine columns left">
         <a href="/">Home</a>
@@ -194,9 +194,9 @@
         
       </div>
     </div>
-    <hr style="margin-bottom: 1.6rem">
   </div>
 </div>
+    <hr style="margin-bottom: 2rem">
 
         <div class="trans">
             <h2>Statistics</h2>
@@ -223,46 +223,84 @@ MathJax.Hub.Queue(function() {
 </script>
 
   
-  <h1><span id="notes"><u>Notes</u></span><a href="#notes" class="header-anchor">#</a></h1> <span id="more"></span>
+  <!-- toc -->
 
-<h2><span id="outlier">Outlier</span><a href="#outlier" class="header-anchor">#</a></h2><p>有特别大或者特别小的值，相对于其他剩余数据</p>
-<h2><span id="skewed-data">Skewed Data</span><a href="#skewed-data" class="header-anchor">#</a></h2><p>Outlier把整体数据往左或者往右偏移。</p>
+<ul>
+<li><a href="#outlier">Outlier</a></li>
+<li><a href="#skewed-data">Skewed Data</a></li>
+<li><a href="#bimodal-%E5%8F%8C%E5%B3%B0%E5%88%86%E5%B8%83">Bimodal (双峰分布)</a></li>
+<li><a href="#%E5%8F%98%E5%8C%96">变化</a></li>
+<li><a href="#box-plot">box plot</a></li>
+<li><a href="#variance">Variance</a></li>
+<li><a href="#z-scorestandard-scores">Z-Score，Standard scores</a></li>
+<li><a href="#conditional-probabilities-bayes-theorem">conditional probabilities, Bayes’ Theorem</a></li>
+<li><a href="#discrete-expectation-and-variance">discrete Expectation and Variance</a></li>
+<li><a href="#independent-obersavation">Independent Obersavation</a></li>
+<li><a href="#if-two-variables-are-independent">if two variables are independent</a></li>
+<li><a href="#%E5%AE%89%E6%8E%92n%E4%B8%AA%E5%85%83%E7%B4%A0">安排n个元素</a></li>
+<li><a href="#permutation">Permutation</a></li>
+<li><a href="#combination">Combination</a></li>
+<li><a href="#example">Example</a></li>
+<li><a href="#geometric-distribution-%E5%87%A0%E4%BD%95%E5%88%86%E5%B8%83">geometric distribution (几何分布)</a></li>
+<li><a href="#binomial-distribution-%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83">binomial distribution (二项分布)</a></li>
+<li><a href="#poission-distribution">Poission distribution</a></li>
+<li><a href="#continuous-proability-distribution">Continuous Proability Distribution</a><ul>
+<li><a href="#z-score-for-normal-distribution">Z Score for Normal Distribution</a></li>
+<li><a href="#%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83">合并两个正态分布</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E6%9D%A5%E6%8B%9F%E5%90%88%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83%E9%80%9A%E5%B8%B8%E6%98%AF%E4%B8%80%E6%AE%B5%E8%BF%9E%E7%BB%AD%E7%9A%84">使用正态分布来拟合二项分布，通常是一段连续的</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E6%9D%A5%E6%8B%9F%E5%90%88%E6%B3%8A%E6%9D%BE%E5%88%86%E5%B8%83%E9%80%9A%E5%B8%B8%E6%98%AF%E4%B8%80%E6%AE%B5%E8%BF%9E%E7%BB%AD%E7%9A%84">使用正态分布来拟合泊松分布，通常是一段连续的</a></li>
+</ul>
+</li>
+<li><a href="#%E6%8A%BD%E6%A0%B7">抽样</a></li>
+<li><a href="#confidence-interval-%E7%BD%AE%E4%BF%A1%E5%8C%BA%E9%97%B4">Confidence Interval (置信区间)</a><ul>
+<li><a href="#p-value">P-Value</a></li>
+<li><a href="#%E4%B8%80%E7%B1%BB%E9%94%99%E8%AF%AF%E4%BA%8C%E7%B1%BB%E9%94%99%E8%AF%AF">一类错误，二类错误</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8D%A1%E6%96%B9%E6%A3%80%E9%AA%8C">卡方检验</a></li>
+</ul>
+<!-- tocstop -->
+
+<span id="more"></span>
+
+<h2><span id="outlier">Outlier</span></h2><p>有特别大或者特别小的值，相对于其他剩余数据</p>
+<h2><span id="skewed-data">Skewed Data</span></h2><p>Outlier把整体数据往左或者往右偏移。</p>
 <p>左偏移：Mean&lt;Median</p>
 <p>右偏移：Mean&gt;Median</p>
-<h2><span id="bimodal-shuang-feng-fen-bu">Bimodal (双峰分布)</span><a href="#bimodal-shuang-feng-fen-bu" class="header-anchor">#</a></h2><p>众数有两个，通常用于分类数据</p>
-<h2><span id="bian-hua">变化</span><a href="#bian-hua" class="header-anchor">#</a></h2><p>如果每个数增加200，mean&#x3D;mean+200, mode&#x3D;mode+200, median&#x3D;median+200</p>
+<h2><span id="bimodal-双峰分布">Bimodal (双峰分布)</span></h2><p>众数有两个，通常用于分类数据</p>
+<h2><span id="变化">变化</span></h2><p>如果每个数增加200，mean&#x3D;mean+200, mode&#x3D;mode+200, median&#x3D;median+200</p>
 <p>如果每个数增加10%，mean&#x3D;mean*1.1, mode&#x3D;mode*1.1, median&#x3D;median*1.1</p>
-<h2><span id="box-plot">box plot</span><a href="#box-plot" class="header-anchor">#</a></h2><p>Lower quartile: N&#x2F;4</p>
+<h2><span id="box-plot">box plot</span></h2><p>Lower quartile: N&#x2F;4</p>
 <p>Upper quartile: 3*N&#x2F;4</p>
 <p>中间线：Median</p>
-<h2><span id="variance">Variance</span><a href="#variance" class="header-anchor">#</a></h2><p>$$<br>\frac{\sum(x-\mu)^2}{n}&#x3D;\frac{\sum x^2}{n}-\mu^2<br>$$</p>
-<h2><span id="z-score-standard-scores">Z-Score，Standard scores</span><a href="#z-score-standard-scores" class="header-anchor">#</a></h2><p>$$<br>z&#x3D;\frac{x-\mu}{\sigma}<br>$$</p>
+<h2><span id="variance">Variance</span></h2><p>$$<br>\frac{\sum(x-\mu)^2}{n}&#x3D;\frac{\sum x^2}{n}-\mu^2<br>$$</p>
+<h2><span id="z-scorestandard-scores">Z-Score，Standard scores</span></h2><p>$$<br>z&#x3D;\frac{x-\mu}{\sigma}<br>$$</p>
 <p>主要用于比较来自不同分布的数据</p>
-<h2><span id="conditional-probabilities-bayes-theorem">conditional probabilities, Bayes’ Theorem</span><a href="#conditional-probabilities-bayes-theorem" class="header-anchor">#</a></h2><p>$$<br>P(A|B)&#x3D;\frac{P(A\bigcap B)}{P(B)}&#x3D;\frac{P(B|A)P(A)}{P(B)}&#x3D;\frac{P(B|A)P(A)}{P(B|A)P(A)+P(B|A^{‘})P(A^{‘})}<br>$$</p>
+<h2><span id="conditional-probabilities-bayes-theorem">conditional probabilities, Bayes’ Theorem</span></h2><p>$$<br>P(A|B)&#x3D;\frac{P(A\bigcap B)}{P(B)}&#x3D;\frac{P(B|A)P(A)}{P(B)}&#x3D;\frac{P(B|A)P(A)}{P(B|A)P(A)+P(B|A^{‘})P(A^{‘})}<br>$$</p>
 <p>if A and B independent,<br>$$<br>P(A) &#x3D; \frac{P(A\bigcap B)}{P(B)}<br>$$</p>
-<h2><span id="discrete-expectation-and-variance">discrete Expectation and Variance</span><a href="#discrete-expectation-and-variance" class="header-anchor">#</a></h2><p>$$<br>E(X) &#x3D; \sum xP(X&#x3D;x)<br>$$</p>
+<h2><span id="discrete-expectation-and-variance">discrete Expectation and Variance</span></h2><p>$$<br>E(X) &#x3D; \sum xP(X&#x3D;x)<br>$$</p>
 <p>$$<br>V(X) &#x3D; E(X-\mu)^2&#x3D;\sum (X-\mu)^2P(X&#x3D;x)<br>$$</p>
 <p>$$<br>V(X)&#x3D;E(X^2)-E(X)^2<br>$$</p>
 <p>General formulas:<br>$$<br>E(aX+b) &#x3D; aE(x)+b<br>$$</p>
 <p>$$<br>Var(aX+b)&#x3D;a^2Var(x)<br>$$</p>
-<h2><span id="independent-obersavation">Independent Obersavation</span><a href="#independent-obersavation" class="header-anchor">#</a></h2><p>$$<br>E(X_1+X_2…+X_n) &#x3D; nE(X)<br>$$</p>
+<h2><span id="independent-obersavation">Independent Obersavation</span></h2><p>$$<br>E(X_1+X_2…+X_n) &#x3D; nE(X)<br>$$</p>
 <p>$$<br>Var(X_1+X_2+…+X_n) &#x3D; nVar(X)<br>$$</p>
-<h2><span id="if-two-variables-are-independent">if two variables are independent</span><a href="#if-two-variables-are-independent" class="header-anchor">#</a></h2><p>$$<br>E(X-Y) &#x3D; E(X) - E(Y)<br>$$</p>
+<h2><span id="if-two-variables-are-independent">if two variables are independent</span></h2><p>$$<br>E(X-Y) &#x3D; E(X) - E(Y)<br>$$</p>
 <p>$$<br>Var(X-Y) &#x3D; Var(X) + Var(Y)<br>$$</p>
-<h2><span id="an-pai-n-ge-yuan-su">安排n个元素</span><a href="#an-pai-n-ge-yuan-su" class="header-anchor">#</a></h2><p>圆圈：<br>$$<br>(n-1)!<br>$$<br>如果是非圆圈，则<br>$$<br>n!<br>$$<br>如果按种类安排：<br>$$<br>\frac{n!}{j!k!m!….}<br>$$</p>
+<h2><span id="安排n个元素">安排n个元素</span></h2><p>圆圈：<br>$$<br>(n-1)!<br>$$<br>如果是非圆圈，则<br>$$<br>n!<br>$$<br>如果按种类安排：<br>$$<br>\frac{n!}{j!k!m!….}<br>$$</p>
 <blockquote>
 <p>n为总个数，j为种类1的个数，k为种类2的个数…..</p>
 </blockquote>
 <p>5只骆驼，2只马，3只斑马，如果5只骆驼先后完成，则有多少种情况：<br>$$<br>\frac{6!}{2!3!1!}<br>$$</p>
-<h2><span id="permutation">Permutation</span><a href="#permutation" class="header-anchor">#</a></h2><p>Oder matters</p>
+<h2><span id="permutation">Permutation</span></h2><p>Oder matters</p>
 <p>按顺序无放回排列：<strong>有 n 匹马，有次序的前k匹马</strong><br>$$<br>\frac{n!}{(n-k)!}<br>$$</p>
-<h2><span id="combination">Combination</span><a href="#combination" class="header-anchor">#</a></h2><p>Oder doesn’t matter</p>
+<h2><span id="combination">Combination</span></h2><p>Oder doesn’t matter</p>
 <p>不考虑顺序无放回排列: 有n匹马，<strong>不考虑次序的前k匹马</strong><br>$$<br>\frac{n!}{(n-k)!k!}<br>$$</p>
-<h2><span id="example">Example</span><a href="#example" class="header-anchor">#</a></h2><p>总共12名队员，只允许5人上场，有三人投篮准，这三人同时被选的概率<br>$$<br>\frac{C_2^9}{C_5^{12}}<br>$$</p>
-<h2><span id="geometric-distribution-ji-he-fen-bu">geometric distribution (几何分布)</span><a href="#geometric-distribution-ji-he-fen-bu" class="header-anchor">#</a></h2><p>取样直到成功：<br>$$<br>P(X&#x3D;r) &#x3D; q^{r-1}p<br>$$<br>几何分布的众数永远是1</p>
+<h2><span id="example">Example</span></h2><p>总共12名队员，只允许5人上场，有三人投篮准，这三人同时被选的概率<br>$$<br>\frac{C_2^9}{C_5^{12}}<br>$$</p>
+<h2><span id="geometric-distribution-几何分布">geometric distribution (几何分布)</span></h2><p>取样直到成功：<br>$$<br>P(X&#x3D;r) &#x3D; q^{r-1}p<br>$$<br>几何分布的众数永远是1</p>
 <p>如果需要计算至少有r次失败则：<br>$$<br>P(X&gt;r) &#x3D; q^r<br>$$<br>期望：<br>$$<br>E(X)&#x3D;\frac{1}{p}<br>$$<br>方差：<br>$$<br>Var(X)&#x3D;\frac{q}{p^2}<br>$$</p>
-<h2><span id="binomial-distribution-er-xiang-fen-bu">binomial distribution (二项分布)</span><a href="#binomial-distribution-er-xiang-fen-bu" class="header-anchor">#</a></h2><p>不考虑顺序，有n次实验，r次成功,每一次都是伯努利试验<br>$$<br>P(X&#x3D;r) &#x3D; C_r^np^rq^{n-r}<br>$$<br>期望：<br>$$<br>E(X) &#x3D; np<br>$$<br>方差：<br>$$<br>Var(X) &#x3D; npq<br>$$</p>
-<h2><span id="poission-distribution">Poission distribution</span><a href="#poission-distribution" class="header-anchor">#</a></h2><ol>
+<h2><span id="binomial-distribution-二项分布">binomial distribution (二项分布)</span></h2><p>不考虑顺序，有n次实验，r次成功,每一次都是伯努利试验<br>$$<br>P(X&#x3D;r) &#x3D; C_r^np^rq^{n-r}<br>$$<br>期望：<br>$$<br>E(X) &#x3D; np<br>$$<br>方差：<br>$$<br>Var(X) &#x3D; npq<br>$$</p>
+<h2><span id="poission-distribution">Poission distribution</span></h2><ol>
 <li>互相独立的事件，在一段时间或者在空间中</li>
 <li>平均值已知，$\lambda$已知</li>
 <li>用于计算在这段时间内，发生次数的概率</li>
@@ -274,11 +312,11 @@ MathJax.Hub.Queue(function() {
 <p>e&#x3D;2.718</p>
 </blockquote>
 <p>期望：$\lambda$ ， 方差：$\lambda$ </p>
-<h2><span id="continuous-proability-distribution">Continuous Proability Distribution</span><a href="#continuous-proability-distribution" class="header-anchor">#</a></h2><p>Probability Density Function(pdf): f(x), 积分为1，即f(x)下的面积为1</p>
-<h3><span id="z-score-for-normal-distribution">Z Score for Normal Distribution</span><a href="#z-score-for-normal-distribution" class="header-anchor">#</a></h3><p>因为正态分布有很多形式，计算起来非常不方便，所以我们可以先将其转换为标准形态，然后查表得出概率<br>$$<br>Z&#x3D;\frac{x-\mu}{\sigma}<br>$$</p>
-<h3><span id="he-bing-liang-ge-zheng-tai-fen-bu">合并两个正态分布</span><a href="#he-bing-liang-ge-zheng-tai-fen-bu" class="header-anchor">#</a></h3><p>$N_1(\mu_1,\sigma_1^2), N_2(\mu_2,\sigma_2^2)$</p>
+<h2><span id="continuous-proability-distribution">Continuous Proability Distribution</span></h2><p>Probability Density Function(pdf): f(x), 积分为1，即f(x)下的面积为1</p>
+<h3><span id="z-score-for-normal-distribution">Z Score for Normal Distribution</span></h3><p>因为正态分布有很多形式，计算起来非常不方便，所以我们可以先将其转换为标准形态，然后查表得出概率<br>$$<br>Z&#x3D;\frac{x-\mu}{\sigma}<br>$$</p>
+<h3><span id="合并两个正态分布">合并两个正态分布</span></h3><p>$N_1(\mu_1,\sigma_1^2), N_2(\mu_2,\sigma_2^2)$</p>
 <p>$N_1+N_2$:<br>$$<br>N_{new} &#x3D; N(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2)<br>$$<br> $N_1-N_2$:<br>$$<br>N_{new} &#x3D; N(\mu_1-\mu_2,\sigma_1^2+\sigma_2^2)<br>$$</p>
-<h3><span id="shi-yong-zheng-tai-fen-bu-lai-ni-he-er-xiang-fen-bu-tong-chang-shi-yi-duan-lian-xu-de">使用正态分布来拟合二项分布，通常是一段连续的</span><a href="#shi-yong-zheng-tai-fen-bu-lai-ni-he-er-xiang-fen-bu-tong-chang-shi-yi-duan-lian-xu-de" class="header-anchor">#</a></h3><ol>
+<h3><span id="使用正态分布来拟合二项分布通常是一段连续的">使用正态分布来拟合二项分布，通常是一段连续的</span></h3><ol>
 <li>np&gt;5 and nq&gt;5</li>
 <li>需要修正</li>
 </ol>
@@ -286,25 +324,25 @@ MathJax.Hub.Queue(function() {
 <p>二项分布求P(X&lt;6) &#x3D; P(X&#x3D;0)+….P(X&#x3D;5)，需要把每个加起来</p>
 <p>转换成N(np,npq),转换成Z-Score, 求P(X&lt;5.5)</p>
 <p>continuity correction:  3&lt;&#x3D;x&lt;10  -&gt; 2.5&lt;x&lt;9.5,  x&#x3D;0 -&gt; -0.5&lt;x&lt;0.5</p>
-<h3><span id="shi-yong-zheng-tai-fen-bu-lai-ni-he-bo-song-fen-bu-tong-chang-shi-yi-duan-lian-xu-de">使用正态分布来拟合泊松分布，通常是一段连续的</span><a href="#shi-yong-zheng-tai-fen-bu-lai-ni-he-bo-song-fen-bu-tong-chang-shi-yi-duan-lian-xu-de" class="header-anchor">#</a></h3><ol>
+<h3><span id="使用正态分布来拟合泊松分布通常是一段连续的">使用正态分布来拟合泊松分布，通常是一段连续的</span></h3><ol>
 <li>$\lambda$ &gt;15</li>
 <li>需要修正</li>
 </ol>
 <p>Po($\lambda$) -&gt; N($\lambda$, $\lambda$)</p>
-<h2><span id="chou-yang">抽样</span><a href="#chou-yang" class="header-anchor">#</a></h2><p>均值：<br>$$<br>\tilde{\mu} &#x3D; \frac{\sum x}{n}<br>$$<br>方差：<br>$$<br>\tilde{\sigma}^2&#x3D;\frac{\sum(x-\bar{x})}{n-1}<br>$$<br>单次二项分布取样：</p>
+<h2><span id="抽样">抽样</span></h2><p>均值：<br>$$<br>\tilde{\mu} &#x3D; \frac{\sum x}{n}<br>$$<br>方差：<br>$$<br>\tilde{\sigma}^2&#x3D;\frac{\sum(x-\bar{x})}{n-1}<br>$$<br>单次二项分布取样：</p>
 <p>期望：<br>$$<br>E(\frac{X}{n}) &#x3D; \frac{E(X)}{n}&#x3D;\frac{np}{n}&#x3D;p<br>$$<br>方差：<br>$$<br>Var(\frac{X}{n})&#x3D;\frac{Var(X)}{n^2}&#x3D;\frac{npq}{n^2}&#x3D;\frac{pq}{n}<br>$$<br>如果要用Continuity Correction:<br>$$<br>\frac{\pm0.5}{n}&#x3D;\pm\frac{1}{2n}<br>$$<br>多次抽样：<br>$$<br>E(\frac{x_1+x_2…+x_n}{n})&#x3D;\mu<br>$$</p>
 <p>$$<br>Var(\frac{x1+x2…+x_n}{n})&#x3D;\frac{\sigma^2}{n}<br>$$</p>
 <p>如果n足够大，则其分布一定服从正态分布，即中央极限定理（n&gt;30）</p>
-<h2><span id="confidence-interval-zhi-xin-qu-jian">Confidence Interval (置信区间)</span><a href="#confidence-interval-zhi-xin-qu-jian" class="header-anchor">#</a></h2><p>正态分布或者非正态分布：<br>$$<br>(\bar{x}-c\frac{s}{\sqrt{n}},\bar{x}+c\frac{s}{\sqrt{n}})<br>$$<br>二项分布：<br>$$<br>(\bar{x}-c\sqrt{\frac{pq}{n}}, \bar{x}+c\sqrt{\frac{pq}{n}})<br>$$</p>
+<h2><span id="confidence-interval-置信区间">Confidence Interval (置信区间)</span></h2><p>正态分布或者非正态分布：<br>$$<br>(\bar{x}-c\frac{s}{\sqrt{n}},\bar{x}+c\frac{s}{\sqrt{n}})<br>$$<br>二项分布：<br>$$<br>(\bar{x}-c\sqrt{\frac{pq}{n}}, \bar{x}+c\sqrt{\frac{pq}{n}})<br>$$</p>
 <blockquote>
 <p>c与置信区间的level有关，90%-&gt;1.64, 95%-&gt; 1.96</p>
 <p>n&gt;30</p>
 </blockquote>
 <p>如果n&lt;30，则需要使用t分布<br>$$<br>(\bar{x}-t\frac{s}{\sqrt{n}},\bar{x}+t\frac{s}{\sqrt{n}})<br>$$</p>
-<h3><span id="p-value">P-Value</span><a href="#p-value" class="header-anchor">#</a></h3><p>其实是计算Z-Score,p值越小，越不可能发生，但是却发生了，所以如果p-value &lt; $\alpha$ 那我们就拒绝原假设</p>
-<h3><span id="yi-lei-cuo-wu-er-lei-cuo-wu">一类错误，二类错误</span><a href="#yi-lei-cuo-wu-er-lei-cuo-wu" class="header-anchor">#</a></h3><p>一类错误：错误的拒绝原假设，一类错误的概率即为$\alpha$</p>
+<h3><span id="p-value">P-Value</span></h3><p>其实是计算Z-Score,p值越小，越不可能发生，但是却发生了，所以如果p-value &lt; $\alpha$ 那我们就拒绝原假设</p>
+<h3><span id="一类错误二类错误">一类错误，二类错误</span></h3><p>一类错误：错误的拒绝原假设，一类错误的概率即为$\alpha$</p>
 <p>二类错误：错误的接受原假设，满足一类错误的情况下，也满足二类错误，为$\beta$ 。首先计算满足原假设的X,然后将其带入替代假设，求出$\beta$ </p>
-<h2><span id="qia-fang-jian-yan">卡方检验</span><a href="#qia-fang-jian-yan" class="header-anchor">#</a></h2><p>用于检验，得到的结果与实际分布的区别	<br>$$<br>X^2 &#x3D; \sum\frac{(O-E)^2}{E}<br>$$</p>
+<h2><span id="卡方检验">卡方检验</span></h2><p>用于检验，得到的结果与实际分布的区别	<br>$$<br>X^2 &#x3D; \sum\frac{(O-E)^2}{E}<br>$$</p>
 <blockquote>
 <p>O为实际的，E为期望的</p>
 <p>卡方检验的值越大，说明偏离原分布越大，越有可能被拒绝</p>

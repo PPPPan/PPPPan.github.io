@@ -15,7 +15,7 @@
   
   <link rel="canonical" href="http://example.com/2022/02/13/PCA/">
   
-  <meta name="description" content="Notes#  12345import numpy as npimport matplotlib.pyplot as pltimport zipfileimport cv2from PIL import Image  二维点测试#12345678910111213141516171819202122">
+  <meta name="description" content="二维点测试 Eigenface测试      12345import numpy as npimport matplotlib.pyplot as pltimport zipfileimport cv2from PIL import Image  二维点测试123456789101112131415">
   
   
   <meta name="author" content="Xinjian Pan">
@@ -26,14 +26,14 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="PCA" />
   
-  <meta property="og:description" content="Notes#  12345import numpy as npimport matplotlib.pyplot as pltimport zipfileimport cv2from PIL import Image  二维点测试#12345678910111213141516171819202122">
+  <meta property="og:description" content="二维点测试 Eigenface测试      12345import numpy as npimport matplotlib.pyplot as pltimport zipfileimport cv2from PIL import Image  二维点测试123456789101112131415">
   
   <meta property="og:url" content="http://example.com/2022/02/13/PCA/" />
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="PCA">
   
-  <meta name="twitter:description" content="Notes#  12345import numpy as npimport matplotlib.pyplot as pltimport zipfileimport cv2from PIL import Image  二维点测试#12345678910111213141516171819202122">
+  <meta name="twitter:description" content="二维点测试 Eigenface测试      12345import numpy as npimport matplotlib.pyplot as pltimport zipfileimport cv2from PIL import Image  二维点测试123456789101112131415">
   
   
   
@@ -165,12 +165,12 @@
   </div>
 
   <div class="six columns ml-1">
-    <h1 class="mt-2" style="font-size: 35px;width: 500px;">
+    <h1 class="mt-2" style="font-size: 35px;width: 450px;">
       Hi! Welcome to my Blog 😎
     </h1>
   </div>
 
-  <div class="twelve columns">
+  <div class="twelve columns" >
     <div class="row">
       <div class="nine columns left">
         <a href="/">Home</a>
@@ -194,9 +194,9 @@
         
       </div>
     </div>
-    <hr style="margin-bottom: 1.6rem">
   </div>
 </div>
+    <hr style="margin-bottom: 2rem">
 
         <div class="trans">
             <h2>PCA</h2>
@@ -223,15 +223,23 @@ MathJax.Hub.Queue(function() {
 </script>
 
   
-  <h1><span id="notes"><u>Notes</u></span><a href="#notes" class="header-anchor">#</a></h1><span id="more"></span>
+  <!-- toc -->
+
+<ul>
+<li><a href="#%E4%BA%8C%E7%BB%B4%E7%82%B9%E6%B5%8B%E8%AF%95">二维点测试</a></li>
+<li><a href="#eigenface%E6%B5%8B%E8%AF%95">Eigenface测试</a></li>
+</ul>
+<!-- tocstop -->
+
+<span id="more"></span>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br></pre></td></tr></table></figure>
 
-<h1><span id="er-wei-dian-ce-shi">二维点测试</span><a href="#er-wei-dian-ce-shi" class="header-anchor">#</a></h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">A = np.array(</span><br><span class="line">    [</span><br><span class="line">        [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,-<span class="number">2</span>,<span class="number">0</span>,-<span class="number">1</span>],</span><br><span class="line">        [<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">6</span>,-<span class="number">1</span>,-<span class="number">1</span>,-<span class="number">3</span>],</span><br><span class="line">    ]</span><br><span class="line">)</span><br><span class="line">mean_A = A.mean(axis=<span class="number">1</span>)</span><br><span class="line">centre_A = A-mean_A.reshape(-<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">S = np.dot(centre_A,centre_A.T)</span><br><span class="line"></span><br><span class="line">s,v = np.linalg.eigh(S)</span><br><span class="line"><span class="comment">#l,s,v = np.linalg.svd(S)</span></span><br><span class="line">pca_A = np.dot(v, centre_A)</span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>, <span class="number">8</span>), dpi=<span class="number">80</span>)</span><br><span class="line">a = plt.scatter(centre_A[<span class="number">0</span>],centre_A[<span class="number">1</span>],color=<span class="string">&#x27;g&#x27;</span>)</span><br><span class="line">a = plt.scatter(pca_A[<span class="number">0</span>],pca_A[<span class="number">1</span>],color=<span class="string">&#x27;red&#x27;</span>)</span><br><span class="line">a = plt.plot([<span class="number">0</span>,v[<span class="number">0</span>][<span class="number">0</span>]],[<span class="number">0</span>,v[<span class="number">0</span>][<span class="number">1</span>]],color=<span class="string">&#x27;red&#x27;</span>)</span><br><span class="line">a = plt.plot([<span class="number">0</span>,v[<span class="number">1</span>][<span class="number">0</span>]],[<span class="number">0</span>,v[<span class="number">1</span>][<span class="number">1</span>]],color=<span class="string">&#x27;red&#x27;</span>)</span><br><span class="line">a = plt.plot([<span class="number">0</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">0</span>],color=<span class="string">&#x27;g&#x27;</span>)</span><br><span class="line">a = plt.plot([<span class="number">0</span>,<span class="number">0</span>],[<span class="number">0</span>,<span class="number">1</span>],color=<span class="string">&#x27;g&#x27;</span>)</span><br><span class="line">a = plt.xlim(-<span class="number">10</span>, <span class="number">10</span>)</span><br><span class="line">a = plt.ylim(-<span class="number">10</span>, <span class="number">10</span>)</span><br><span class="line">plt.grid()</span><br></pre></td></tr></table></figure>
+<h1><span id="二维点测试">二维点测试</span></h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">A = np.array(</span><br><span class="line">    [</span><br><span class="line">        [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,-<span class="number">2</span>,<span class="number">0</span>,-<span class="number">1</span>],</span><br><span class="line">        [<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">6</span>,-<span class="number">1</span>,-<span class="number">1</span>,-<span class="number">3</span>],</span><br><span class="line">    ]</span><br><span class="line">)</span><br><span class="line">mean_A = A.mean(axis=<span class="number">1</span>)</span><br><span class="line">centre_A = A-mean_A.reshape(-<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">S = np.dot(centre_A,centre_A.T)</span><br><span class="line"></span><br><span class="line">s,v = np.linalg.eigh(S)</span><br><span class="line"><span class="comment">#l,s,v = np.linalg.svd(S)</span></span><br><span class="line">pca_A = np.dot(v, centre_A)</span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>, <span class="number">8</span>), dpi=<span class="number">80</span>)</span><br><span class="line">a = plt.scatter(centre_A[<span class="number">0</span>],centre_A[<span class="number">1</span>],color=<span class="string">&#x27;g&#x27;</span>)</span><br><span class="line">a = plt.scatter(pca_A[<span class="number">0</span>],pca_A[<span class="number">1</span>],color=<span class="string">&#x27;red&#x27;</span>)</span><br><span class="line">a = plt.plot([<span class="number">0</span>,v[<span class="number">0</span>][<span class="number">0</span>]],[<span class="number">0</span>,v[<span class="number">0</span>][<span class="number">1</span>]],color=<span class="string">&#x27;red&#x27;</span>)</span><br><span class="line">a = plt.plot([<span class="number">0</span>,v[<span class="number">1</span>][<span class="number">0</span>]],[<span class="number">0</span>,v[<span class="number">1</span>][<span class="number">1</span>]],color=<span class="string">&#x27;red&#x27;</span>)</span><br><span class="line">a = plt.plot([<span class="number">0</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">0</span>],color=<span class="string">&#x27;g&#x27;</span>)</span><br><span class="line">a = plt.plot([<span class="number">0</span>,<span class="number">0</span>],[<span class="number">0</span>,<span class="number">1</span>],color=<span class="string">&#x27;g&#x27;</span>)</span><br><span class="line">a = plt.xlim(-<span class="number">10</span>, <span class="number">10</span>)</span><br><span class="line">a = plt.ylim(-<span class="number">10</span>, <span class="number">10</span>)</span><br><span class="line">plt.grid()</span><br></pre></td></tr></table></figure>
 
 
 <p>​<br><img src="/.com//output_2_0.png" alt="png"><br>​    </p>
-<h1><span id="eigenface-ce-shi">Eigenface测试</span><a href="#eigenface-ce-shi" class="header-anchor">#</a></h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">faces = &#123;&#125;</span><br><span class="line"><span class="keyword">with</span> zipfile.ZipFile(<span class="string">&quot;attface.zip&quot;</span>) <span class="keyword">as</span> facezip:</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> facezip.namelist():</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> filename.endswith(<span class="string">&quot;.pgm&quot;</span>):</span><br><span class="line">            <span class="keyword">continue</span> <span class="comment"># not a face picture</span></span><br><span class="line">        <span class="keyword">with</span> facezip.<span class="built_in">open</span>(filename) <span class="keyword">as</span> image:</span><br><span class="line">            <span class="comment"># If we extracted files from zip, we can use cv2.imread(filename) instead</span></span><br><span class="line">            faces[filename] = cv2.imdecode(np.frombuffer(image.read(), np.uint8), cv2.IMREAD_GRAYSCALE)</span><br></pre></td></tr></table></figure>
+<h1><span id="eigenface测试">Eigenface测试</span></h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">faces = &#123;&#125;</span><br><span class="line"><span class="keyword">with</span> zipfile.ZipFile(<span class="string">&quot;attface.zip&quot;</span>) <span class="keyword">as</span> facezip:</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> facezip.namelist():</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> filename.endswith(<span class="string">&quot;.pgm&quot;</span>):</span><br><span class="line">            <span class="keyword">continue</span> <span class="comment"># not a face picture</span></span><br><span class="line">        <span class="keyword">with</span> facezip.<span class="built_in">open</span>(filename) <span class="keyword">as</span> image:</span><br><span class="line">            <span class="comment"># If we extracted files from zip, we can use cv2.imread(filename) instead</span></span><br><span class="line">            faces[filename] = cv2.imdecode(np.frombuffer(image.read(), np.uint8), cv2.IMREAD_GRAYSCALE)</span><br></pre></td></tr></table></figure>
 
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fig, axes = plt.subplots(<span class="number">4</span>,<span class="number">8</span>,sharex=<span class="literal">True</span>,sharey=<span class="literal">True</span>,figsize=(<span class="number">8</span>,<span class="number">10</span>))</span><br><span class="line">faceimages = <span class="built_in">list</span>(faces.values())[-<span class="number">32</span>:] <span class="comment"># take last 16 images</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">32</span>):</span><br><span class="line">    axes[i%<span class="number">4</span>][i//<span class="number">4</span>].imshow(faceimages[i], cmap=<span class="string">&quot;gray&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>

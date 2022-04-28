@@ -15,7 +15,7 @@
   
   <link rel="canonical" href="http://example.com/2021/05/24/pandas/">
   
-  <meta name="description" content="Notes#  查看数据#1_.head(10)  #前10行  1_.info()   #基本信息  1df.describe() #基本信息      Series#123obj = pd.Series([4, 7, -5, 3])obj.values #array([ 4, 7, -5, 3]">
+  <meta name="description" content="查看数据 Series DataFrame 检测NULL DF 操作 清洗      查看数据1_.head(10)  #前10行  1_.info()   #基本信息  1df.describe() #基本信息      Series123obj = pd.Series([4, 7, -5, 3]">
   
   
   <meta name="author" content="Xinjian Pan">
@@ -26,14 +26,14 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Pandas" />
   
-  <meta property="og:description" content="Notes#  查看数据#1_.head(10)  #前10行  1_.info()   #基本信息  1df.describe() #基本信息      Series#123obj = pd.Series([4, 7, -5, 3])obj.values #array([ 4, 7, -5, 3]">
+  <meta property="og:description" content="查看数据 Series DataFrame 检测NULL DF 操作 清洗      查看数据1_.head(10)  #前10行  1_.info()   #基本信息  1df.describe() #基本信息      Series123obj = pd.Series([4, 7, -5, 3]">
   
   <meta property="og:url" content="http://example.com/2021/05/24/pandas/" />
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Pandas">
   
-  <meta name="twitter:description" content="Notes#  查看数据#1_.head(10)  #前10行  1_.info()   #基本信息  1df.describe() #基本信息      Series#123obj = pd.Series([4, 7, -5, 3])obj.values #array([ 4, 7, -5, 3]">
+  <meta name="twitter:description" content="查看数据 Series DataFrame 检测NULL DF 操作 清洗      查看数据1_.head(10)  #前10行  1_.info()   #基本信息  1df.describe() #基本信息      Series123obj = pd.Series([4, 7, -5, 3]">
   
   
   
@@ -165,12 +165,12 @@
   </div>
 
   <div class="six columns ml-1">
-    <h1 class="mt-2" style="font-size: 35px;width: 500px;">
+    <h1 class="mt-2" style="font-size: 35px;width: 450px;">
       Hi! Welcome to my Blog 😎
     </h1>
   </div>
 
-  <div class="twelve columns">
+  <div class="twelve columns" >
     <div class="row">
       <div class="nine columns left">
         <a href="/">Home</a>
@@ -194,9 +194,9 @@
         
       </div>
     </div>
-    <hr style="margin-bottom: 1.6rem">
   </div>
 </div>
+    <hr style="margin-bottom: 2rem">
 
         <div class="trans">
             <h2>Pandas</h2>
@@ -223,9 +223,21 @@ MathJax.Hub.Queue(function() {
 </script>
 
   
-  <h1><span id="notes"><u>Notes</u></span><a href="#notes" class="header-anchor">#</a></h1><span id="more"></span>
+  <!-- toc -->
 
-<h2><span id="cha-kan-shu-ju">查看数据</span><a href="#cha-kan-shu-ju" class="header-anchor">#</a></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_.head(10)  #前10行</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE">查看数据</a></li>
+<li><a href="#series">Series</a></li>
+<li><a href="#dataframe">DataFrame</a></li>
+<li><a href="#%E6%A3%80%E6%B5%8Bnull">检测NULL</a></li>
+<li><a href="#df-%E6%93%8D%E4%BD%9C">DF 操作</a></li>
+<li><a href="#%E6%B8%85%E6%B4%97">清洗</a></li>
+</ul>
+<!-- tocstop -->
+
+<span id="more"></span>
+
+<h2><span id="查看数据">查看数据</span></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_.head(10)  #前10行</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_.info()   #基本信息</span><br></pre></td></tr></table></figure>
 
@@ -235,7 +247,7 @@ MathJax.Hub.Queue(function() {
 
 
 
-<h2><span id="series">Series</span><a href="#series" class="header-anchor">#</a></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">obj = pd.Series([4, 7, -5, 3])</span><br><span class="line">obj.values #array([ 4, 7, -5, 3])</span><br><span class="line">obj.index ## like range(4)</span><br></pre></td></tr></table></figure>
+<h2><span id="series">Series</span></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">obj = pd.Series([4, 7, -5, 3])</span><br><span class="line">obj.values #array([ 4, 7, -5, 3])</span><br><span class="line">obj.index ## like range(4)</span><br></pre></td></tr></table></figure>
 
 
 
@@ -259,7 +271,7 @@ MathJax.Hub.Queue(function() {
 
 
 
-<h2><span id="dataframe">DataFrame</span><a href="#dataframe" class="header-anchor">#</a></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;&#x27;state&#x27;: [&#x27;Ohio&#x27;, &#x27;Ohio&#x27;, &#x27;Ohio&#x27;, &#x27;Nevada&#x27;, &#x27;Nevada&#x27;, &#x27;Nevada&#x27;],</span><br><span class="line">&#x27;year&#x27;: [2000, 2001, 2002, 2001, 2002, 2003],</span><br><span class="line">&#x27;pop&#x27;: [1.5, 1.7, 3.6, 2.4, 2.9, 3.2]&#125; #利用字典定义,列定义</span><br><span class="line">frame = pd.DataFrame(data)</span><br><span class="line"></span><br><span class="line">or: pop = &#123;&#x27;Nevada&#x27;: &#123;2001: 2.4, 2002: 2.9&#125;,</span><br><span class="line">&#x27;Ohio&#x27;: &#123;2000: 1.5, 2001: 1.7, 2002: 3.6&#125;&#125;</span><br><span class="line"></span><br><span class="line">or: frame = pd.DataFrame(np.arange(9).reshape((3, 3)),</span><br><span class="line">....: index=[&#x27;a&#x27;, &#x27;c&#x27;, &#x27;d&#x27;],</span><br><span class="line">....: columns=[&#x27;Ohio&#x27;, &#x27;Texas&#x27;, &#x27;California&#x27;])</span><br><span class="line">Out[]:</span><br><span class="line">Ohio Texas California</span><br><span class="line">a 0 1 2</span><br><span class="line">c 3 4 5</span><br><span class="line">d 6 7 8</span><br><span class="line">frame2 = frame.reindex([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]) #修改行名</span><br><span class="line"></span><br><span class="line">states = [&#x27;Texas&#x27;, &#x27;Utah&#x27;, &#x27;California&#x27;] #修改列名</span><br><span class="line">frame.reindex(columns=states)</span><br></pre></td></tr></table></figure>
+<h2><span id="dataframe">DataFrame</span></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;&#x27;state&#x27;: [&#x27;Ohio&#x27;, &#x27;Ohio&#x27;, &#x27;Ohio&#x27;, &#x27;Nevada&#x27;, &#x27;Nevada&#x27;, &#x27;Nevada&#x27;],</span><br><span class="line">&#x27;year&#x27;: [2000, 2001, 2002, 2001, 2002, 2003],</span><br><span class="line">&#x27;pop&#x27;: [1.5, 1.7, 3.6, 2.4, 2.9, 3.2]&#125; #利用字典定义,列定义</span><br><span class="line">frame = pd.DataFrame(data)</span><br><span class="line"></span><br><span class="line">or: pop = &#123;&#x27;Nevada&#x27;: &#123;2001: 2.4, 2002: 2.9&#125;,</span><br><span class="line">&#x27;Ohio&#x27;: &#123;2000: 1.5, 2001: 1.7, 2002: 3.6&#125;&#125;</span><br><span class="line"></span><br><span class="line">or: frame = pd.DataFrame(np.arange(9).reshape((3, 3)),</span><br><span class="line">....: index=[&#x27;a&#x27;, &#x27;c&#x27;, &#x27;d&#x27;],</span><br><span class="line">....: columns=[&#x27;Ohio&#x27;, &#x27;Texas&#x27;, &#x27;California&#x27;])</span><br><span class="line">Out[]:</span><br><span class="line">Ohio Texas California</span><br><span class="line">a 0 1 2</span><br><span class="line">c 3 4 5</span><br><span class="line">d 6 7 8</span><br><span class="line">frame2 = frame.reindex([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]) #修改行名</span><br><span class="line"></span><br><span class="line">states = [&#x27;Texas&#x27;, &#x27;Utah&#x27;, &#x27;California&#x27;] #修改列名</span><br><span class="line">frame.reindex(columns=states)</span><br></pre></td></tr></table></figure>
 
 
 
@@ -296,11 +308,11 @@ MathJax.Hub.Queue(function() {
 
 
 
-<h2><span id="jian-ce-null">检测NULL</span><a href="#jian-ce-null" class="header-anchor">#</a></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pd.isnull(obj4) #NULL</span><br><span class="line">Out[32]:</span><br><span class="line">California True</span><br><span class="line">Ohio False</span><br><span class="line">Oregon False</span><br><span class="line">Texas False</span><br><span class="line">dtype: bool</span><br><span class="line"></span><br><span class="line">pd.notnull(obj4) #Not NULL</span><br></pre></td></tr></table></figure>
+<h2><span id="检测null">检测NULL</span></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pd.isnull(obj4) #NULL</span><br><span class="line">Out[32]:</span><br><span class="line">California True</span><br><span class="line">Ohio False</span><br><span class="line">Oregon False</span><br><span class="line">Texas False</span><br><span class="line">dtype: bool</span><br><span class="line"></span><br><span class="line">pd.notnull(obj4) #Not NULL</span><br></pre></td></tr></table></figure>
 
 
 
-<h2><span id="df-cao-zuo">DF 操作</span><a href="#df-cao-zuo" class="header-anchor">#</a></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df1 + df2 #两个df连接，如果没有的会填充nan</span><br></pre></td></tr></table></figure>
+<h2><span id="df-操作">DF 操作</span></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df1 + df2 #两个df连接，如果没有的会填充nan</span><br></pre></td></tr></table></figure>
 
 
 
@@ -333,7 +345,7 @@ MathJax.Hub.Queue(function() {
 
 
 
-<h2><span id="qing-xi">清洗</span><a href="#qing-xi" class="header-anchor">#</a></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string_data.isnull() #是否包含null</span><br></pre></td></tr></table></figure>
+<h2><span id="清洗">清洗</span></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string_data.isnull() #是否包含null</span><br></pre></td></tr></table></figure>
 
 
 

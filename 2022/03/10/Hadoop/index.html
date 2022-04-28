@@ -15,7 +15,7 @@
   
   <link rel="canonical" href="http://example.com/2022/03/10/Hadoop/">
   
-  <meta name="description" content="Notes#   Hadoop优势# 高可靠性，单节点丢失不影响 高扩展性，临时增加或者减少 高效性 高容错性，失败任务重新分配  12ssh-keygen -t rsa  //产生ssh密钥ssh-copy-id pan2 //免密登录    12345678pan2:9870 //hdfspan">
+  <meta name="description" content="Hadoop优势 常用端口号 常用配置文件 MapReduce 优点 缺点        Hadoop优势 高可靠性，单节点丢失不影响 高扩展性，临时增加或者减少 高效性 高容错性，失败任务重新分配  12ssh-keygen -t rsa  //产生ssh密钥ssh-copy-id pan2 //">
   
   
   <meta name="author" content="Xinjian Pan">
@@ -26,14 +26,14 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Hadoop" />
   
-  <meta property="og:description" content="Notes#   Hadoop优势# 高可靠性，单节点丢失不影响 高扩展性，临时增加或者减少 高效性 高容错性，失败任务重新分配  12ssh-keygen -t rsa  //产生ssh密钥ssh-copy-id pan2 //免密登录    12345678pan2:9870 //hdfspan">
+  <meta property="og:description" content="Hadoop优势 常用端口号 常用配置文件 MapReduce 优点 缺点        Hadoop优势 高可靠性，单节点丢失不影响 高扩展性，临时增加或者减少 高效性 高容错性，失败任务重新分配  12ssh-keygen -t rsa  //产生ssh密钥ssh-copy-id pan2 //">
   
   <meta property="og:url" content="http://example.com/2022/03/10/Hadoop/" />
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Hadoop">
   
-  <meta name="twitter:description" content="Notes#   Hadoop优势# 高可靠性，单节点丢失不影响 高扩展性，临时增加或者减少 高效性 高容错性，失败任务重新分配  12ssh-keygen -t rsa  //产生ssh密钥ssh-copy-id pan2 //免密登录    12345678pan2:9870 //hdfspan">
+  <meta name="twitter:description" content="Hadoop优势 常用端口号 常用配置文件 MapReduce 优点 缺点        Hadoop优势 高可靠性，单节点丢失不影响 高扩展性，临时增加或者减少 高效性 高容错性，失败任务重新分配  12ssh-keygen -t rsa  //产生ssh密钥ssh-copy-id pan2 //">
   
   
   
@@ -165,12 +165,12 @@
   </div>
 
   <div class="six columns ml-1">
-    <h1 class="mt-2" style="font-size: 35px;width: 500px;">
+    <h1 class="mt-2" style="font-size: 35px;width: 450px;">
       Hi! Welcome to my Blog 😎
     </h1>
   </div>
 
-  <div class="twelve columns">
+  <div class="twelve columns" >
     <div class="row">
       <div class="nine columns left">
         <a href="/">Home</a>
@@ -194,9 +194,9 @@
         
       </div>
     </div>
-    <hr style="margin-bottom: 1.6rem">
   </div>
 </div>
+    <hr style="margin-bottom: 2rem">
 
         <div class="trans">
             <h2>Hadoop</h2>
@@ -223,9 +223,23 @@ MathJax.Hub.Queue(function() {
 </script>
 
   
-  <h1><span id="notes"><u>Notes</u></span><a href="#notes" class="header-anchor">#</a></h1> <span id="more"></span>
+  <!-- toc -->
 
-<h2><span id="hadoop-you-shi">Hadoop优势</span><a href="#hadoop-you-shi" class="header-anchor">#</a></h2><ol>
+<ul>
+<li><a href="#hadoop%E4%BC%98%E5%8A%BF">Hadoop优势</a></li>
+<li><a href="#%E5%B8%B8%E7%94%A8%E7%AB%AF%E5%8F%A3%E5%8F%B7">常用端口号</a></li>
+<li><a href="#%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">常用配置文件</a></li>
+<li><a href="#mapreduce">MapReduce</a><ul>
+<li><a href="#%E4%BC%98%E7%82%B9">优点</a></li>
+<li><a href="#%E7%BC%BA%E7%82%B9">缺点</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<span id="more"></span>
+
+<h2><span id="hadoop优势">Hadoop优势</span></h2><ol>
 <li>高可靠性，单节点丢失不影响</li>
 <li>高扩展性，临时增加或者减少</li>
 <li>高效性</li>
@@ -239,7 +253,7 @@ MathJax.Hub.Queue(function() {
 
 
 
-<h2><span id="chang-yong-duan-kou-hao">常用端口号</span><a href="#chang-yong-duan-kou-hao" class="header-anchor">#</a></h2><p>Hadoop3.x</p>
+<h2><span id="常用端口号">常用端口号</span></h2><p>Hadoop3.x</p>
 <p>​	HDFS Namenode 内部端口：8020、9000、9820</p>
 <p>​	HDFS Namenode外部端口号：9870</p>
 <p>​	Yarn查看任务运行：8088</p>
@@ -249,7 +263,7 @@ MathJax.Hub.Queue(function() {
 <p>​	HDFS Namenode外部端口号：50070</p>
 <p>​	Yarn查看任务运行：8088</p>
 <p>​	历史服务器：19888</p>
-<h2><span id="chang-yong-pei-zhi-wen-jian">常用配置文件</span><a href="#chang-yong-pei-zhi-wen-jian" class="header-anchor">#</a></h2><p>3.x:</p>
+<h2><span id="常用配置文件">常用配置文件</span></h2><p>3.x:</p>
 <ol>
 <li>hdfs-site.xml</li>
 <li>yarn-site.xml</li>
@@ -265,13 +279,13 @@ MathJax.Hub.Queue(function() {
 <li>mapred-site.xml</li>
 <li>slaves</li>
 </ol>
-<h2><span id="mapreduce">MapReduce</span><a href="#mapreduce" class="header-anchor">#</a></h2><h3><span id="you-dian">优点</span><a href="#you-dian" class="header-anchor">#</a></h3><ol>
+<h2><span id="mapreduce">MapReduce</span></h2><h3><span id="优点">优点</span></h3><ol>
 <li>易于编程，用户只关心业务逻辑</li>
 <li>良好拓展性，动态增加服务器，解决资源不够的问题</li>
 <li>高容错性，任何一台挂掉，可以转移任务给其他节点</li>
 <li>适合海量数据计算（TB&#x2F;PB）</li>
 </ol>
-<h3><span id="que-dian">缺点</span><a href="#que-dian" class="header-anchor">#</a></h3><ol>
+<h3><span id="缺点">缺点</span></h3><ol>
 <li>不擅长实时计算</li>
 <li>不擅长流式计算</li>
 <li>不擅长DAG有向无环图</li>

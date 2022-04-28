@@ -15,7 +15,7 @@
   
   <link rel="canonical" href="http://example.com/2022/03/01/Docker/">
   
-  <meta name="description" content="Notes#   Docker的组成# 镜像(image)：模板，用来创造容器，一个镜像可以创造很多容器 容器(container)：一个容器运行一种服务，运用程序或者服务运行在容器中，类似于虚拟化的环境，为镜像提供了一个标准和隔离运行的环境 仓库(repository)：用于存放镜像  12345">
+  <meta name="description" content="Docker的组成 Docker 的虚悬镜像      Docker的组成 镜像(image)：模板，用来创造容器，一个镜像可以创造很多容器 容器(container)：一个容器运行一种服务，运用程序或者服务运行在容器中，类似于虚拟化的环境，为镜像提供了一个标准和隔离运行的环境 仓库(reposit">
   
   
   <meta name="author" content="Xinjian Pan">
@@ -26,14 +26,14 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Docker" />
   
-  <meta property="og:description" content="Notes#   Docker的组成# 镜像(image)：模板，用来创造容器，一个镜像可以创造很多容器 容器(container)：一个容器运行一种服务，运用程序或者服务运行在容器中，类似于虚拟化的环境，为镜像提供了一个标准和隔离运行的环境 仓库(repository)：用于存放镜像  12345">
+  <meta property="og:description" content="Docker的组成 Docker 的虚悬镜像      Docker的组成 镜像(image)：模板，用来创造容器，一个镜像可以创造很多容器 容器(container)：一个容器运行一种服务，运用程序或者服务运行在容器中，类似于虚拟化的环境，为镜像提供了一个标准和隔离运行的环境 仓库(reposit">
   
   <meta property="og:url" content="http://example.com/2022/03/01/Docker/" />
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Docker">
   
-  <meta name="twitter:description" content="Notes#   Docker的组成# 镜像(image)：模板，用来创造容器，一个镜像可以创造很多容器 容器(container)：一个容器运行一种服务，运用程序或者服务运行在容器中，类似于虚拟化的环境，为镜像提供了一个标准和隔离运行的环境 仓库(repository)：用于存放镜像  12345">
+  <meta name="twitter:description" content="Docker的组成 Docker 的虚悬镜像      Docker的组成 镜像(image)：模板，用来创造容器，一个镜像可以创造很多容器 容器(container)：一个容器运行一种服务，运用程序或者服务运行在容器中，类似于虚拟化的环境，为镜像提供了一个标准和隔离运行的环境 仓库(reposit">
   
   
   
@@ -165,12 +165,12 @@
   </div>
 
   <div class="six columns ml-1">
-    <h1 class="mt-2" style="font-size: 35px;width: 500px;">
+    <h1 class="mt-2" style="font-size: 35px;width: 450px;">
       Hi! Welcome to my Blog 😎
     </h1>
   </div>
 
-  <div class="twelve columns">
+  <div class="twelve columns" >
     <div class="row">
       <div class="nine columns left">
         <a href="/">Home</a>
@@ -194,9 +194,9 @@
         
       </div>
     </div>
-    <hr style="margin-bottom: 1.6rem">
   </div>
 </div>
+    <hr style="margin-bottom: 2rem">
 
         <div class="trans">
             <h2>Docker</h2>
@@ -223,9 +223,17 @@ MathJax.Hub.Queue(function() {
 </script>
 
   
-  <h1><span id="notes"><u>Notes</u></span><a href="#notes" class="header-anchor">#</a></h1> <span id="more"></span>
+  <!-- toc -->
 
-<h2><span id="docker-de-zu-cheng">Docker的组成</span><a href="#docker-de-zu-cheng" class="header-anchor">#</a></h2><ol>
+<ul>
+<li><a href="#docker%E7%9A%84%E7%BB%84%E6%88%90">Docker的组成</a></li>
+<li><a href="#docker-%E7%9A%84%E8%99%9A%E6%82%AC%E9%95%9C%E5%83%8F">Docker 的虚悬镜像</a></li>
+</ul>
+<!-- tocstop -->
+
+<span id="more"></span>
+
+<h2><span id="docker的组成">Docker的组成</span></h2><ol>
 <li>镜像(image)：模板，用来创造容器，一个镜像可以创造很多容器</li>
 <li>容器(container)：一个容器运行一种服务，运用程序或者服务运行在容器中，类似于虚拟化的环境，为镜像提供了一个标准和隔离运行的环境</li>
 <li>仓库(repository)：用于存放镜像</li>
@@ -240,7 +248,7 @@ MathJax.Hub.Queue(function() {
 
 
 
-<h2><span id="docker-de-xu-xuan-jing-xiang">Docker 的虚悬镜像</span><a href="#docker-de-xu-xuan-jing-xiang" class="header-anchor">#</a></h2><p>仓库名，标签都是None，一般没什么用，删除即可</p>
+<h2><span id="docker-的虚悬镜像">Docker 的虚悬镜像</span></h2><p>仓库名，标签都是None，一般没什么用，删除即可</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit -m=&quot;add vim cmd&quot; -a=&quot;pan&quot; id pan/mybuntu:1.0</span><br></pre></td></tr></table></figure>
 
 

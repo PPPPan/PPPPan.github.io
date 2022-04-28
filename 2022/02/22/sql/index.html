@@ -15,7 +15,7 @@
   
   <link rel="canonical" href="http://example.com/2022/02/22/sql/">
   
-  <meta name="description" content="Notes#  Command#选择所有的项目 1select * from car;  语序 1234567selectfromjoin onwhere group byhavingorder by  如果Null,设定其他值 1COALESCE(teacher.name, &amp;#x27;NONE&amp;">
+  <meta name="description" content="Command String concatenate Union 和Union的区别 count(*) 和 count(1)和count(列名)区别 窗口函数        Command选择所有的项目 1select * from car;  语序 1234567selectfromjoin on">
   
   
   <meta name="author" content="Xinjian Pan">
@@ -26,14 +26,14 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="sql" />
   
-  <meta property="og:description" content="Notes#  Command#选择所有的项目 1select * from car;  语序 1234567selectfromjoin onwhere group byhavingorder by  如果Null,设定其他值 1COALESCE(teacher.name, &amp;#x27;NONE&amp;">
+  <meta property="og:description" content="Command String concatenate Union 和Union的区别 count(*) 和 count(1)和count(列名)区别 窗口函数        Command选择所有的项目 1select * from car;  语序 1234567selectfromjoin on">
   
   <meta property="og:url" content="http://example.com/2022/02/22/sql/" />
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="sql">
   
-  <meta name="twitter:description" content="Notes#  Command#选择所有的项目 1select * from car;  语序 1234567selectfromjoin onwhere group byhavingorder by  如果Null,设定其他值 1COALESCE(teacher.name, &amp;#x27;NONE&amp;">
+  <meta name="twitter:description" content="Command String concatenate Union 和Union的区别 count(*) 和 count(1)和count(列名)区别 窗口函数        Command选择所有的项目 1select * from car;  语序 1234567selectfromjoin on">
   
   
   
@@ -165,12 +165,12 @@
   </div>
 
   <div class="six columns ml-1">
-    <h1 class="mt-2" style="font-size: 35px;width: 500px;">
+    <h1 class="mt-2" style="font-size: 35px;width: 450px;">
       Hi! Welcome to my Blog 😎
     </h1>
   </div>
 
-  <div class="twelve columns">
+  <div class="twelve columns" >
     <div class="row">
       <div class="nine columns left">
         <a href="/">Home</a>
@@ -194,9 +194,9 @@
         
       </div>
     </div>
-    <hr style="margin-bottom: 1.6rem">
   </div>
 </div>
+    <hr style="margin-bottom: 2rem">
 
         <div class="trans">
             <h2>sql</h2>
@@ -223,9 +223,22 @@ MathJax.Hub.Queue(function() {
 </script>
 
   
-  <h1><span id="notes"><u>Notes</u></span><a href="#notes" class="header-anchor">#</a></h1><span id="more"></span>
+  <!-- toc -->
 
-<h1><span id="command">Command</span><a href="#command" class="header-anchor">#</a></h1><p><strong>选择所有的项目</strong></p>
+<ul>
+<li><a href="#command">Command</a><ul>
+<li><a href="#string-concatenate">String concatenate</a></li>
+<li><a href="#union-%E5%92%8Cunion%E7%9A%84%E5%8C%BA%E5%88%AB">Union 和Union的区别</a></li>
+<li><a href="#count-%E5%92%8C-count1%E5%92%8Ccount%E5%88%97%E5%90%8D%E5%8C%BA%E5%88%AB">count(*) 和 count(1)和count(列名)区别</a></li>
+<li><a href="#%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0">窗口函数</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<span id="more"></span>
+
+<h1><span id="command">Command</span></h1><p><strong>选择所有的项目</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> car;</span><br></pre></td></tr></table></figure>
 
 <p><strong>语序</strong></p>
@@ -341,7 +354,7 @@ MathJax.Hub.Queue(function() {
 
 
 
-<h2><span id="string-concatenate">String concatenate</span><a href="#string-concatenate" class="header-anchor">#</a></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select concat(car_name,&#x27;(&#x27;,car_type,&#x27;)&#x27;) from car</span><br></pre></td></tr></table></figure>
+<h2><span id="string-concatenate">String concatenate</span></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select concat(car_name,&#x27;(&#x27;,car_type,&#x27;)&#x27;) from car</span><br></pre></td></tr></table></figure>
 
 <p>RTrim() 删除右侧多余的空格 or LTrim()</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">where group by order by Having</span><br></pre></td></tr></table></figure>
@@ -350,9 +363,9 @@ MathJax.Hub.Queue(function() {
 
 
 
-<h2><span id="union-he-union-de-qu-bie">Union 和Union的区别</span><a href="#union-he-union-de-qu-bie" class="header-anchor">#</a></h2><p>Union：对两个结果集进行并集操作，不包括重复行，同时进行默认规则的排序；</p>
+<h2><span id="union-和union的区别">Union 和Union的区别</span></h2><p>Union：对两个结果集进行并集操作，不包括重复行，同时进行默认规则的排序；</p>
 <p>Union All：对两个结果集进行并集操作，包括重复行，不进行排序；</p>
-<h2><span id="count-he-count-1-he-count-lie-ming-qu-bie">count(*) 和 count(1)和count(列名)区别</span><a href="#count-he-count-1-he-count-lie-ming-qu-bie" class="header-anchor">#</a></h2><p><strong>count(1) and count(*)</strong> ： 从执行计划来看，count(1)和count(<em>)的效果是一样的。<strong>当表的数据量大些时</strong>，对表作分析之后，使用count(1)还要比使用count(</em>)用时多！ 当数据量在1W以内时，count(1)会比count(*)的用时少些，不过也差不了多少。</p>
+<h2><span id="count-和-count1和count列名区别">count(*) 和 count(1)和count(列名)区别</span></h2><p><strong>count(1) and count(*)</strong> ： 从执行计划来看，count(1)和count(<em>)的效果是一样的。<strong>当表的数据量大些时</strong>，对表作分析之后，使用count(1)还要比使用count(</em>)用时多！ 当数据量在1W以内时，count(1)会比count(*)的用时少些，不过也差不了多少。</p>
 <p><strong>count(1) and count(字段)</strong> 两者的主要区别是</p>
 <ul>
 <li>count(1) 会统计表中的所有的记录数，包含字段为null 的记录。</li>
@@ -372,7 +385,7 @@ MathJax.Hub.Queue(function() {
 <li>如果有主键，则 select count（主键）的执行效率是最优的</li>
 <li>如果表只有一个字段，则 select count（*）最优。</li>
 </ul>
-<h2><span id="chuang-kou-han-shu">窗口函数</span><a href="#chuang-kou-han-shu" class="header-anchor">#</a></h2><p><img src="https://pic3.zhimg.com/80/v2-3285d1d648de9f90864000d58847087a_1440w.jpg" alt="avatar"></p>
+<h2><span id="窗口函数">窗口函数</span></h2><p><img src="https://pic3.zhimg.com/80/v2-3285d1d648de9f90864000d58847087a_1440w.jpg" alt="avatar"></p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select *,</span><br><span class="line">   rank() over (partition by 班级</span><br><span class="line">                 order by 成绩 desc) as ranking</span><br><span class="line">from 班级表</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://pic2.zhimg.com/v2-ad1d86f5a5b9f0ef684907b20b341099_r.jpg" alt="avatar"></p>

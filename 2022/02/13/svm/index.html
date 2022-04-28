@@ -15,7 +15,7 @@
   
   <link rel="canonical" href="http://example.com/2022/02/13/svm/">
   
-  <meta name="description" content="Notes#  简单概括一下SVM：#SVM 是一种二类分类模型。它的基本思想是在特征空间中寻找间隔最大的分离超平面使数据得到高效的二分类，具体来讲，有三种情况（不加核函数的话就是个线性模型，加了之后才会升级为一个非线性模型）：  当训练样本线性可分时，通过硬间隔最大化，学习一个线性分类器，即线性可">
+  <meta name="description" content="简单概括一下SVM： SVM解决多分类问题 SMO算法能够保证收敛吗 SVM为什么要将原问题转换为对偶问题？ SVM的优缺点： 为什么SVM对缺失数据敏感？ 如何选择核函数：      简单概括一下SVM：SVM 是一种二类分类模型。它的基本思想是在特征空间中寻找间隔最大的分离超平面使数据得到高效的">
   
   
   <meta name="author" content="Xinjian Pan">
@@ -26,14 +26,14 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="svm" />
   
-  <meta property="og:description" content="Notes#  简单概括一下SVM：#SVM 是一种二类分类模型。它的基本思想是在特征空间中寻找间隔最大的分离超平面使数据得到高效的二分类，具体来讲，有三种情况（不加核函数的话就是个线性模型，加了之后才会升级为一个非线性模型）：  当训练样本线性可分时，通过硬间隔最大化，学习一个线性分类器，即线性可">
+  <meta property="og:description" content="简单概括一下SVM： SVM解决多分类问题 SMO算法能够保证收敛吗 SVM为什么要将原问题转换为对偶问题？ SVM的优缺点： 为什么SVM对缺失数据敏感？ 如何选择核函数：      简单概括一下SVM：SVM 是一种二类分类模型。它的基本思想是在特征空间中寻找间隔最大的分离超平面使数据得到高效的">
   
   <meta property="og:url" content="http://example.com/2022/02/13/svm/" />
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="svm">
   
-  <meta name="twitter:description" content="Notes#  简单概括一下SVM：#SVM 是一种二类分类模型。它的基本思想是在特征空间中寻找间隔最大的分离超平面使数据得到高效的二分类，具体来讲，有三种情况（不加核函数的话就是个线性模型，加了之后才会升级为一个非线性模型）：  当训练样本线性可分时，通过硬间隔最大化，学习一个线性分类器，即线性可">
+  <meta name="twitter:description" content="简单概括一下SVM： SVM解决多分类问题 SMO算法能够保证收敛吗 SVM为什么要将原问题转换为对偶问题？ SVM的优缺点： 为什么SVM对缺失数据敏感？ 如何选择核函数：      简单概括一下SVM：SVM 是一种二类分类模型。它的基本思想是在特征空间中寻找间隔最大的分离超平面使数据得到高效的">
   
   
   
@@ -165,12 +165,12 @@
   </div>
 
   <div class="six columns ml-1">
-    <h1 class="mt-2" style="font-size: 35px;width: 500px;">
+    <h1 class="mt-2" style="font-size: 35px;width: 450px;">
       Hi! Welcome to my Blog 😎
     </h1>
   </div>
 
-  <div class="twelve columns">
+  <div class="twelve columns" >
     <div class="row">
       <div class="nine columns left">
         <a href="/">Home</a>
@@ -194,9 +194,9 @@
         
       </div>
     </div>
-    <hr style="margin-bottom: 1.6rem">
   </div>
 </div>
+    <hr style="margin-bottom: 2rem">
 
         <div class="trans">
             <h2>svm</h2>
@@ -223,25 +223,38 @@ MathJax.Hub.Queue(function() {
 </script>
 
   
-  <h1><span id="notes">Notes</span><a href="#notes" class="header-anchor">#</a></h1><span id="more"></span>
+  <!-- toc -->
 
-<h2><span id="jian-dan-gai-gua-yi-xia-svm">简单概括一下SVM：</span><a href="#jian-dan-gai-gua-yi-xia-svm" class="header-anchor">#</a></h2><p>SVM 是一种二类分类模型。它的基本思想是在特征空间中寻找间隔最大的分离超平面使数据得到高效的二分类，具体来讲，有三种情况（不加核函数的话就是个线性模型，加了之后才会升级为一个非线性模型）：</p>
+<ul>
+<li><a href="#%E7%AE%80%E5%8D%95%E6%A6%82%E6%8B%AC%E4%B8%80%E4%B8%8Bsvm">简单概括一下SVM：</a></li>
+<li><a href="#svm%E8%A7%A3%E5%86%B3%E5%A4%9A%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98">SVM解决多分类问题</a></li>
+<li><a href="#smo%E7%AE%97%E6%B3%95%E8%83%BD%E5%A4%9F%E4%BF%9D%E8%AF%81%E6%94%B6%E6%95%9B%E5%90%97">SMO算法能够保证收敛吗</a></li>
+<li><a href="#svm%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%B0%86%E5%8E%9F%E9%97%AE%E9%A2%98%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98">SVM为什么要将原问题转换为对偶问题？</a></li>
+<li><a href="#svm%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9">SVM的优缺点：</a></li>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88svm%E5%AF%B9%E7%BC%BA%E5%A4%B1%E6%95%B0%E6%8D%AE%E6%95%8F%E6%84%9F">为什么SVM对缺失数据敏感？</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E6%A0%B8%E5%87%BD%E6%95%B0">如何选择核函数：</a></li>
+</ul>
+<!-- tocstop -->
+
+<span id="more"></span>
+
+<h2><span id="简单概括一下svm">简单概括一下SVM：</span></h2><p>SVM 是一种二类分类模型。它的基本思想是在特征空间中寻找间隔最大的分离超平面使数据得到高效的二分类，具体来讲，有三种情况（不加核函数的话就是个线性模型，加了之后才会升级为一个非线性模型）：</p>
 <ul>
 <li>当训练样本线性可分时，通过硬间隔最大化，学习一个线性分类器，即线性可分支持向量机；</li>
 <li>当训练数据近似线性可分时，引入松弛变量，通过软间隔最大化，学习一个线性分类器，即线性支持向量机；</li>
 <li>当训练数据线性不可分时，通过使用核技巧及软间隔最大化，学习非线性支持向量机。</li>
 </ul>
-<h2><span id="svm-jie-jue-duo-fen-lei-wen-ti">SVM解决多分类问题</span><a href="#svm-jie-jue-duo-fen-lei-wen-ti" class="header-anchor">#</a></h2><p>a.一对多法（one-versus-rest,简称1-v-r SVMs）。训练时依次把某个类别的样本归为一类,其他剩余的样本归为另一类，这样k个类别的样本就构造出了k个SVM。分类时将未知样本分类为具有最大分类函数值的那类。</p>
+<h2><span id="svm解决多分类问题">SVM解决多分类问题</span></h2><p>a.一对多法（one-versus-rest,简称1-v-r SVMs）。训练时依次把某个类别的样本归为一类,其他剩余的样本归为另一类，这样k个类别的样本就构造出了k个SVM。分类时将未知样本分类为具有最大分类函数值的那类。</p>
 <p>b.一对一法（one-versus-one,简称1-v-1 SVMs）。其做法是在任意两类样本之间设计一个SVM，因此k个类别的样本就需要设计k(k-1)&#x2F;2个SVM。当对一个未知样本进行分类时，最后得票最多的类别即为该未知样本的类别。Libsvm中的多类分类就是根据这个方法实现的。</p>
 <p>c.层次支持向量机（H-SVMs）。层次分类法首先将所有类别分成两个子类，再将子类进一步划分成两个次级子类，如此循环，直到得到一个单独的类别为止。</p>
-<h2><span id="smo-suan-fa-neng-gou-bao-zheng-shou-lian-ma">SMO算法能够保证收敛吗</span><a href="#smo-suan-fa-neng-gou-bao-zheng-shou-lian-ma" class="header-anchor">#</a></h2><p>SMO将整个QP问题分解为QP子问题，利用Osuna‘s定理保证收敛性。Osuna’s theorem简单的意思就是每次将QP问题分解成QP子问题迭代执行，当每次迭代求解的QP子问题中至少包含一个不满足KKT条件的example的时候，这个算法最终会收敛。</p>
-<h2><span id="svm-wei-shi-me-yao-jiang-yuan-wen-ti-zhuan-huan-wei-dui-ou-wen-ti">SVM为什么要将原问题转换为对偶问题？</span><a href="#svm-wei-shi-me-yao-jiang-yuan-wen-ti-zhuan-huan-wei-dui-ou-wen-ti" class="header-anchor">#</a></h2><p>要注意用拉格朗日对偶并没有改变最优解，而是<strong>改变了算法复杂度</strong>：</p>
+<h2><span id="smo算法能够保证收敛吗">SMO算法能够保证收敛吗</span></h2><p>SMO将整个QP问题分解为QP子问题，利用Osuna‘s定理保证收敛性。Osuna’s theorem简单的意思就是每次将QP问题分解成QP子问题迭代执行，当每次迭代求解的QP子问题中至少包含一个不满足KKT条件的example的时候，这个算法最终会收敛。</p>
+<h2><span id="svm为什么要将原问题转换为对偶问题">SVM为什么要将原问题转换为对偶问题？</span></h2><p>要注意用拉格朗日对偶并没有改变最优解，而是<strong>改变了算法复杂度</strong>：</p>
 <ol>
 <li>在原问题下，求解算法的复杂度与样本维度（等于权值w的维度）有关；</li>
 <li>而在对偶问题下，求解算法的复杂度与样本数量（等于拉格朗日算子a的数量）有关</li>
 <li>方便核函数的引入</li>
 </ol>
-<h2><span id="svm-de-you-que-dian">SVM的优缺点：</span><a href="#svm-de-you-que-dian" class="header-anchor">#</a></h2><p><strong>优点：</strong></p>
+<h2><span id="svm的优缺点">SVM的优缺点：</span></h2><p><strong>优点：</strong></p>
 <ol>
 <li>由于SVM是一个凸优化问题，所以求得的解一定是全局最优而不是局部最优。</li>
 <li>不仅适用于线性线性问题还适用于非线性问题(用核技巧)。</li>
@@ -253,8 +266,8 @@ MathJax.Hub.Queue(function() {
 <li>二次规划问题求解将涉及m阶矩阵的计算(m为样本的个数), 因此SVM不适用于超大数据集。(SMO算法可以缓解这个问题)</li>
 <li>只适用于二分类问题。(SVM的推广SVR也适用于回归问题；可以通过多个SVM的组合来解决多分类问题)</li>
 </ol>
-<h2><span id="wei-shi-me-svm-dui-que-shi-shu-ju-min-gan">为什么SVM对缺失数据敏感？</span><a href="#wei-shi-me-svm-dui-que-shi-shu-ju-min-gan" class="header-anchor">#</a></h2><p>这里说的缺失数据是指缺失某些特征数据，向量数据不完整。SVM 没有处理缺失值的策略。而 SVM 希望样本在特征空间中线性可分，所以特征空间的好坏对SVM的性能很重要。缺失特征数据将影响训练结果的好坏。</p>
-<h2><span id="ru-he-xuan-ze-he-han-shu">如何选择核函数：</span><a href="#ru-he-xuan-ze-he-han-shu" class="header-anchor">#</a></h2><ul>
+<h2><span id="为什么svm对缺失数据敏感">为什么SVM对缺失数据敏感？</span></h2><p>这里说的缺失数据是指缺失某些特征数据，向量数据不完整。SVM 没有处理缺失值的策略。而 SVM 希望样本在特征空间中线性可分，所以特征空间的好坏对SVM的性能很重要。缺失特征数据将影响训练结果的好坏。</p>
+<h2><span id="如何选择核函数">如何选择核函数：</span></h2><ul>
 <li>当特征维数 d 超过样本数 m 时 (文本分类问题通常是这种情况), 使用线性核;</li>
 <li>当特征维数 d 比较小. 样本数 m 中等时, 使用RBF核;</li>
 <li>当特征维数 d 比较小. 样本数 m 特别大时, 支持向量机性能通常不如深度神经网络</li>

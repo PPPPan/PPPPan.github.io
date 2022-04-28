@@ -15,7 +15,7 @@
   
   <link rel="canonical" href="http://example.com/2022/02/16/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/">
   
-  <meta name="description" content="Notes#  [toc] AB Test#AB Test 的P值的意义，第一类错误和第二类错误的定义是什么#AB实验建立在假设检验基础上，P值在原假设正确的前提下成立。假设检验（Hypothesis Testing）是用来判断样本与样本，样本与总体的差异是由抽样误差引起，还是由本质差别造成的统计推">
+  <meta name="description" content="AB Test AB Test 的P值的意义，第一类错误和第二类错误的定义是什么   Hive mapper 值 reduce 值   “因果推断” (Causal Inference) 参数方法   Bootstrap方法 为什么MySQL数据库要用B+树存储索引？ 如何在10亿数中找出前1000">
   
   
   <meta name="author" content="Xinjian Pan">
@@ -26,14 +26,14 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="面试准备" />
   
-  <meta property="og:description" content="Notes#  [toc] AB Test#AB Test 的P值的意义，第一类错误和第二类错误的定义是什么#AB实验建立在假设检验基础上，P值在原假设正确的前提下成立。假设检验（Hypothesis Testing）是用来判断样本与样本，样本与总体的差异是由抽样误差引起，还是由本质差别造成的统计推">
+  <meta property="og:description" content="AB Test AB Test 的P值的意义，第一类错误和第二类错误的定义是什么   Hive mapper 值 reduce 值   “因果推断” (Causal Inference) 参数方法   Bootstrap方法 为什么MySQL数据库要用B+树存储索引？ 如何在10亿数中找出前1000">
   
   <meta property="og:url" content="http://example.com/2022/02/16/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/" />
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="面试准备">
   
-  <meta name="twitter:description" content="Notes#  [toc] AB Test#AB Test 的P值的意义，第一类错误和第二类错误的定义是什么#AB实验建立在假设检验基础上，P值在原假设正确的前提下成立。假设检验（Hypothesis Testing）是用来判断样本与样本，样本与总体的差异是由抽样误差引起，还是由本质差别造成的统计推">
+  <meta name="twitter:description" content="AB Test AB Test 的P值的意义，第一类错误和第二类错误的定义是什么   Hive mapper 值 reduce 值   “因果推断” (Causal Inference) 参数方法   Bootstrap方法 为什么MySQL数据库要用B+树存储索引？ 如何在10亿数中找出前1000">
   
   
   
@@ -165,12 +165,12 @@
   </div>
 
   <div class="six columns ml-1">
-    <h1 class="mt-2" style="font-size: 35px;width: 500px;">
+    <h1 class="mt-2" style="font-size: 35px;width: 450px;">
       Hi! Welcome to my Blog 😎
     </h1>
   </div>
 
-  <div class="twelve columns">
+  <div class="twelve columns" >
     <div class="row">
       <div class="nine columns left">
         <a href="/">Home</a>
@@ -194,9 +194,9 @@
         
       </div>
     </div>
-    <hr style="margin-bottom: 1.6rem">
   </div>
 </div>
+    <hr style="margin-bottom: 2rem">
 
         <div class="trans">
             <h2>面试准备</h2>
@@ -223,10 +223,32 @@ MathJax.Hub.Queue(function() {
 </script>
 
   
-  <h1><span id="notes"><u>Notes</u></span><a href="#notes" class="header-anchor">#</a></h1><span id="more"></span>
+  <!-- toc -->
+
+<ul>
+<li><a href="#ab-test">AB Test</a><ul>
+<li><a href="#ab-test-%E7%9A%84p%E5%80%BC%E7%9A%84%E6%84%8F%E4%B9%89%E7%AC%AC%E4%B8%80%E7%B1%BB%E9%94%99%E8%AF%AF%E5%92%8C%E7%AC%AC%E4%BA%8C%E7%B1%BB%E9%94%99%E8%AF%AF%E7%9A%84%E5%AE%9A%E4%B9%89%E6%98%AF%E4%BB%80%E4%B9%88">AB Test 的P值的意义，第一类错误和第二类错误的定义是什么</a></li>
+</ul>
+</li>
+<li><a href="#hive">Hive</a><ul>
+<li><a href="#mapper-%E5%80%BC">mapper 值</a></li>
+<li><a href="#reduce-%E5%80%BC">reduce 值</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9B%A0%E6%9E%9C%E6%8E%A8%E6%96%AD-causal-inference">“因果推断” (Causal Inference)</a><ul>
+<li><a href="#%E5%8F%82%E6%95%B0%E6%96%B9%E6%B3%95">参数方法</a></li>
+</ul>
+</li>
+<li><a href="#bootstrap%E6%96%B9%E6%B3%95">Bootstrap方法</a></li>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A6%81%E7%94%A8b%E6%A0%91%E5%AD%98%E5%82%A8%E7%B4%A2%E5%BC%95">为什么MySQL数据库要用B+树存储索引？</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E5%9C%A810%E4%BA%BF%E6%95%B0%E4%B8%AD%E6%89%BE%E5%87%BA%E5%89%8D1000%E5%A4%A7%E7%9A%84%E6%95%B0">如何在10亿数中找出前1000大的数？</a></li>
+</ul>
+<!-- tocstop -->
+
+<span id="more"></span>
 
 <p>[toc]</p>
-<h2><span id="ab-test">AB Test</span><a href="#ab-test" class="header-anchor">#</a></h2><h3><span id="ab-test-de-p-zhi-de-yi-yi-di-yi-lei-cuo-wu-he-di-er-lei-cuo-wu-de-ding-yi-shi-shi-me">AB Test 的P值的意义，第一类错误和第二类错误的定义是什么</span><a href="#ab-test-de-p-zhi-de-yi-yi-di-yi-lei-cuo-wu-he-di-er-lei-cuo-wu-de-ding-yi-shi-shi-me" class="header-anchor">#</a></h3><p>AB实验建立在假设检验基础上，P值在原假设正确的前提下成立。假设检验（Hypothesis Testing）是用来判断样本与样本，<strong>样本与总体的差异</strong>是由抽样误差引起，还是由本质差别造成的统计推断方法。</p>
+<h2><span id="ab-test">AB Test</span></h2><h3><span id="ab-test-的p值的意义第一类错误和第二类错误的定义是什么">AB Test 的P值的意义，第一类错误和第二类错误的定义是什么</span></h3><p>AB实验建立在假设检验基础上，P值在原假设正确的前提下成立。假设检验（Hypothesis Testing）是用来判断样本与样本，<strong>样本与总体的差异</strong>是由抽样误差引起，还是由本质差别造成的统计推断方法。</p>
 <ul>
 <li>第一类错误$\alpha$为弃真率或显著性水平，即原假设为真时却被我们拒绝的概率</li>
 <li>第二类错误$\beta$为采伪错误，即原假设为错误时我们采纳的概率</li>
@@ -248,7 +270,7 @@ MathJax.Hub.Queue(function() {
 <p>样本量计算公式：</p>
 <p><img src="https://pic3.zhimg.com/v2-fca32f63a3db9db64d3b990c5eec78f6_r.jpg" alt="avatar"></p>
 <p><img src="https://pic3.zhimg.com/v2-7925e62bf9327ca30eb1d3e61970e656_r.jpg" alt="avatar"></p>
-<h2><span id="hive">Hive</span><a href="#hive" class="header-anchor">#</a></h2><h3><span id="mapper-zhi">mapper 值</span><a href="#mapper-zhi" class="header-anchor">#</a></h3><p>1）可以直接通过参数mapred.map.tasks（默认值2）来设定mapper数的期望值，但它不一定是最终mapper数；</p>
+<h2><span id="hive">Hive</span></h2><h3><span id="mapper-值">mapper 值</span></h3><p>1）可以直接通过参数mapred.map.tasks（默认值2）来设定mapper数的期望值，但它不一定是最终mapper数；</p>
 <p>2）输入文件的总大小为total_input_size。HDFS中，一个块的大小由参数dfs.block.size指定，默认值64MB或128MB。所以得出来的默认mapper数就是：</p>
 <p>default_mapper_num &#x3D; total_input_size &#x2F; dfs.block.size，但是它也不一定是最终的mapper数；</p>
 <p>3）设置参数mapred.min.split.size（默认值1B）和mapred.max.split.size（默认值64MB）分别用来指定split的最小和最大值。那么split大小和split数计算规则是：</p>
@@ -256,14 +278,14 @@ MathJax.Hub.Queue(function() {
 <p>split_num &#x3D; total_input_size &#x2F; split_size。</p>
 <p>最终得出mapper数：</p>
 <p><strong>mapper_num &#x3D; MIN(split_num, MAX(default_mapper_num, mapred.map.tasks))。</strong></p>
-<h3><span id="reduce-zhi">reduce 值</span><a href="#reduce-zhi" class="header-anchor">#</a></h3><p>1）参数hive.exec.reducers.bytes.per.reducer用来设定每个reducer能够处理的最大数据量。</p>
+<h3><span id="reduce-值">reduce 值</span></h3><p>1）参数hive.exec.reducers.bytes.per.reducer用来设定每个reducer能够处理的最大数据量。</p>
 <p>2）参数hive.exec.reducers.max用来设定每个job的最大reducer数量。</p>
 <p>3）reducer数：</p>
 <p>reducer_num &#x3D; MIN(total_input_size &#x2F; reducers.bytes.per.reducer, reducers.max)。</p>
 <p>reducer数量决定了输出文件的数量。如果reducer数太多，会产生大量小文件，对HDFS造成压力。如果reducer数太少，每个reducer要处理很多数据，容易拖慢执行时间也有可能造成OOM。</p>
-<h2><span id="yin-guo-tui-duan-causal-inference">“因果推断” (Causal Inference)</span><a href="#yin-guo-tui-duan-causal-inference" class="header-anchor">#</a></h2><p><img src="https://pic1.zhimg.com/v2-21507c1113ffa46b6a6533020d5104dc_r.jpg" alt="avatar"></p>
+<h2><span id="因果推断-causal-inference">“因果推断” (Causal Inference)</span></h2><p><img src="https://pic1.zhimg.com/v2-21507c1113ffa46b6a6533020d5104dc_r.jpg" alt="avatar"></p>
 <p>L为混淆变量</p>
-<h3><span id="can-shu-fang-fa">参数方法</span><a href="#can-shu-fang-fa" class="header-anchor">#</a></h3><p>因果推断的目标是，比如假设所有用户使用新功能A,他们的转化率。如果只看新功能A,而忽略其他特征，有可能会导致其他混淆变量被忽略，产生所谓的幸存者偏差，即特征选取不合理。比如新功能可能还与年龄，性别，区域等因素相关，而如果只考虑新功能A，有可能回夸大新功能A的作用，因为其他变量没有得到控制</p>
+<h3><span id="参数方法">参数方法</span></h3><p>因果推断的目标是，比如假设所有用户使用新功能A,他们的转化率。如果只看新功能A,而忽略其他特征，有可能会导致其他混淆变量被忽略，产生所谓的幸存者偏差，即特征选取不合理。比如新功能可能还与年龄，性别，区域等因素相关，而如果只考虑新功能A，有可能回夸大新功能A的作用，因为其他变量没有得到控制</p>
 <p>在随机AB Test中可认为，$E[Y^{A&#x3D;a}]&#x3D;E[Y|A&#x3D;a]$<br>$$<br>E[Y^{A&#x3D;a}]&#x3D;\sum_l{E[Y|A&#x3D;a,L&#x3D;l]}P[L&#x3D;l]<br>$$</p>
 <ol>
 <li>训练 Y ~ A + L 回归或分类模型</li>
@@ -273,11 +295,11 @@ MathJax.Hub.Queue(function() {
 <li>用步骤 4 的值计算效应: <img src="https://www.zhihu.com/equation?tex=E%5BY%5E%7BA=1%7D%5D+-+E%5BY%5E%7BA=0%7D%5D" alt="[公式]"></li>
 <li>使用bootstrap方法，来多次重抽样，得出平均期望，方差，最后确定置信区间</li>
 </ol>
-<h2><span id="bootstrap-fang-fa">Bootstrap方法</span><a href="#bootstrap-fang-fa" class="header-anchor">#</a></h2><p>本质上，Bootstrap方法，是将一次的估计过程，重复上千次上万次，从而便得到了得到上千个甚至上万个的估计值，于是利用这不止一个的估计值，我们就可以估计想要求得的参数的平均值，方差，标准差，然后进一步计算得到置信区间</p>
+<h2><span id="bootstrap方法">Bootstrap方法</span></h2><p>本质上，Bootstrap方法，是将一次的估计过程，重复上千次上万次，从而便得到了得到上千个甚至上万个的估计值，于是利用这不止一个的估计值，我们就可以估计想要求得的参数的平均值，方差，标准差，然后进一步计算得到置信区间</p>
 <p><img src="https://pic3.zhimg.com/v2-41aa578ffb3a17dd472ca74828603c46_r.jpg" alt="avatar"></p>
 <p><img src="https://pic1.zhimg.com/v2-46487494dd8258db1aec0c24e5b0f64c_r.jpg" alt="avatar"></p>
-<h2><span id="wei-shi-me-mysql-shu-ju-ku-yao-yong-b-shu-cun-chu-suo-yin">为什么MySQL数据库要用B+树存储索引？</span><a href="#wei-shi-me-mysql-shu-ju-ku-yao-yong-b-shu-cun-chu-suo-yin" class="header-anchor">#</a></h2><p>查询单一值，hash比B+树快，但是select往往查询多个值，这时候由于B+树索引有序，并且又有链表相连，它的查询效率比hash就快很多了。而且数据库中的索引一般是在磁盘上，数据量大的情况可能无法一次装入内存，B+树的设计可以允许数据分批加载，同时树的高度较低，提高查找效率。</p>
-<h2><span id="ru-he-zai-10-yi-shu-zhong-zhao-chu-qian-1000-da-de-shu">如何在10亿数中找出前1000大的数？</span><a href="#ru-he-zai-10-yi-shu-zhong-zhao-chu-qian-1000-da-de-shu" class="header-anchor">#</a></h2><p>使用小顶堆来做，即TopN问题</p>
+<h2><span id="为什么mysql数据库要用b树存储索引">为什么MySQL数据库要用B+树存储索引？</span></h2><p>查询单一值，hash比B+树快，但是select往往查询多个值，这时候由于B+树索引有序，并且又有链表相连，它的查询效率比hash就快很多了。而且数据库中的索引一般是在磁盘上，数据量大的情况可能无法一次装入内存，B+树的设计可以允许数据分批加载，同时树的高度较低，提高查找效率。</p>
+<h2><span id="如何在10亿数中找出前1000大的数">如何在10亿数中找出前1000大的数？</span></h2><p>使用小顶堆来做，即TopN问题</p>
 
   <p><a class="classtest-link" href="/tags/ML/" rel="tag">ML</a> — Feb 16, 2022</p>
   
