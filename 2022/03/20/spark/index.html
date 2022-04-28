@@ -15,7 +15,7 @@
   
   <link rel="canonical" href="http://example.com/2022/03/20/spark/">
   
-  <meta name="description" content="Notes  [toc] SparkCoreWordCount1234567891011121314151617181920212223242526272829303132333435363738def main(args:Array[String]): Unit = &amp;#123;	//连接环境	v">
+  <meta name="description" content="Notes#  [toc] SparkCore#WordCount#1234567891011121314151617181920212223242526272829303132333435363738def main(args:Array[String]): Unit = &amp;#123;	//连接环">
   
   
   <meta name="author" content="Xinjian Pan">
@@ -26,14 +26,14 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Spark" />
   
-  <meta property="og:description" content="Notes  [toc] SparkCoreWordCount1234567891011121314151617181920212223242526272829303132333435363738def main(args:Array[String]): Unit = &amp;#123;	//连接环境	v">
+  <meta property="og:description" content="Notes#  [toc] SparkCore#WordCount#1234567891011121314151617181920212223242526272829303132333435363738def main(args:Array[String]): Unit = &amp;#123;	//连接环">
   
   <meta property="og:url" content="http://example.com/2022/03/20/spark/" />
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Spark">
   
-  <meta name="twitter:description" content="Notes  [toc] SparkCoreWordCount1234567891011121314151617181920212223242526272829303132333435363738def main(args:Array[String]): Unit = &amp;#123;	//连接环境	v">
+  <meta name="twitter:description" content="Notes#  [toc] SparkCore#WordCount#1234567891011121314151617181920212223242526272829303132333435363738def main(args:Array[String]): Unit = &amp;#123;	//连接环">
   
   
   
@@ -165,7 +165,7 @@
   </div>
 
   <div class="six columns ml-1">
-    <h1 class="mt-2">
+    <h1 class="mt-2" style="font-size: 35px;width: 500px;">
       Hi! Welcome to my Blog 😎
     </h1>
   </div>
@@ -194,7 +194,7 @@
         
       </div>
     </div>
-    <hr style="margin-bottom: 2.6rem">
+    <hr style="margin-bottom: 1.6rem">
   </div>
 </div>
 
@@ -223,60 +223,60 @@ MathJax.Hub.Queue(function() {
 </script>
 
   
-  <h1 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a><u>Notes</u></h1><span id="more"></span>
+  <h1><span id="notes"><u>Notes</u></span><a href="#notes" class="header-anchor">#</a></h1><span id="more"></span>
 
 <p>[toc]</p>
-<h1 id="SparkCore"><a href="#SparkCore" class="headerlink" title="SparkCore"></a>SparkCore</h1><h2 id="WordCount"><a href="#WordCount" class="headerlink" title="WordCount"></a>WordCount</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">def main(args:Array[String]): Unit = &#123;</span><br><span class="line">	//连接环境</span><br><span class="line">	val sparConf = new SparkCon().setMaster(&quot;local&quot;).setAppName(&quot;WordCount&quot;)</span><br><span class="line">	val sc = new SparkContext(sparConf)</span><br><span class="line">	</span><br><span class="line">	wordcount(sc)</span><br><span class="line">	</span><br><span class="line">	//关闭环境</span><br><span class="line">	sc.stop()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def wordcount1(sc:SparkContext): Unit = &#123;</span><br><span class="line">	val rdd = sc.makeRDD(List(&quot;Hallo Scala&quot;, &quot;Hallo Spark&quot;))</span><br><span class="line">	val words = rdd.flatMap(_.split(&quot; &quot;))</span><br><span class="line">	val wordone = words.map((_,1))</span><br><span class="line">	val wordcount = wordone.reducebykey(_+_)</span><br><span class="line">	# val wordCount = wordone.countByKey()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def wordcount2(sc: SparkContext): Unit = &#123;</span><br><span class="line">	val rdd = sc.makeRDD(List(&quot;Hallo Scala&quot;,&quot;Hallo Spark&quot;))</span><br><span class="line">	val words = rdd.flatMap(_.split(&quot; &quot;))</span><br><span class="line">	val wordone = words.map((_,1))</span><br><span class="line">	val wordcount = wordone.aggregateByKey(0)(_+_,_+_)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def wordcount(sc: SparkContext): Unit = &#123;</span><br><span class="line">	val rdd = sc.makeRDD(List(&quot;Hallo Scala&quot;,&quot;Hallo Spark&quot;))</span><br><span class="line">	val words = rdd.flatMap(_.split(&quot; &quot;))</span><br><span class="line">	val wordone = words.map((_,1))</span><br><span class="line">	val wordcount = wordone.foldByKey(0)(_+_) </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def wordCount(sc: SparkContext): Unit =&#123;</span><br><span class="line">	val rdd = sc.makeRDD(List(&quot;Hallo Scala&quot;,&quot;Hallo Spark&quot;))</span><br><span class="line">	val words = rdd.flatMap(_.split(&quot; &quot;))</span><br><span class="line">	val wordCount = words.countByValue()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1><span id="sparkcore">SparkCore</span><a href="#sparkcore" class="header-anchor">#</a></h1><h2><span id="wordcount">WordCount</span><a href="#wordcount" class="header-anchor">#</a></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">def main(args:Array[String]): Unit = &#123;</span><br><span class="line">	//连接环境</span><br><span class="line">	val sparConf = new SparkCon().setMaster(&quot;local&quot;).setAppName(&quot;WordCount&quot;)</span><br><span class="line">	val sc = new SparkContext(sparConf)</span><br><span class="line">	</span><br><span class="line">	wordcount(sc)</span><br><span class="line">	</span><br><span class="line">	//关闭环境</span><br><span class="line">	sc.stop()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def wordcount1(sc:SparkContext): Unit = &#123;</span><br><span class="line">	val rdd = sc.makeRDD(List(&quot;Hallo Scala&quot;, &quot;Hallo Spark&quot;))</span><br><span class="line">	val words = rdd.flatMap(_.split(&quot; &quot;))</span><br><span class="line">	val wordone = words.map((_,1))</span><br><span class="line">	val wordcount = wordone.reducebykey(_+_)</span><br><span class="line">	# val wordCount = wordone.countByKey()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def wordcount2(sc: SparkContext): Unit = &#123;</span><br><span class="line">	val rdd = sc.makeRDD(List(&quot;Hallo Scala&quot;,&quot;Hallo Spark&quot;))</span><br><span class="line">	val words = rdd.flatMap(_.split(&quot; &quot;))</span><br><span class="line">	val wordone = words.map((_,1))</span><br><span class="line">	val wordcount = wordone.aggregateByKey(0)(_+_,_+_)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def wordcount(sc: SparkContext): Unit = &#123;</span><br><span class="line">	val rdd = sc.makeRDD(List(&quot;Hallo Scala&quot;,&quot;Hallo Spark&quot;))</span><br><span class="line">	val words = rdd.flatMap(_.split(&quot; &quot;))</span><br><span class="line">	val wordone = words.map((_,1))</span><br><span class="line">	val wordcount = wordone.foldByKey(0)(_+_) </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def wordCount(sc: SparkContext): Unit =&#123;</span><br><span class="line">	val rdd = sc.makeRDD(List(&quot;Hallo Scala&quot;,&quot;Hallo Spark&quot;))</span><br><span class="line">	val words = rdd.flatMap(_.split(&quot; &quot;))</span><br><span class="line">	val wordCount = words.countByValue()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="创建RDD"><a href="#创建RDD" class="headerlink" title="创建RDD"></a>创建RDD</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">val rdd = sc.parallelize(List(1,2,3,4))</span><br><span class="line">val rdd = sc.makeRDD(List(1,2,3,4),2) //加分区</span><br><span class="line">makeRDD 自动分区规则：</span><br><span class="line">start = ((i*length)/numSlice).toInt</span><br><span class="line">end = ((i+1)*length/numSlice).toInt</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//Spark底层读取文件是Hadoop，行读取，与字节数无关，读取时以偏移量为单位,偏移量不会重复读取</span><br><span class="line">// 1@@ 012</span><br><span class="line">// 2@@ 345</span><br><span class="line">// 3   6</span><br><span class="line">//totalsize = 7</span><br><span class="line">// goalsize = 7/2 = 3</span><br><span class="line">//分区内有执行顺序，分区间没有执行顺序</span><br><span class="line">// 7/3 = 2..1 (1.1 大于10%则增加分区 33%) = 2+1 = 3 </span><br><span class="line">val rdd = sc.textFile(&quot;datas&quot;,3) //内容  partition = min(default,2)</span><br><span class="line">val rdd = sc.wholeTextFile(&quot;datas&quot;) //路径，内容</span><br><span class="line">val rdd = sc.objectFile(&quot;datas&quot;)</span><br><span class="line">val rdd = sc.sequenceFile(&quot;datas&quot;)</span><br></pre></td></tr></table></figure>
+<h2><span id="chuang-jian-rdd">创建RDD</span><a href="#chuang-jian-rdd" class="header-anchor">#</a></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">val rdd = sc.parallelize(List(1,2,3,4))</span><br><span class="line">val rdd = sc.makeRDD(List(1,2,3,4),2) //加分区</span><br><span class="line">makeRDD 自动分区规则：</span><br><span class="line">start = ((i*length)/numSlice).toInt</span><br><span class="line">end = ((i+1)*length/numSlice).toInt</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="保存文件"><a href="#保存文件" class="headerlink" title="保存文件"></a>保存文件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rdd.saveAsTextFile(&quot;output1&quot;)</span><br><span class="line">rdd.saveAsObjectFile(&quot;output&quot;)</span><br><span class="line">rdd.saveAsSequenceFile(&quot;output&quot;) //必须为k,v类型</span><br></pre></td></tr></table></figure>
+<h2><span id="du-qu-wen-jian">读取文件</span><a href="#du-qu-wen-jian" class="header-anchor">#</a></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//Spark底层读取文件是Hadoop，行读取，与字节数无关，读取时以偏移量为单位,偏移量不会重复读取</span><br><span class="line">// 1@@ 012</span><br><span class="line">// 2@@ 345</span><br><span class="line">// 3   6</span><br><span class="line">//totalsize = 7</span><br><span class="line">// goalsize = 7/2 = 3</span><br><span class="line">//分区内有执行顺序，分区间没有执行顺序</span><br><span class="line">// 7/3 = 2..1 (1.1 大于10%则增加分区 33%) = 2+1 = 3 </span><br><span class="line">val rdd = sc.textFile(&quot;datas&quot;,3) //内容  partition = min(default,2)</span><br><span class="line">val rdd = sc.wholeTextFile(&quot;datas&quot;) //路径，内容</span><br><span class="line">val rdd = sc.objectFile(&quot;datas&quot;)</span><br><span class="line">val rdd = sc.sequenceFile(&quot;datas&quot;)</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="打印"><a href="#打印" class="headerlink" title="打印"></a>打印</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">result.collect().foreach(println)</span><br><span class="line">println(rdd.collect().mkString(&quot;,&quot;))</span><br></pre></td></tr></table></figure>
+<h2><span id="bao-cun-wen-jian">保存文件</span><a href="#bao-cun-wen-jian" class="header-anchor">#</a></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rdd.saveAsTextFile(&quot;output1&quot;)</span><br><span class="line">rdd.saveAsObjectFile(&quot;output&quot;)</span><br><span class="line">rdd.saveAsSequenceFile(&quot;output&quot;) //必须为k,v类型</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="累加器"><a href="#累加器" class="headerlink" title="累加器"></a>累加器</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">val sumAcc = sc.longAccumulator(&quot;Sum&quot;)</span><br><span class="line">rdd.foreach(</span><br><span class="line">	num =&gt; &#123;</span><br><span class="line">	sumAcc.add(num)</span><br><span class="line">	&#125;</span><br><span class="line">)</span><br><span class="line">println(sumAcc.value)</span><br></pre></td></tr></table></figure>
+<h2><span id="da-yin">打印</span><a href="#da-yin" class="header-anchor">#</a></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">result.collect().foreach(println)</span><br><span class="line">println(rdd.collect().mkString(&quot;,&quot;))</span><br></pre></td></tr></table></figure>
+
+
+
+<h2><span id="lei-jia-qi">累加器</span><a href="#lei-jia-qi" class="header-anchor">#</a></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">val sumAcc = sc.longAccumulator(&quot;Sum&quot;)</span><br><span class="line">rdd.foreach(</span><br><span class="line">	num =&gt; &#123;</span><br><span class="line">	sumAcc.add(num)</span><br><span class="line">	&#125;</span><br><span class="line">)</span><br><span class="line">println(sumAcc.value)</span><br></pre></td></tr></table></figure>
 
 <p>累加器的作用是将driven与executor连接起来，并且累加executor返回的值</p>
 <p>一般情况下，累加器会放置在行动算子进行操作</p>
-<h2 id="为什么要用Yarn"><a href="#为什么要用Yarn" class="headerlink" title="为什么要用Yarn"></a>为什么要用Yarn</h2><p>Spark 作为计算框架，Yarn能作为资源调度框架，调配自源。利用ResourceManager和NodeManager进行自源调配。 Yarn有两种模式， Client,Cluster， 区别是driver的运行节点位置。</p>
-<h2 id="RDD"><a href="#RDD" class="headerlink" title="RDD"></a>RDD</h2><p>RDD是最小可计算单元，可继续分为Task给Executer执行。 RDD类似于层层封装，只有使用到Collect 才会正真执行，RDD不能做Buffer临时保存。RDD比如是Text File， Map等，这些最小的计算单元，RDD的Partition可分成Task然后传给Executor</p>
-<h2 id="Map-与mapPartition"><a href="#Map-与mapPartition" class="headerlink" title="Map 与mapPartition"></a>Map 与mapPartition</h2><p>Map 一个一个处理，速度较慢，map传入多少条数据，返回多少条数据</p>
+<h2><span id="wei-shi-me-yao-yong-yarn">为什么要用Yarn</span><a href="#wei-shi-me-yao-yong-yarn" class="header-anchor">#</a></h2><p>Spark 作为计算框架，Yarn能作为资源调度框架，调配自源。利用ResourceManager和NodeManager进行自源调配。 Yarn有两种模式， Client,Cluster， 区别是driver的运行节点位置。</p>
+<h2><span id="rdd">RDD</span><a href="#rdd" class="header-anchor">#</a></h2><p>RDD是最小可计算单元，可继续分为Task给Executer执行。 RDD类似于层层封装，只有使用到Collect 才会正真执行，RDD不能做Buffer临时保存。RDD比如是Text File， Map等，这些最小的计算单元，RDD的Partition可分成Task然后传给Executor</p>
+<h2><span id="map-yu-mappartition">Map 与mapPartition</span><a href="#map-yu-mappartition" class="header-anchor">#</a></h2><p>Map 一个一个处理，速度较慢，map传入多少条数据，返回多少条数据</p>
 <p>lines.map(_*2)</p>
 <p>mapPartition 在内存中处理，将分区进行批处理，但是有可能造成内存溢出，可得到分区的最大值，返回与传入的数据条数可以不一致</p>
 <p>lines.mapPartition(iter&#x3D;&gt;iter.map(_*2))</p>
-<h2 id="Glom"><a href="#Glom" class="headerlink" title="Glom"></a>Glom</h2><p>分区变成一个List</p>
-<h2 id="groupBy"><a href="#groupBy" class="headerlink" title="groupBy"></a>groupBy</h2><p>得到的时一个（word, iter :List[string,int]）的集合。打乱了数据，同一组的一定在同一分区,groupBy(word&#x3D;&gt;word)</p>
+<h2><span id="glom">Glom</span><a href="#glom" class="header-anchor">#</a></h2><p>分区变成一个List</p>
+<h2><span id="groupby">groupBy</span><a href="#groupby" class="header-anchor">#</a></h2><p>得到的时一个（word, iter :List[string,int]）的集合。打乱了数据，同一组的一定在同一分区,groupBy(word&#x3D;&gt;word)</p>
 <p>结果是（word，Iter(word,Int)）</p>
-<h2 id="groupByKey"><a href="#groupByKey" class="headerlink" title="groupByKey"></a>groupByKey</h2><p>得到的时一个（word, iter :List[int]）的集合。打乱了数据，同一组的一定在同一分区,groupByKey()</p>
+<h2><span id="groupbykey">groupByKey</span><a href="#groupbykey" class="header-anchor">#</a></h2><p>得到的时一个（word, iter :List[int]）的集合。打乱了数据，同一组的一定在同一分区,groupByKey()</p>
 <p>结果是（word，Iter(Int)）</p>
 <p>存在shuffle操作，中间存在落盘的操作，为了防止内存溢出，IO会导致性能降低，shuffle一定有落盘</p>
-<h2 id="Filter"><a href="#Filter" class="headerlink" title="Filter"></a>Filter</h2><p>留下满足要求的，数据保留在原来的分区，所以可能会导致数据倾斜</p>
-<h2 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h2><p>抽样，可以用于判断数据倾斜的原因</p>
-<h2 id="Coalesce"><a href="#Coalesce" class="headerlink" title="Coalesce"></a>Coalesce</h2><p>扩大或者缩减分区，减少数据调度成本，比如每个分区数据都很少，可以合并成一个，减少调度成本。不会打乱数据重新组合，所以有可能导致数据倾斜，但是可以配合shuffle来重新组合，避免数据倾斜。shuffle默认为false， 扩大分区必须配合shuffle，否则没有意义，但是主要用于缩减分区</p>
-<h2 id="Repartition"><a href="#Repartition" class="headerlink" title="Repartition"></a>Repartition</h2><p>主要用于扩大分区，shuffle默认为false</p>
-<h2 id="sortBy"><a href="#sortBy" class="headerlink" title="sortBy"></a>sortBy</h2><p>利用规则排序，默认为升序</p>
-<h2 id="Union-Intersection-Subtract-Zip"><a href="#Union-Intersection-Subtract-Zip" class="headerlink" title="Union, Intersection, Subtract, Zip"></a>Union, Intersection, Subtract, Zip</h2><p>Union会保留两个相同的并集，即会出现重复</p>
+<h2><span id="filter">Filter</span><a href="#filter" class="header-anchor">#</a></h2><p>留下满足要求的，数据保留在原来的分区，所以可能会导致数据倾斜</p>
+<h2><span id="sample">Sample</span><a href="#sample" class="header-anchor">#</a></h2><p>抽样，可以用于判断数据倾斜的原因</p>
+<h2><span id="coalesce">Coalesce</span><a href="#coalesce" class="header-anchor">#</a></h2><p>扩大或者缩减分区，减少数据调度成本，比如每个分区数据都很少，可以合并成一个，减少调度成本。不会打乱数据重新组合，所以有可能导致数据倾斜，但是可以配合shuffle来重新组合，避免数据倾斜。shuffle默认为false， 扩大分区必须配合shuffle，否则没有意义，但是主要用于缩减分区</p>
+<h2><span id="repartition">Repartition</span><a href="#repartition" class="header-anchor">#</a></h2><p>主要用于扩大分区，shuffle默认为false</p>
+<h2><span id="sortby">sortBy</span><a href="#sortby" class="header-anchor">#</a></h2><p>利用规则排序，默认为升序</p>
+<h2><span id="union-intersection-subtract-zip">Union, Intersection, Subtract, Zip</span><a href="#union-intersection-subtract-zip" class="header-anchor">#</a></h2><p>Union会保留两个相同的并集，即会出现重复</p>
 <p>Subtract以左边的为主，减去并集</p>
 <p>Union,Intersection,Subtract, 需要类型相同</p>
 <p>Zip将同位置的zip成一个tuple,分区数量需要相同，数据数量相同</p>
-<h2 id="PartitonBy"><a href="#PartitonBy" class="headerlink" title="PartitonBy"></a>PartitonBy</h2><p>(key,value)的重新分区,分区器有hashpartition和rangepartition，但是也可以自己写</p>
+<h2><span id="partitonby">PartitonBy</span><a href="#partitonby" class="header-anchor">#</a></h2><p>(key,value)的重新分区,分区器有hashpartition和rangepartition，但是也可以自己写</p>
 <p>rdd.partitionBy(new HashPartitioner(2))</p>
-<h2 id="ReduceByKey"><a href="#ReduceByKey" class="headerlink" title="ReduceByKey"></a>ReduceByKey</h2><p>(“a”,1),(“a”,1)</p>
+<h2><span id="reducebykey">ReduceByKey</span><a href="#reducebykey" class="header-anchor">#</a></h2><p>(“a”,1),(“a”,1)</p>
 <p>rdd.reduceByKey((x,y)&#x3D;&gt;{x+y})</p>
 <p>结果（“a”,2）,如果key只有一个，不会参与运算</p>
 <p>存在shuffle，但是在落盘之前会把同一分区相同的键值先做聚合再落盘，提高性能。</p>
 <p>分区间与分区内计算规则相同</p>
-<h2 id="AggregateByKey"><a href="#AggregateByKey" class="headerlink" title="AggregateByKey()()"></a>AggregateByKey()()</h2><p>定义分区间与分区内的计算规则</p>
+<h2><span id="aggregatebykey">AggregateByKey()()</span><a href="#aggregatebykey" class="header-anchor">#</a></h2><p>定义分区间与分区内的计算规则</p>
 <p>AggregateByKey(初始值，主要用于第一个key时，与第一个value进行计算)((x,y)&#x3D;&gt;{x+y}分区内,(x,y)&#x3D;&gt;{x+y}分区间)</p>
 <p>结果与初始值类型相同</p>
 <p>求不同key均值</p>
@@ -293,14 +293,14 @@ MathJax.Hub.Queue(function() {
 <p>​		num&#x2F;count</p>
 <p>}</p>
 <p>}</p>
-<h2 id="foldByKey"><a href="#foldByKey" class="headerlink" title="foldByKey"></a>foldByKey</h2><p>分区内与分区间的计算规则相同，且可定义初值</p>
+<h2><span id="foldbykey">foldByKey</span><a href="#foldbykey" class="header-anchor">#</a></h2><p>分区内与分区间的计算规则相同，且可定义初值</p>
 <p>rdd.foldByKey(0)(<em>+</em>)</p>
 <p>结果与初始值类型相同</p>
-<h2 id="CombineByKey"><a href="#CombineByKey" class="headerlink" title="CombineByKey"></a>CombineByKey</h2><p>第一个参数：转换第一个值的类型，比如， int &#x3D;&gt; （int，int）</p>
+<h2><span id="combinebykey">CombineByKey</span><a href="#combinebykey" class="header-anchor">#</a></h2><p>第一个参数：转换第一个值的类型，比如， int &#x3D;&gt; （int，int）</p>
 <p>第二个参数：分区内计算</p>
 <p>第三个参数，分区间计算</p>
 <p>所有的ByKey类型，底层其实都是combineByKey</p>
-<h2 id="行动算子"><a href="#行动算子" class="headerlink" title="行动算子"></a>行动算子</h2><p>collect()  &#x2F;&#x2F;不同的分区采集到Driver端内存中，形成结果</p>
+<h2><span id="xing-dong-suan-zi">行动算子</span><a href="#xing-dong-suan-zi" class="header-anchor">#</a></h2><p>collect()  &#x2F;&#x2F;不同的分区采集到Driver端内存中，形成结果</p>
 <p>reduce(_+_)  &#x2F;&#x2F;集合做和</p>
 <p>count() &#x2F;&#x2F;统计数据的个数</p>
 <p>first() &#x2F;&#x2F;数据的一个</p>
@@ -309,25 +309,57 @@ MathJax.Hub.Queue(function() {
 <p>aggregate(0)(_+_,_+_) &#x2F;&#x2F;初始值不仅会参与分区内，还会参与分区间</p>
 <p>fold(0)(_+_) &#x2F;&#x2F;分区内和分区间运算规则相同</p>
 <p>countByKey, countByValue &#x2F;&#x2F; map(3-&gt;4次)   map(“a”-&gt;3次)  </p>
-<h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h2><p>class Check(q:int) extends Serializable {</p>
+<h2><span id="class">Class</span><a href="#class" class="header-anchor">#</a></h2><p>class Check(q:int) extends Serializable {</p>
 <p>}</p>
 <p>case class Check(q:int){</p>
 <p>}</p>
 <p>&#x2F;&#x2F;类的属性与参数相同</p>
-<h2 id="血缘关系"><a href="#血缘关系" class="headerlink" title="血缘关系"></a>血缘关系</h2><p>rdd.toDebugString</p>
-<h2 id="窄依赖，宽依赖"><a href="#窄依赖，宽依赖" class="headerlink" title="窄依赖，宽依赖"></a>窄依赖，宽依赖</h2><p>窄依赖：one to one依赖，不需要划分阶段，因为不需要等待其他分区</p>
+<h2><span id="xie-yuan-guan-xi">血缘关系</span><a href="#xie-yuan-guan-xi" class="header-anchor">#</a></h2><p>rdd.toDebugString</p>
+<h2><span id="zhai-yi-lai-kuan-yi-lai">窄依赖，宽依赖</span><a href="#zhai-yi-lai-kuan-yi-lai" class="header-anchor">#</a></h2><p>窄依赖：one to one依赖，不需要划分阶段，因为不需要等待其他分区</p>
 <p>宽依赖：shuffle 依赖，需要划分阶段</p>
 <p>阶段数量&#x3D;shuffle数量(ShuffleMap Stage)+1（Result Stage）</p>
 <p>job是每个Action算子就是一个job</p>
 <p>Task是每个阶段的最后一个RDD的分区个数就是Task数，一般跟分区数一样(ShuffleMap Task, Result Task)</p>
-<h2 id="Cache-persist-storageLevel-DISK-ONLY-checkpoint"><a href="#Cache-persist-storageLevel-DISK-ONLY-checkpoint" class="headerlink" title="Cache, persist(storageLevel.DISK_ONLY), checkpoint"></a>Cache, persist(storageLevel.DISK_ONLY), checkpoint</h2><p>Cache: 速度快，存在内存中，但是可能会溢出，数据可能不安全，临时文件,会在血缘关系中添加关系，一旦发生问题，从头重读恢复</p>
+<h2><span id="cache-persist-storagelevel-disk-only-checkpoint">Cache, persist(storageLevel.DISK_ONLY), checkpoint</span><a href="#cache-persist-storagelevel-disk-only-checkpoint" class="header-anchor">#</a></h2><p>Cache: 速度快，存在内存中，但是可能会溢出，数据可能不安全，临时文件,会在血缘关系中添加关系，一旦发生问题，从头重读恢复</p>
 <p>DISK_ONLY:涉及IO,速度慢，但是数据安全，临时安全</p>
 <p>checkpoint:数据长久保存在磁盘中，涉及IO,速度慢，但是数据安全，会独立执行作业，为了提高效率，一般与cache联合使用， rdd.cache()+rdd.checkpoint()。切断血缘关系，重新建立血缘，等同于改变数据源</p>
-<h2 id="累加器-1"><a href="#累加器-1" class="headerlink" title="累加器"></a>累加器</h2><p>聚合各个executor的结果，否则每个分区都是独立的，无法获得最终的结果，其实就是把executor的结果聚合到driver端。为只写功能，即executor互相不能看到对方</p>
-<h2 id="广播"><a href="#广播" class="headerlink" title="广播"></a>广播</h2><p>分布式中的只读，所以的task公用，减少数据重复</p>
+<h2><span id="lei-jia-qi">累加器</span><a href="#lei-jia-qi" class="header-anchor">#</a></h2><p>聚合各个executor的结果，否则每个分区都是独立的，无法获得最终的结果，其实就是把executor的结果聚合到driver端。为只写功能，即executor互相不能看到对方</p>
+<h2><span id="guang-bo">广播</span><a href="#guang-bo" class="header-anchor">#</a></h2><p>分布式中的只读，所以的task公用，减少数据重复</p>
 
   <p><a class="classtest-link" href="/tags/Spark/" rel="tag">Spark</a> — Mar 20, 2022</p>
   
+  <hr>
+<section id="comments" class="mt-2 mb-3">
+
+  <div id="disqus_thread">
+    <a href="#" class="button button-primary" onclick="loadDisqus();return false;">View / Make Comments</a>
+  </div>
+
+  <script>
+    var disqus_config = function() {
+      this.page.url = 'http://example.com/2022/03/20/spark/index.html';
+      this.page.identifier = '2022/03/20/spark/index.html';
+      this.page.title = 'Spark';
+    };
+
+    var is_disqus_loaded = false;
+
+    function loadDisqus() {
+      if (!is_disqus_loaded) {
+        is_disqus_loaded = true;
+
+        var d = document,
+          s = d.createElement('script');
+        s.src = 'https://https-adisaktijrs-github-io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+    }
+
+  </script>
+  <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
 
 
         </div>
@@ -340,6 +372,7 @@ MathJax.Hub.Queue(function() {
   <div></div>
 </div>
         <div class="row mt-2">
+  <hr style="margin-bottom: 0.6rem">
   
     <div class="eight columns">
       <p id="madewith">Made with ❤ and

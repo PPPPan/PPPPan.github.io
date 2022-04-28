@@ -15,7 +15,7 @@
   
   <link rel="canonical" href="http://example.com/2022/02/13/svm/">
   
-  <meta name="description" content="Notes  简单概括一下SVM：SVM 是一种二类分类模型。它的基本思想是在特征空间中寻找间隔最大的分离超平面使数据得到高效的二分类，具体来讲，有三种情况（不加核函数的话就是个线性模型，加了之后才会升级为一个非线性模型）：  当训练样本线性可分时，通过硬间隔最大化，学习一个线性分类器，即线性可分支">
+  <meta name="description" content="Notes#  简单概括一下SVM：#SVM 是一种二类分类模型。它的基本思想是在特征空间中寻找间隔最大的分离超平面使数据得到高效的二分类，具体来讲，有三种情况（不加核函数的话就是个线性模型，加了之后才会升级为一个非线性模型）：  当训练样本线性可分时，通过硬间隔最大化，学习一个线性分类器，即线性可">
   
   
   <meta name="author" content="Xinjian Pan">
@@ -26,14 +26,14 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="svm" />
   
-  <meta property="og:description" content="Notes  简单概括一下SVM：SVM 是一种二类分类模型。它的基本思想是在特征空间中寻找间隔最大的分离超平面使数据得到高效的二分类，具体来讲，有三种情况（不加核函数的话就是个线性模型，加了之后才会升级为一个非线性模型）：  当训练样本线性可分时，通过硬间隔最大化，学习一个线性分类器，即线性可分支">
+  <meta property="og:description" content="Notes#  简单概括一下SVM：#SVM 是一种二类分类模型。它的基本思想是在特征空间中寻找间隔最大的分离超平面使数据得到高效的二分类，具体来讲，有三种情况（不加核函数的话就是个线性模型，加了之后才会升级为一个非线性模型）：  当训练样本线性可分时，通过硬间隔最大化，学习一个线性分类器，即线性可">
   
   <meta property="og:url" content="http://example.com/2022/02/13/svm/" />
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="svm">
   
-  <meta name="twitter:description" content="Notes  简单概括一下SVM：SVM 是一种二类分类模型。它的基本思想是在特征空间中寻找间隔最大的分离超平面使数据得到高效的二分类，具体来讲，有三种情况（不加核函数的话就是个线性模型，加了之后才会升级为一个非线性模型）：  当训练样本线性可分时，通过硬间隔最大化，学习一个线性分类器，即线性可分支">
+  <meta name="twitter:description" content="Notes#  简单概括一下SVM：#SVM 是一种二类分类模型。它的基本思想是在特征空间中寻找间隔最大的分离超平面使数据得到高效的二分类，具体来讲，有三种情况（不加核函数的话就是个线性模型，加了之后才会升级为一个非线性模型）：  当训练样本线性可分时，通过硬间隔最大化，学习一个线性分类器，即线性可">
   
   
   
@@ -165,7 +165,7 @@
   </div>
 
   <div class="six columns ml-1">
-    <h1 class="mt-2">
+    <h1 class="mt-2" style="font-size: 35px;width: 500px;">
       Hi! Welcome to my Blog 😎
     </h1>
   </div>
@@ -194,7 +194,7 @@
         
       </div>
     </div>
-    <hr style="margin-bottom: 2.6rem">
+    <hr style="margin-bottom: 1.6rem">
   </div>
 </div>
 
@@ -223,25 +223,25 @@ MathJax.Hub.Queue(function() {
 </script>
 
   
-  <h1 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h1><span id="more"></span>
+  <h1><span id="notes">Notes</span><a href="#notes" class="header-anchor">#</a></h1><span id="more"></span>
 
-<h2 id="简单概括一下SVM："><a href="#简单概括一下SVM：" class="headerlink" title="简单概括一下SVM："></a>简单概括一下SVM：</h2><p>SVM 是一种二类分类模型。它的基本思想是在特征空间中寻找间隔最大的分离超平面使数据得到高效的二分类，具体来讲，有三种情况（不加核函数的话就是个线性模型，加了之后才会升级为一个非线性模型）：</p>
+<h2><span id="jian-dan-gai-gua-yi-xia-svm">简单概括一下SVM：</span><a href="#jian-dan-gai-gua-yi-xia-svm" class="header-anchor">#</a></h2><p>SVM 是一种二类分类模型。它的基本思想是在特征空间中寻找间隔最大的分离超平面使数据得到高效的二分类，具体来讲，有三种情况（不加核函数的话就是个线性模型，加了之后才会升级为一个非线性模型）：</p>
 <ul>
 <li>当训练样本线性可分时，通过硬间隔最大化，学习一个线性分类器，即线性可分支持向量机；</li>
 <li>当训练数据近似线性可分时，引入松弛变量，通过软间隔最大化，学习一个线性分类器，即线性支持向量机；</li>
 <li>当训练数据线性不可分时，通过使用核技巧及软间隔最大化，学习非线性支持向量机。</li>
 </ul>
-<h2 id="SVM解决多分类问题"><a href="#SVM解决多分类问题" class="headerlink" title="SVM解决多分类问题"></a>SVM解决多分类问题</h2><p>a.一对多法（one-versus-rest,简称1-v-r SVMs）。训练时依次把某个类别的样本归为一类,其他剩余的样本归为另一类，这样k个类别的样本就构造出了k个SVM。分类时将未知样本分类为具有最大分类函数值的那类。</p>
+<h2><span id="svm-jie-jue-duo-fen-lei-wen-ti">SVM解决多分类问题</span><a href="#svm-jie-jue-duo-fen-lei-wen-ti" class="header-anchor">#</a></h2><p>a.一对多法（one-versus-rest,简称1-v-r SVMs）。训练时依次把某个类别的样本归为一类,其他剩余的样本归为另一类，这样k个类别的样本就构造出了k个SVM。分类时将未知样本分类为具有最大分类函数值的那类。</p>
 <p>b.一对一法（one-versus-one,简称1-v-1 SVMs）。其做法是在任意两类样本之间设计一个SVM，因此k个类别的样本就需要设计k(k-1)&#x2F;2个SVM。当对一个未知样本进行分类时，最后得票最多的类别即为该未知样本的类别。Libsvm中的多类分类就是根据这个方法实现的。</p>
 <p>c.层次支持向量机（H-SVMs）。层次分类法首先将所有类别分成两个子类，再将子类进一步划分成两个次级子类，如此循环，直到得到一个单独的类别为止。</p>
-<h2 id="SMO算法能够保证收敛吗"><a href="#SMO算法能够保证收敛吗" class="headerlink" title="SMO算法能够保证收敛吗"></a>SMO算法能够保证收敛吗</h2><p>SMO将整个QP问题分解为QP子问题，利用Osuna‘s定理保证收敛性。Osuna’s theorem简单的意思就是每次将QP问题分解成QP子问题迭代执行，当每次迭代求解的QP子问题中至少包含一个不满足KKT条件的example的时候，这个算法最终会收敛。</p>
-<h2 id="SVM为什么要将原问题转换为对偶问题？"><a href="#SVM为什么要将原问题转换为对偶问题？" class="headerlink" title="SVM为什么要将原问题转换为对偶问题？"></a>SVM为什么要将原问题转换为对偶问题？</h2><p>要注意用拉格朗日对偶并没有改变最优解，而是<strong>改变了算法复杂度</strong>：</p>
+<h2><span id="smo-suan-fa-neng-gou-bao-zheng-shou-lian-ma">SMO算法能够保证收敛吗</span><a href="#smo-suan-fa-neng-gou-bao-zheng-shou-lian-ma" class="header-anchor">#</a></h2><p>SMO将整个QP问题分解为QP子问题，利用Osuna‘s定理保证收敛性。Osuna’s theorem简单的意思就是每次将QP问题分解成QP子问题迭代执行，当每次迭代求解的QP子问题中至少包含一个不满足KKT条件的example的时候，这个算法最终会收敛。</p>
+<h2><span id="svm-wei-shi-me-yao-jiang-yuan-wen-ti-zhuan-huan-wei-dui-ou-wen-ti">SVM为什么要将原问题转换为对偶问题？</span><a href="#svm-wei-shi-me-yao-jiang-yuan-wen-ti-zhuan-huan-wei-dui-ou-wen-ti" class="header-anchor">#</a></h2><p>要注意用拉格朗日对偶并没有改变最优解，而是<strong>改变了算法复杂度</strong>：</p>
 <ol>
 <li>在原问题下，求解算法的复杂度与样本维度（等于权值w的维度）有关；</li>
 <li>而在对偶问题下，求解算法的复杂度与样本数量（等于拉格朗日算子a的数量）有关</li>
 <li>方便核函数的引入</li>
 </ol>
-<h2 id="SVM的优缺点："><a href="#SVM的优缺点：" class="headerlink" title="SVM的优缺点："></a>SVM的优缺点：</h2><p><strong>优点：</strong></p>
+<h2><span id="svm-de-you-que-dian">SVM的优缺点：</span><a href="#svm-de-you-que-dian" class="header-anchor">#</a></h2><p><strong>优点：</strong></p>
 <ol>
 <li>由于SVM是一个凸优化问题，所以求得的解一定是全局最优而不是局部最优。</li>
 <li>不仅适用于线性线性问题还适用于非线性问题(用核技巧)。</li>
@@ -253,8 +253,8 @@ MathJax.Hub.Queue(function() {
 <li>二次规划问题求解将涉及m阶矩阵的计算(m为样本的个数), 因此SVM不适用于超大数据集。(SMO算法可以缓解这个问题)</li>
 <li>只适用于二分类问题。(SVM的推广SVR也适用于回归问题；可以通过多个SVM的组合来解决多分类问题)</li>
 </ol>
-<h2 id="为什么SVM对缺失数据敏感？"><a href="#为什么SVM对缺失数据敏感？" class="headerlink" title="为什么SVM对缺失数据敏感？"></a>为什么SVM对缺失数据敏感？</h2><p>这里说的缺失数据是指缺失某些特征数据，向量数据不完整。SVM 没有处理缺失值的策略。而 SVM 希望样本在特征空间中线性可分，所以特征空间的好坏对SVM的性能很重要。缺失特征数据将影响训练结果的好坏。</p>
-<h2 id="如何选择核函数："><a href="#如何选择核函数：" class="headerlink" title="如何选择核函数："></a>如何选择核函数：</h2><ul>
+<h2><span id="wei-shi-me-svm-dui-que-shi-shu-ju-min-gan">为什么SVM对缺失数据敏感？</span><a href="#wei-shi-me-svm-dui-que-shi-shu-ju-min-gan" class="header-anchor">#</a></h2><p>这里说的缺失数据是指缺失某些特征数据，向量数据不完整。SVM 没有处理缺失值的策略。而 SVM 希望样本在特征空间中线性可分，所以特征空间的好坏对SVM的性能很重要。缺失特征数据将影响训练结果的好坏。</p>
+<h2><span id="ru-he-xuan-ze-he-han-shu">如何选择核函数：</span><a href="#ru-he-xuan-ze-he-han-shu" class="header-anchor">#</a></h2><ul>
 <li>当特征维数 d 超过样本数 m 时 (文本分类问题通常是这种情况), 使用线性核;</li>
 <li>当特征维数 d 比较小. 样本数 m 中等时, 使用RBF核;</li>
 <li>当特征维数 d 比较小. 样本数 m 特别大时, 支持向量机性能通常不如深度神经网络</li>
@@ -264,6 +264,38 @@ MathJax.Hub.Queue(function() {
 
   <p><a class="classtest-link" href="/tags/ML/" rel="tag">ML</a>, <a class="classtest-link" href="/tags/SVM/" rel="tag">SVM</a> — Feb 13, 2022</p>
   
+  <hr>
+<section id="comments" class="mt-2 mb-3">
+
+  <div id="disqus_thread">
+    <a href="#" class="button button-primary" onclick="loadDisqus();return false;">View / Make Comments</a>
+  </div>
+
+  <script>
+    var disqus_config = function() {
+      this.page.url = 'http://example.com/2022/02/13/svm/index.html';
+      this.page.identifier = '2022/02/13/svm/index.html';
+      this.page.title = 'svm';
+    };
+
+    var is_disqus_loaded = false;
+
+    function loadDisqus() {
+      if (!is_disqus_loaded) {
+        is_disqus_loaded = true;
+
+        var d = document,
+          s = d.createElement('script');
+        s.src = 'https://https-adisaktijrs-github-io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+    }
+
+  </script>
+  <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
 
 
         </div>
@@ -276,6 +308,7 @@ MathJax.Hub.Queue(function() {
   <div></div>
 </div>
         <div class="row mt-2">
+  <hr style="margin-bottom: 0.6rem">
   
     <div class="eight columns">
       <p id="madewith">Made with ❤ and

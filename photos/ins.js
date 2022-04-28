@@ -129,7 +129,7 @@
                 <figcaption style="display:none" itemprop="caption description">' + data.text[i] + '</figcaption>\
             </figure>';
         }
-        ulTmpl = ulTmpl + '<section class="archives album"><h1 class="year">' + data.year + '年<em>' + data.month + '月</em></h1>\
+        ulTmpl = ulTmpl + '<section class="archives album"><h1 class="year"><span id="data-year-nian-data-month-yue">' + data.year + '年<em>' + data.month + '月</em></span><a href="#data-year-nian-data-month-yue" class="header-anchor">#</a></h1>\
         <ul class="img-box-ul">' + liTmpl + '</ul>\
         </section>';
       }

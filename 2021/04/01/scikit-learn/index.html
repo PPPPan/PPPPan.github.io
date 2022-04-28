@@ -15,7 +15,7 @@
   
   <link rel="canonical" href="http://example.com/2021/04/01/scikit-learn/">
   
-  <meta name="description" content="Notes  Save&amp;amp;Open Model12345from sklearn.externals import joblibfilename = &amp;#x27;model.sav&amp;#x27;joblib.dump(clf,filename)clf = joblib.load(filename">
+  <meta name="description" content="Notes#  Save&amp;amp;Open Model#12345from sklearn.externals import joblibfilename = &amp;#x27;model.sav&amp;#x27;joblib.dump(clf,filename)clf = joblib.load(filena">
   
   
   <meta name="author" content="Xinjian Pan">
@@ -26,14 +26,14 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="scikit-learn" />
   
-  <meta property="og:description" content="Notes  Save&amp;amp;Open Model12345from sklearn.externals import joblibfilename = &amp;#x27;model.sav&amp;#x27;joblib.dump(clf,filename)clf = joblib.load(filename">
+  <meta property="og:description" content="Notes#  Save&amp;amp;Open Model#12345from sklearn.externals import joblibfilename = &amp;#x27;model.sav&amp;#x27;joblib.dump(clf,filename)clf = joblib.load(filena">
   
   <meta property="og:url" content="http://example.com/2021/04/01/scikit-learn/" />
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="scikit-learn">
   
-  <meta name="twitter:description" content="Notes  Save&amp;amp;Open Model12345from sklearn.externals import joblibfilename = &amp;#x27;model.sav&amp;#x27;joblib.dump(clf,filename)clf = joblib.load(filename">
+  <meta name="twitter:description" content="Notes#  Save&amp;amp;Open Model#12345from sklearn.externals import joblibfilename = &amp;#x27;model.sav&amp;#x27;joblib.dump(clf,filename)clf = joblib.load(filena">
   
   
   
@@ -165,7 +165,7 @@
   </div>
 
   <div class="six columns ml-1">
-    <h1 class="mt-2">
+    <h1 class="mt-2" style="font-size: 35px;width: 500px;">
       Hi! Welcome to my Blog 😎
     </h1>
   </div>
@@ -194,7 +194,7 @@
         
       </div>
     </div>
-    <hr style="margin-bottom: 2.6rem">
+    <hr style="margin-bottom: 1.6rem">
   </div>
 </div>
 
@@ -223,31 +223,63 @@ MathJax.Hub.Queue(function() {
 </script>
 
   
-  <h1 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a><u>Notes</u></h1><span id="more"></span>
+  <h1><span id="notes"><u>Notes</u></span><a href="#notes" class="header-anchor">#</a></h1><span id="more"></span>
 
-<h3 id="Save-amp-Open-Model"><a href="#Save-amp-Open-Model" class="headerlink" title="Save&amp;Open Model"></a>Save&amp;Open Model</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.externals import joblib</span><br><span class="line">filename = &#x27;model.sav&#x27;</span><br><span class="line">joblib.dump(clf,filename)</span><br><span class="line"></span><br><span class="line">clf = joblib.load(filename)</span><br></pre></td></tr></table></figure>
+<h3><span id="save-amp-open-model">Save&amp;Open Model</span><a href="#save-amp-open-model" class="header-anchor">#</a></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.externals import joblib</span><br><span class="line">filename = &#x27;model.sav&#x27;</span><br><span class="line">joblib.dump(clf,filename)</span><br><span class="line"></span><br><span class="line">clf = joblib.load(filename)</span><br></pre></td></tr></table></figure>
 
-<h2 id="import-datasets"><a href="#import-datasets" class="headerlink" title="import datasets"></a>import datasets</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import datasets</span><br><span class="line"></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">X = iris.data</span><br><span class="line">y = iris.target</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="split-Dataset"><a href="#split-Dataset" class="headerlink" title="split Dataset"></a>split Dataset</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2)</span><br></pre></td></tr></table></figure>
+<h2><span id="import-datasets">import datasets</span><a href="#import-datasets" class="header-anchor">#</a></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import datasets</span><br><span class="line"></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">X = iris.data</span><br><span class="line">y = iris.target</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="Encoder"><a href="#Encoder" class="headerlink" title="Encoder"></a>Encoder</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.preprocessing import LabelEncoder</span><br><span class="line">Le = LabelEncoder()</span><br><span class="line">for i in range(len(X[0])):</span><br><span class="line">    X[:, i] = Le.fit_transform(X[:, i])</span><br><span class="line"></span><br><span class="line">label_mapping = &#123;</span><br><span class="line">    &#x27;unacc&#x27;:0,</span><br><span class="line">    &#x27;acc&#x27;:1,</span><br><span class="line">    &#x27;good&#x27;:2,</span><br><span class="line">    &#x27;vgood&#x27;:3</span><br><span class="line">&#125;</span><br><span class="line">y[&#x27;class&#x27;] = y[&#x27;class&#x27;].map(label_mapping)</span><br></pre></td></tr></table></figure>
+<h2><span id="split-dataset">split Dataset</span><a href="#split-dataset" class="header-anchor">#</a></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2)</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="SVM"><a href="#SVM" class="headerlink" title="SVM"></a>SVM</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import neighbors, metrics, svm</span><br><span class="line">knn = svm.SVC()</span><br><span class="line">X_train, X_test, y_train, y_test =  train_test_split(X, y, test_size=0.2)</span><br><span class="line">knn.fit(X_train, y_train)</span><br><span class="line">prediction = knn.predict(X_test)</span><br><span class="line"></span><br><span class="line">accuracy = metrics.accuracy_score(y_test, prediction)</span><br></pre></td></tr></table></figure>
+<h2><span id="encoder">Encoder</span><a href="#encoder" class="header-anchor">#</a></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.preprocessing import LabelEncoder</span><br><span class="line">Le = LabelEncoder()</span><br><span class="line">for i in range(len(X[0])):</span><br><span class="line">    X[:, i] = Le.fit_transform(X[:, i])</span><br><span class="line"></span><br><span class="line">label_mapping = &#123;</span><br><span class="line">    &#x27;unacc&#x27;:0,</span><br><span class="line">    &#x27;acc&#x27;:1,</span><br><span class="line">    &#x27;good&#x27;:2,</span><br><span class="line">    &#x27;vgood&#x27;:3</span><br><span class="line">&#125;</span><br><span class="line">y[&#x27;class&#x27;] = y[&#x27;class&#x27;].map(label_mapping)</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="LinearRegression"><a href="#LinearRegression" class="headerlink" title="LinearRegression"></a>LinearRegression</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import linear_model</span><br><span class="line"></span><br><span class="line">l_reg = linear_model.LinearRegression()</span><br><span class="line">model = l_reg.fit(X_train, y_train)</span><br><span class="line">predictions = model.predict(X_test)</span><br><span class="line">print(&quot;predictions: &quot;, predictions)</span><br><span class="line">print(&quot;R^2: &quot;, l_reg.score(X, y))</span><br><span class="line">print(&quot;coeff: &quot;, l_reg.coef_)</span><br><span class="line">print(&quot;intercept: &quot;, l_reg.intercept_) %截距</span><br></pre></td></tr></table></figure>
+<h2><span id="svm">SVM</span><a href="#svm" class="header-anchor">#</a></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import neighbors, metrics, svm</span><br><span class="line">knn = svm.SVC()</span><br><span class="line">X_train, X_test, y_train, y_test =  train_test_split(X, y, test_size=0.2)</span><br><span class="line">knn.fit(X_train, y_train)</span><br><span class="line">prediction = knn.predict(X_test)</span><br><span class="line"></span><br><span class="line">accuracy = metrics.accuracy_score(y_test, prediction)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2><span id="linearregression">LinearRegression</span><a href="#linearregression" class="header-anchor">#</a></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import linear_model</span><br><span class="line"></span><br><span class="line">l_reg = linear_model.LinearRegression()</span><br><span class="line">model = l_reg.fit(X_train, y_train)</span><br><span class="line">predictions = model.predict(X_test)</span><br><span class="line">print(&quot;predictions: &quot;, predictions)</span><br><span class="line">print(&quot;R^2: &quot;, l_reg.score(X, y))</span><br><span class="line">print(&quot;coeff: &quot;, l_reg.coef_)</span><br><span class="line">print(&quot;intercept: &quot;, l_reg.intercept_) %截距</span><br></pre></td></tr></table></figure>
 
 
   <p><a class="classtest-link" href="/tags/scikit/" rel="tag">scikit</a> — Apr 1, 2021</p>
   
+  <hr>
+<section id="comments" class="mt-2 mb-3">
+
+  <div id="disqus_thread">
+    <a href="#" class="button button-primary" onclick="loadDisqus();return false;">View / Make Comments</a>
+  </div>
+
+  <script>
+    var disqus_config = function() {
+      this.page.url = 'http://example.com/2021/04/01/scikit-learn/index.html';
+      this.page.identifier = '2021/04/01/scikit-learn/index.html';
+      this.page.title = 'scikit-learn';
+    };
+
+    var is_disqus_loaded = false;
+
+    function loadDisqus() {
+      if (!is_disqus_loaded) {
+        is_disqus_loaded = true;
+
+        var d = document,
+          s = d.createElement('script');
+        s.src = 'https://https-adisaktijrs-github-io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+    }
+
+  </script>
+  <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
 
 
         </div>
@@ -260,6 +292,7 @@ MathJax.Hub.Queue(function() {
   <div></div>
 </div>
         <div class="row mt-2">
+  <hr style="margin-bottom: 0.6rem">
   
     <div class="eight columns">
       <p id="madewith">Made with ❤ and

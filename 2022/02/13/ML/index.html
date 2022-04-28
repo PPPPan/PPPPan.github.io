@@ -15,7 +15,7 @@
   
   <link rel="canonical" href="http://example.com/2022/02/13/ML/">
   
-  <meta name="description" content="Notes        [TOC] 向量和矩阵标量（scalar): 一个标量表示一个单独的数 向量(vector): 一个向量表示一组有序排列的数。 矩阵（matrix): 矩阵是具有相同特征和纬度的对象的集合，表现为一张二维数据表。 张量（tensor): 一个数组中的元素分布在若干维坐标的规">
+  <meta name="description" content="向量和矩阵 向量的范数(norm) 逆矩阵(matrix inversion) 单位向量 正交矩阵（orthogonal matrix） 特征分解（eigendecomposition) 奇异值分解（singular value decomposition, SVD) 迹运算 主成分分析（princ">
   
   
   <meta name="author" content="Xinjian Pan">
@@ -26,14 +26,14 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Machine Learning" />
   
-  <meta property="og:description" content="Notes        [TOC] 向量和矩阵标量（scalar): 一个标量表示一个单独的数 向量(vector): 一个向量表示一组有序排列的数。 矩阵（matrix): 矩阵是具有相同特征和纬度的对象的集合，表现为一张二维数据表。 张量（tensor): 一个数组中的元素分布在若干维坐标的规">
+  <meta property="og:description" content="向量和矩阵 向量的范数(norm) 逆矩阵(matrix inversion) 单位向量 正交矩阵（orthogonal matrix） 特征分解（eigendecomposition) 奇异值分解（singular value decomposition, SVD) 迹运算 主成分分析（princ">
   
   <meta property="og:url" content="http://example.com/2022/02/13/ML/" />
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Machine Learning">
   
-  <meta name="twitter:description" content="Notes        [TOC] 向量和矩阵标量（scalar): 一个标量表示一个单独的数 向量(vector): 一个向量表示一组有序排列的数。 矩阵（matrix): 矩阵是具有相同特征和纬度的对象的集合，表现为一张二维数据表。 张量（tensor): 一个数组中的元素分布在若干维坐标的规">
+  <meta name="twitter:description" content="向量和矩阵 向量的范数(norm) 逆矩阵(matrix inversion) 单位向量 正交矩阵（orthogonal matrix） 特征分解（eigendecomposition) 奇异值分解（singular value decomposition, SVD) 迹运算 主成分分析（princ">
   
   
   
@@ -165,7 +165,7 @@
   </div>
 
   <div class="six columns ml-1">
-    <h1 class="mt-2">
+    <h1 class="mt-2" style="font-size: 35px;width: 500px;">
       Hi! Welcome to my Blog 😎
     </h1>
   </div>
@@ -194,7 +194,7 @@
         
       </div>
     </div>
-    <hr style="margin-bottom: 2.6rem">
+    <hr style="margin-bottom: 1.6rem">
   </div>
 </div>
 
@@ -223,21 +223,139 @@ MathJax.Hub.Queue(function() {
 </script>
 
   
-  <h1 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a><u>Notes</u></h1><span id="more"></span>
+  <div class="toc">
 
+<!-- toc -->
 
+<ul>
+<li><a href="#xiang-liang-he-ju-zhen">向量和矩阵</a></li>
+<li><a href="#xiang-liang-de-fan-shu-norm">向量的范数(norm)</a></li>
+<li><a href="#ni-ju-zhen-matrix-inversion">逆矩阵(matrix inversion)</a></li>
+<li><a href="#dan-wei-xiang-liang">单位向量</a></li>
+<li><a href="#zheng-jiao-ju-zhen-orthogonal-matrix">正交矩阵（orthogonal matrix）</a></li>
+<li><a href="#te-zheng-fen-jie-eigendecomposition">特征分解（eigendecomposition)</a></li>
+<li><a href="#qi-yi-zhi-fen-jie-singular-value-decomposition-svd">奇异值分解（singular value decomposition, SVD)</a></li>
+<li><a href="#ji-yun-suan">迹运算</a></li>
+<li><a href="#zhu-cheng-fen-fen-xi-principal-components-analysis-pca">主成分分析（principal components analysis, PCA）</a></li>
+<li><a href="#gai-lu-lun">概率论</a><ul>
+<li><a href="#xin-ren-du-degree-of-belief">信任度(degree of belief):</a></li>
+<li><a href="#gui-yi-hua-normalized">归一化（normalized）</a></li>
+<li><a href="#chi-san-jun-yun-fen-bu-uniform-distribution">离散均匀分布（uniform distribution）:</a></li>
+<li><a href="#gai-lu-mi-du-han-shu-probability-density-function">概率密度函数（probability density function):</a></li>
+<li><a href="#lian-shi-fa-ze-chain-rule">链式法则（chain rule）:</a></li>
+<li><a href="#du-li-xing-independent">独立性（independent）:</a></li>
+<li><a href="#qi-wang-expectation">期望（expectation）:</a></li>
+<li><a href="#fang-chai-variance">方差（variance）:</a></li>
+<li><a href="#xie-fang-chai-covariance">协方差（covariance）:</a></li>
+<li><a href="#chang-yong-gai-lu-fen-bu">常用概率分布</a></li>
+</ul>
+</li>
+<li><a href="#shu-zhi-ji-suan">数值计算</a><ul>
+<li><a href="#jacobian-ju-zhen">Jacobian矩阵</a></li>
+</ul>
+</li>
+<li><a href="#hessian-ju-zhen">Hessian 矩阵</a><ul>
+<li><a href="#karush-kuhn-tucker-kkt">Karush–Kuhn–Tucker（KKT）</a></li>
+</ul>
+</li>
+<li><a href="#ju-chi-xuan-ze-gong-shi">距离选择公式</a><ul>
+<li><a href="#ou-ji-li-de-ju-chi">欧几里得距离</a></li>
+<li><a href="#man-ha-dun-ju-chi">曼哈顿距离</a></li>
+</ul>
+</li>
+<li><a href="#bei-xie-si-ding-li">贝叶斯定理</a></li>
+<li><a href="#po-su-bei-xie-si-naive-bayesian-algorithm">朴素贝叶斯(Naive Bayesian algorithm)</a><ul>
+<li><a href="#la-pu-la-si-ping-hua-chu-li-laplace-smoothing">拉普拉斯平滑处理(Laplace Smoothing)</a></li>
+</ul>
+</li>
+<li><a href="#sun-shi-han-shu-loss-function-huo-dai-jie-han-shu-cost-function">损失函数(loss function)或代价函数(cost function)</a><ul>
+<li><a href="#ping-fang-sun-shi-han-shu-quadratic-loss-function">平方损失函数(quadratic loss function)</a></li>
+<li><a href="#jing-yan-sun-shi-empirical-loss-r-emp">经验损失(empirical loss) $R_{emp}$</a></li>
+<li><a href="#regression-loss">Regression Loss</a></li>
+<li><a href="#classification-loss">Classification Loss</a></li>
+</ul>
+</li>
+<li><a href="#gramm-ju-zhen">Gramm矩阵</a></li>
+<li><a href="#mercer-s-theorem">Mercer’s Theorem</a></li>
+<li><a href="#kernel-trick">Kernel Trick</a></li>
+<li><a href="#jie-sen-bu-deng-shi-jensen-s-inequality">杰森不等式(Jensen’s inequality)</a></li>
+<li><a href="#tu-han-shu">凸函数</a></li>
+<li><a href="#weak-max-min-inequality">Weak Max-Min Inequality</a></li>
+<li><a href="#song-chi-hu-bu-complementary-slackness">松弛互补（Complementary slackness）</a></li>
+<li><a href="#liang-ping-xing-xian-ju-chi-gong-shi">两平行线距离公式</a></li>
+<li><a href="#pdf-probability-density-function">PDF(Probability density function)</a></li>
+<li><a href="#cdf-cumulative-distribution-function">CDF(Cumulative distribution function)</a></li>
+<li><a href="#pmf-probability-mass-function">PMF(probability mass function)</a></li>
+<li><a href="#bo-song-fen-bu-poisson-distribution">泊松分布(Poisson distribution)</a></li>
+<li><a href="#variance">Variance</a></li>
+<li><a href="#bo-nu-li-fen-bu-he-er-xiang-fen-bu">伯努利分布和二项分布</a></li>
+<li><a href="#z-fen-bu-he-t-fen-bu">Z分布和T分布</a></li>
+<li><a href="#meng-te-qia-luo-ji-fen">蒙特卡洛积分</a></li>
+<li><a href="#pan-bie-mo-xing-he-sheng-cheng-mo-xing">判别模型和生成模型</a></li>
+<li><a href="#ji-da-si-ran-gu-ji-mle">极大似然估计(MLE)</a></li>
+<li><a href="#zui-da-hou-yan-gai-lu-map">最大后验概率 (MAP)</a></li>
+<li><a href="#tai-le-zhan-kai">泰勒展开</a></li>
+<li><a href="#ti-du-xia-jiang-fa">梯度下降法</a></li>
+<li><a href="#niu-dun-fa">牛顿法</a></li>
+</ul>
+<ul>
+<li><a href="#ji-qi-xue-xi-ji-chu">机器学习基础</a><ul>
+<li><a href="#wu-jian-du-xue-xi-suan-fa-unsupervised-learning-algorithm">无监督学习算法（unsupervised learning algorithm）</a></li>
+<li><a href="#jian-du-xue-xi-suan-fa-supervised-learning-algorithm">监督学习算法（supervised learning algorithm)</a></li>
+<li><a href="#qiang-hua-xue-xi-rein-forcement-learning-suan-fa">强化学习（rein-forcement learning）算法</a></li>
+<li><a href="#she-ji-ju-zhen-design-matrix">设计矩阵（design matrix）</a></li>
+<li><a href="#xun-lian-wu-chai-training-error">训练误差（training error）</a></li>
+<li><a href="#ce-shi-wu-chai-test-error">测试误差（test error）</a></li>
+<li><a href="#ao-qia-mu-ti-dao-occam-s-razor">奥卡姆剃刀 Occam’s Razor</a></li>
+<li><a href="#vapnik-chervonenkis-wei-du">Vapnik-Chervonenkis 维度</a></li>
+<li><a href="#bei-xie-si-wu-chai-bayes-error">贝叶斯误差（Bayes error）</a></li>
+<li><a href="#mei-you-mian-fei-wu-can-ding-li-no-freelunch-theorem">没有免费午餐定理（no freelunch theorem）</a></li>
+<li><a href="#quan-chong-shuai-jian-weight-decay">权重衰减（weight decay）</a></li>
+<li><a href="#zheng-ze-hua-regularization">正则化（regularization）</a><ul>
+<li><a href="#lasso-regularization">Lasso Regularization</a></li>
+<li><a href="#ridge-regularization">Ridge Regularization</a></li>
+<li><a href="#wei-shi-me-lasso-bi-ridge-geng-xi-shu-ridge-bi-lasso-geng-ping-hua">为什么Lasso 比Ridge 更稀疏， Ridge比Lasso更平滑</a></li>
+</ul>
+</li>
+<li><a href="#jiao-cha-yan-zheng">交叉验证</a></li>
+<li><a href="#yu-ce-wu-chai-measures-prediction-error-mse">预测误差（measures prediction error,MSE）</a></li>
+<li><a href="#gan-zhi-ji-perceptron">感知机(Perceptron)</a></li>
+<li><a href="#jian-du-xue-xi">监督学习</a><ul>
+<li><a href="#luo-ji-hui-gui-logistic-regression">逻辑回归（logistic regression）</a></li>
+<li><a href="#zhi-chi-xiang-liang-ji-support-vector-machine-svm">支持向量机（support vector machine, SVM)</a></li>
+<li><a href="#jue-ce-shu">决策树</a></li>
+<li><a href="#knn">KNN</a></li>
+</ul>
+</li>
+<li><a href="#k-mean-suan-fa">K Mean 算法</a></li>
+<li><a href="#em-suan-fa">EM算法</a></li>
+<li><a href="#bootstrap-cai-yang-fa">bootstrap 采样法</a></li>
+<li><a href="#xian-xing-hui-gui">线性回归</a></li>
+<li><a href="#sui-ji-sen-lin">随机森林</a></li>
+<li><a href="#boosting-and-bagging">Boosting and bagging</a></li>
+<li><a href="#xgboost">XGBoost</a></li>
+<li><a href="#local-linear-embedding-lle">Local Linear Embedding (LLE)</a></li>
+<li><a href="#sne-and-t-sne">SNE and t-SNE</a><ul>
+<li><a href="#sne">SNE</a></li>
+<li><a href="#t-sne">t-SNE</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
 
+</div>
 
-
-
+<span id="more"></span>
 
 <p>[TOC]</p>
-<h2 id="向量和矩阵"><a href="#向量和矩阵" class="headerlink" title="向量和矩阵"></a>向量和矩阵</h2><p><strong>标量（scalar)</strong>: 一个标量表示一个单独的数</p>
+<h2><span id="xiang-liang-he-ju-zhen">向量和矩阵</span><a href="#xiang-liang-he-ju-zhen" class="header-anchor">#</a></h2><p><strong>标量（scalar)</strong>: 一个标量表示一个单独的数</p>
 <p><strong>向量(vector)</strong>: 一个向量表示一组有序排列的数。</p>
 <p><strong>矩阵（matrix)</strong>: 矩阵是具有相同特征和纬度的对象的集合，表现为一张二维数据表。</p>
 <p><strong>张量（tensor)</strong>: 一个数组中的元素分布在若干维坐标的规则网格中，我们将其称之为张量。</p>
 <p><strong>矩阵乘法后矩阵的大小</strong>: $$ a_{ik}*b_{kj}&#x3D;c_{ij}$$ </p>
-<h2 id="向量的范数-norm"><a href="#向量的范数-norm" class="headerlink" title="向量的范数(norm)"></a>向量的范数(norm)</h2><p>定义一个向量为：$\vec{a}&#x3D;[-5, 6, 8, -10]$。任意一组向量设为$\vec{x}&#x3D;(x_1,x_2,…,x_N)$。其不同范数求解如下：</p>
+<h2><span id="xiang-liang-de-fan-shu-norm">向量的范数(norm)</span><a href="#xiang-liang-de-fan-shu-norm" class="header-anchor">#</a></h2><p>定义一个向量为：$\vec{a}&#x3D;[-5, 6, 8, -10]$。任意一组向量设为$\vec{x}&#x3D;(x_1,x_2,…,x_N)$。其不同范数求解如下：</p>
 <ul>
 <li>向量的1范数：向量的各个元素的绝对值之和，上述向量$\vec{a}$的1范数结果就是：29。</li>
 </ul>
@@ -262,25 +380,25 @@ MathJax.Hub.Queue(function() {
 <li>两个向量的点积（dot product）可以用范数来表示:</li>
 </ul>
 <p>$$<br>x^Ty&#x3D;\lVert x\rVert_2\lVert y\rVert_2cos\theta<br>$$</p>
-<h2 id="逆矩阵-matrix-inversion"><a href="#逆矩阵-matrix-inversion" class="headerlink" title="逆矩阵(matrix inversion)"></a>逆矩阵(matrix inversion)</h2><p>$$<br>A^{-1}A&#x3D;I<br>$$</p>
+<h2><span id="ni-ju-zhen-matrix-inversion">逆矩阵(matrix inversion)</span><a href="#ni-ju-zhen-matrix-inversion" class="header-anchor">#</a></h2><p>$$<br>A^{-1}A&#x3D;I<br>$$</p>
 <p>or:<br>$$<br>AA^{-1}&#x3D;I<br>$$</p>
-<h2 id="单位向量"><a href="#单位向量" class="headerlink" title="单位向量"></a>单位向量</h2><p>单位向量（unit vector）是具有单位范数（unit norm）的向量：<br>$$<br>\lVert x \rVert_2&#x3D;1<br>$$</p>
-<h2 id="正交矩阵（orthogonal-matrix）"><a href="#正交矩阵（orthogonal-matrix）" class="headerlink" title="正交矩阵（orthogonal matrix）"></a>正交矩阵（orthogonal matrix）</h2><p>是指行向量和列向量是分别标准正交的方阵：<br>$$<br>A^TA&#x3D;AA^T&#x3D;1<br>$$<br>即:<br>$$<br>A^{-1}&#x3D;A^T<br>$$</p>
-<h2 id="特征分解（eigendecomposition"><a href="#特征分解（eigendecomposition" class="headerlink" title="特征分解（eigendecomposition)"></a>特征分解（eigendecomposition)</h2><p>方阵A 的特征向量（eigenvector）是指与A 相乘后相当于对该向量进行缩放<br>的非零向量v：<br>$$<br>Av&#x3D;\lambda v<br>$$</p>
+<h2><span id="dan-wei-xiang-liang">单位向量</span><a href="#dan-wei-xiang-liang" class="header-anchor">#</a></h2><p>单位向量（unit vector）是具有单位范数（unit norm）的向量：<br>$$<br>\lVert x \rVert_2&#x3D;1<br>$$</p>
+<h2><span id="zheng-jiao-ju-zhen-orthogonal-matrix">正交矩阵（orthogonal matrix）</span><a href="#zheng-jiao-ju-zhen-orthogonal-matrix" class="header-anchor">#</a></h2><p>是指行向量和列向量是分别标准正交的方阵：<br>$$<br>A^TA&#x3D;AA^T&#x3D;1<br>$$<br>即:<br>$$<br>A^{-1}&#x3D;A^T<br>$$</p>
+<h2><span id="te-zheng-fen-jie-eigendecomposition">特征分解（eigendecomposition)</span><a href="#te-zheng-fen-jie-eigendecomposition" class="header-anchor">#</a></h2><p>方阵A 的特征向量（eigenvector）是指与A 相乘后相当于对该向量进行缩放<br>的非零向量v：<br>$$<br>Av&#x3D;\lambda v<br>$$</p>
 <blockquote>
 <p>v为右特征向量，$\lambda$为特征值</p>
 </blockquote>
 <p>所有特征值都是正数的矩阵被称为正定（positive definite)；所有特征值都是非负数的矩阵被称为半正定（positive semidefinite）。同样地，所有特征值都是负数的矩阵被称为负定（negative definite)；所有特征值都是非正数的矩阵被称为半负定（negative semidefinite）</p>
 <p>半正定矩阵:<br>$$<br>\forall x, x^TAx \ge 0<br>$$<br>正定矩阵:<br>$$<br>x^TAx&#x3D;0, \Rightarrow x&#x3D;0<br>$$</p>
-<h2 id="奇异值分解（singular-value-decomposition-SVD"><a href="#奇异值分解（singular-value-decomposition-SVD" class="headerlink" title="奇异值分解（singular value decomposition, SVD)"></a>奇异值分解（singular value decomposition, SVD)</h2><p>将矩阵A 分解成三个矩阵的乘积:<br>$$<br>A&#x3D;UDV^T<br>$$</p>
+<h2><span id="qi-yi-zhi-fen-jie-singular-value-decomposition-svd">奇异值分解（singular value decomposition, SVD)</span><a href="#qi-yi-zhi-fen-jie-singular-value-decomposition-svd" class="header-anchor">#</a></h2><p>将矩阵A 分解成三个矩阵的乘积:<br>$$<br>A&#x3D;UDV^T<br>$$</p>
 <blockquote>
 <p>A 是一个mxn 的矩阵，那么U 是一个mxm 的矩阵，D 是一个mxn 的矩阵，V 是一个nxn 矩阵</p>
 <p>矩阵U 和V 都定义为正交矩阵，而矩阵D 定义为对角矩阵。注意，矩阵D 不一定是方阵。</p>
 <p>A 的左奇异向量（left singular vector）是$AA^⊤$ 的特征向量。A 的右奇异向量（right singularvector）是$A^⊤A$ 的特征向量。A 的非零奇异值是$A^⊤A$ 特征值的平方根，同时也是A$A^⊤$ 特征值的平方根。</p>
 </blockquote>
-<h2 id="迹运算"><a href="#迹运算" class="headerlink" title="迹运算"></a>迹运算</h2><p>迹运算返回的是矩阵对角元素的和：<br>$$<br>Tr(A) &#x3D; \sum_iA_{i,i}<br>$$</p>
+<h2><span id="ji-yun-suan">迹运算</span><a href="#ji-yun-suan" class="header-anchor">#</a></h2><p>迹运算返回的是矩阵对角元素的和：<br>$$<br>Tr(A) &#x3D; \sum_iA_{i,i}<br>$$</p>
 <p>$$<br>Tr(ABC)&#x3D;Tr(CAB)&#x3D;Tr(BCA)<br>$$</p>
-<h2 id="主成分分析（principal-components-analysis-PCA）"><a href="#主成分分析（principal-components-analysis-PCA）" class="headerlink" title="主成分分析（principal components analysis, PCA）"></a>主成分分析（principal components analysis, PCA）</h2><p><strong>PCA主要要求:</strong></p>
+<h2><span id="zhu-cheng-fen-fen-xi-principal-components-analysis-pca">主成分分析（principal components analysis, PCA）</span><a href="#zhu-cheng-fen-fen-xi-principal-components-analysis-pca" class="header-anchor">#</a></h2><p><strong>PCA主要要求:</strong></p>
 <ol>
 <li><strong>最大方差</strong></li>
 <li><strong>最小错误</strong></li>
@@ -304,23 +422,23 @@ MathJax.Hub.Queue(function() {
 <blockquote>
 <p>PCA对于outliers并不是robust</p>
 </blockquote>
-<h2 id="概率论"><a href="#概率论" class="headerlink" title="概率论"></a>概率论</h2><h3 id="信任度-degree-of-belief"><a href="#信任度-degree-of-belief" class="headerlink" title="信任度(degree of belief):"></a>信任度(degree of belief):</h3><p>在医生诊断病人的例子中，其中1 表示非常肯定病人患有流感，而0 表示非常肯定病人没有流感。</p>
-<h3 id="归一化（normalized）"><a href="#归一化（normalized）" class="headerlink" title="归一化（normalized）"></a>归一化（normalized）</h3><p>$$<br>\sum P(x)&#x3D;1<br>$$</p>
-<h3 id="离散均匀分布（uniform-distribution）"><a href="#离散均匀分布（uniform-distribution）" class="headerlink" title="离散均匀分布（uniform distribution）:"></a>离散均匀分布（uniform distribution）:</h3><p>考虑一个离散型随机变量x 有k 个不同的状态:<br>$$<br>P(x&#x3D;x_i)&#x3D;\frac{1}{k}<br>$$</p>
-<h3 id="概率密度函数（probability-density-function"><a href="#概率密度函数（probability-density-function" class="headerlink" title="概率密度函数（probability density function):"></a>概率密度函数（probability density function):</h3><p>研究的对象是连续型随机变量, 且满足以下条件:</p>
+<h2><span id="gai-lu-lun">概率论</span><a href="#gai-lu-lun" class="header-anchor">#</a></h2><h3><span id="xin-ren-du-degree-of-belief">信任度(degree of belief):</span><a href="#xin-ren-du-degree-of-belief" class="header-anchor">#</a></h3><p>在医生诊断病人的例子中，其中1 表示非常肯定病人患有流感，而0 表示非常肯定病人没有流感。</p>
+<h3><span id="gui-yi-hua-normalized">归一化（normalized）</span><a href="#gui-yi-hua-normalized" class="header-anchor">#</a></h3><p>$$<br>\sum P(x)&#x3D;1<br>$$</p>
+<h3><span id="chi-san-jun-yun-fen-bu-uniform-distribution">离散均匀分布（uniform distribution）:</span><a href="#chi-san-jun-yun-fen-bu-uniform-distribution" class="header-anchor">#</a></h3><p>考虑一个离散型随机变量x 有k 个不同的状态:<br>$$<br>P(x&#x3D;x_i)&#x3D;\frac{1}{k}<br>$$</p>
+<h3><span id="gai-lu-mi-du-han-shu-probability-density-function">概率密度函数（probability density function):</span><a href="#gai-lu-mi-du-han-shu-probability-density-function" class="header-anchor">#</a></h3><p>研究的对象是连续型随机变量, 且满足以下条件:</p>
 <ul>
 <li>p 的定义域必须是x 所有可能状态的集合。</li>
 <li>$\forall x,p(x)\ge0$</li>
 <li>$\int p(x)dx&#x3D;1$</li>
 </ul>
-<h4 id="连续均匀分布"><a href="#连续均匀分布" class="headerlink" title="连续均匀分布:"></a>连续均匀分布:</h4><p>x 在[a; b] 上是均匀分布的:<br>$$<br>u(x;a,b) &#x3D; \frac{1}{b-a}<br>$$</p>
-<h3 id="链式法则（chain-rule）"><a href="#链式法则（chain-rule）" class="headerlink" title="链式法则（chain rule）:"></a>链式法则（chain rule）:</h3><p>$$<br>P(a, b, c) &#x3D; P(a | b, c)P(b | c)P(c)<br>$$</p>
-<h3 id="独立性（independent）"><a href="#独立性（independent）" class="headerlink" title="独立性（independent）:"></a>独立性（independent）:</h3><p>$$<br>\forall x,y\ \ \ p(x,y)&#x3D;p(x)p(y)<br>$$</p>
-<h3 id="期望（expectation）"><a href="#期望（expectation）" class="headerlink" title="期望（expectation）:"></a>期望（expectation）:</h3><p><strong>离散期望</strong>:<br>$$<br>\sum P(x)f(x)<br>$$<br><strong>连续期望:</strong><br>$$<br>\int p(x)f(X)dx<br>$$</p>
-<h3 id="方差（variance）"><a href="#方差（variance）" class="headerlink" title="方差（variance）:"></a>方差（variance）:</h3><p>$$<br>Var(x)&#x3D;E[x^2-2xE[x]+E[x]^2]&#x3D;E[x^2]-2E[x]E[x]-E[x]^2&#x3D;E[x^2]-E[x]^2<br>$$</p>
-<h3 id="协方差（covariance）"><a href="#协方差（covariance）" class="headerlink" title="协方差（covariance）:"></a>协方差（covariance）:</h3><p>$$<br>Var(x)&#x3D;cov(x,x)&#x3D;E[(X-E[X])(Y-E[Y])]&#x3D;E[XY]-E[X]E[Y]<br>$$</p>
+<h4><span id="lian-xu-jun-yun-fen-bu">连续均匀分布:</span><a href="#lian-xu-jun-yun-fen-bu" class="header-anchor">#</a></h4><p>x 在[a; b] 上是均匀分布的:<br>$$<br>u(x;a,b) &#x3D; \frac{1}{b-a}<br>$$</p>
+<h3><span id="lian-shi-fa-ze-chain-rule">链式法则（chain rule）:</span><a href="#lian-shi-fa-ze-chain-rule" class="header-anchor">#</a></h3><p>$$<br>P(a, b, c) &#x3D; P(a | b, c)P(b | c)P(c)<br>$$</p>
+<h3><span id="du-li-xing-independent">独立性（independent）:</span><a href="#du-li-xing-independent" class="header-anchor">#</a></h3><p>$$<br>\forall x,y\ \ \ p(x,y)&#x3D;p(x)p(y)<br>$$</p>
+<h3><span id="qi-wang-expectation">期望（expectation）:</span><a href="#qi-wang-expectation" class="header-anchor">#</a></h3><p><strong>离散期望</strong>:<br>$$<br>\sum P(x)f(x)<br>$$<br><strong>连续期望:</strong><br>$$<br>\int p(x)f(X)dx<br>$$</p>
+<h3><span id="fang-chai-variance">方差（variance）:</span><a href="#fang-chai-variance" class="header-anchor">#</a></h3><p>$$<br>Var(x)&#x3D;E[x^2-2xE[x]+E[x]^2]&#x3D;E[x^2]-2E[x]E[x]-E[x]^2&#x3D;E[x^2]-E[x]^2<br>$$</p>
+<h3><span id="xie-fang-chai-covariance">协方差（covariance）:</span><a href="#xie-fang-chai-covariance" class="header-anchor">#</a></h3><p>$$<br>Var(x)&#x3D;cov(x,x)&#x3D;E[(X-E[X])(Y-E[Y])]&#x3D;E[XY]-E[X]E[Y]<br>$$</p>
 <p>协方差的绝对值如果很大则意味着变量值变化很大并且它们同时距离各自的均值很远。如果协方差是正的，那么两个变量都倾向于同时取得相对较大的值。如果协方差是负的，那么其中一个变量倾向于取得相对较大的值的同时，另一个变量倾向于取得相对较小的值，反之亦然。其他的衡量指标如相关系数（correlation）将每个变量的贡献归一化，为了只衡量变量的相关性而不受各个变量尺度大小的影响。</p>
-<h3 id="常用概率分布"><a href="#常用概率分布" class="headerlink" title="常用概率分布"></a>常用概率分布</h3><p><strong>Bernoulli 分布:</strong></p>
+<h3><span id="chang-yong-gai-lu-fen-bu">常用概率分布</span><a href="#chang-yong-gai-lu-fen-bu" class="header-anchor">#</a></h3><p><strong>Bernoulli 分布:</strong></p>
 <p>Bernoulli 分布（Bernoulli distribution）是单个二值随机变量的分布:<br>$$<br>P(x&#x3D;1)&#x3D;\phi\<br>P(x&#x3D;0)&#x3D;1-\phi\<br>P(X&#x3D;x)&#x3D;\phi^x(1-\phi)^{1-x}<br>$$</p>
 <p><strong>高斯分布(Gaussian distribution)</strong></p>
 <p>实数上最常用的分布就是正态分布（normal distribution），也称为高斯分布（Gaussian distribution）：<br>$$<br>N(x;\mu,\sigma^2)&#x3D;\sqrt{\frac{1}{2\pi\sigma^2}}exp(-\frac{1}{2\sigma^2}(x-\mu)^2)<br>$$</p>
@@ -371,53 +489,53 @@ MathJax.Hub.Queue(function() {
 <p>**AUC ROC **</p>
 <p>AUC ROC &#x3D; area under the ROC curve</p>
 <p>当正负样本的分布发生变化时，ROC曲线的形状能够基本保持不变，而P-R曲线的形状一般会发生较剧烈的变化。</p>
-<h2 id="数值计算"><a href="#数值计算" class="headerlink" title="数值计算"></a>数值计算</h2><h3 id="Jacobian矩阵"><a href="#Jacobian矩阵" class="headerlink" title="Jacobian矩阵"></a>Jacobian矩阵</h3><p>$$<br>J_{i,j} &#x3D; \frac{\delta}{\delta x_j}f(x)_i<br>$$</p>
-<h2 id="Hessian-矩阵"><a href="#Hessian-矩阵" class="headerlink" title="Hessian 矩阵"></a>Hessian 矩阵</h2><p>$$<br>H(f)(x)_{i,j} &#x3D; \frac{\delta ^2}{\delta x_i \delta x_j}f(x)<br>$$</p>
+<h2><span id="shu-zhi-ji-suan">数值计算</span><a href="#shu-zhi-ji-suan" class="header-anchor">#</a></h2><h3><span id="jacobian-ju-zhen">Jacobian矩阵</span><a href="#jacobian-ju-zhen" class="header-anchor">#</a></h3><p>$$<br>J_{i,j} &#x3D; \frac{\delta}{\delta x_j}f(x)_i<br>$$</p>
+<h2><span id="hessian-ju-zhen">Hessian 矩阵</span><a href="#hessian-ju-zhen" class="header-anchor">#</a></h2><p>$$<br>H(f)(x)_{i,j} &#x3D; \frac{\delta ^2}{\delta x_i \delta x_j}f(x)<br>$$</p>
 <p>Hessian 矩阵可以看为 Jacobian矩阵的梯度。</p>
 <p>当Hessian 是正定的（所有特征值都是正的），则该临界点是局部极小点。因为方向二阶导数在任意方向都是正的，参考单变量的二阶导数测试就能得出此结论。同样的，当Hessian 是负定的（所有特征值都是负的），这个点就是局部极大点。</p>
 <p>黑塞矩阵是是对称矩阵，可分解为<br>$$<br>H&#x3D;E\Lambda E^T<br>$$<br>$\Lambda$ 是特征向量，E是单位向量<br>$$<br>Av&#x3D;\lambda v<br>$$<br>$v$为特征向量，$\lambda$ 为特征值，如果特诊值为正，则表明经过线性变化后，方向不变，为负，则方向相反，为0则缩回原点。$\lambda$ 的数值大小表示缩放大小。实对称矩阵，不同特征值对应的特征向量必定正交。</p>
-<h3 id="Karush–Kuhn–Tucker（KKT）"><a href="#Karush–Kuhn–Tucker（KKT）" class="headerlink" title="Karush–Kuhn–Tucker（KKT）"></a>Karush–Kuhn–Tucker（KKT）</h3><p>加入 g(i) 称为等式约束（equality constraint）。涉及h(j) 的不等式称为不等式约束（inequality constraint）。我们为每个约束引入新的变量$\lambda_i$ 和$\alpha_j$，这些新变量被称为KKT 乘子。<br>$$<br>L(x,\lambda,\alpha) &#x3D; f(x) + \sum \lambda g(x)+\sum \alpha h(x)<br>$$<br>满足条件:</p>
+<h3><span id="karush-kuhn-tucker-kkt">Karush–Kuhn–Tucker（KKT）</span><a href="#karush-kuhn-tucker-kkt" class="header-anchor">#</a></h3><p>加入 g(i) 称为等式约束（equality constraint）。涉及h(j) 的不等式称为不等式约束（inequality constraint）。我们为每个约束引入新的变量$\lambda_i$ 和$\alpha_j$，这些新变量被称为KKT 乘子。<br>$$<br>L(x,\lambda,\alpha) &#x3D; f(x) + \sum \lambda g(x)+\sum \alpha h(x)<br>$$<br>满足条件:</p>
 <ul>
 <li>$\frac{\delta L}{\delta x}&#x3D;0$</li>
 <li>$\lambda \ge 0$</li>
 <li>$\lambda h(x)&#x3D;0$</li>
 </ul>
-<h2 id="距离选择公式"><a href="#距离选择公式" class="headerlink" title="距离选择公式"></a>距离选择公式</h2><h3 id="欧几里得距离"><a href="#欧几里得距离" class="headerlink" title="欧几里得距离"></a>欧几里得距离</h3><p>$$<br>d &#x3D; \sqrt{(x_1-x_2)^2+(y_1-y_2)^2}<br>$$</p>
-<h3 id="曼哈顿距离"><a href="#曼哈顿距离" class="headerlink" title="曼哈顿距离"></a>曼哈顿距离</h3><p>$$<br>d &#x3D; |x_1-x_2|+|y_1-y_2|<br>$$</p>
-<h2 id="贝叶斯定理"><a href="#贝叶斯定理" class="headerlink" title="贝叶斯定理"></a>贝叶斯定理</h2><p>$$<br>P(\theta | D) &#x3D; \frac{P(\theta)P(D|\theta)}{P(D)}<br>$$</p>
+<h2><span id="ju-chi-xuan-ze-gong-shi">距离选择公式</span><a href="#ju-chi-xuan-ze-gong-shi" class="header-anchor">#</a></h2><h3><span id="ou-ji-li-de-ju-chi">欧几里得距离</span><a href="#ou-ji-li-de-ju-chi" class="header-anchor">#</a></h3><p>$$<br>d &#x3D; \sqrt{(x_1-x_2)^2+(y_1-y_2)^2}<br>$$</p>
+<h3><span id="man-ha-dun-ju-chi">曼哈顿距离</span><a href="#man-ha-dun-ju-chi" class="header-anchor">#</a></h3><p>$$<br>d &#x3D; |x_1-x_2|+|y_1-y_2|<br>$$</p>
+<h2><span id="bei-xie-si-ding-li">贝叶斯定理</span><a href="#bei-xie-si-ding-li" class="header-anchor">#</a></h2><p>$$<br>P(\theta | D) &#x3D; \frac{P(\theta)P(D|\theta)}{P(D)}<br>$$</p>
 <blockquote>
 <p>$\theta$ 表示模型参数，D表示数据</p>
 <p>P($\theta$) 是先验概率，P(D|$\theta$) 为似然函数，P($\theta$|D)是后验概率 </p>
 </blockquote>
-<h2 id="朴素贝叶斯-Naive-Bayesian-algorithm"><a href="#朴素贝叶斯-Naive-Bayesian-algorithm" class="headerlink" title="朴素贝叶斯(Naive Bayesian algorithm)"></a>朴素贝叶斯(Naive Bayesian algorithm)</h2><p><img src="https://pic2.zhimg.com/80/v2-a2a73f43adcbb0bf4b9bae19b9495f81_1440w.png" alt="avatar"></p>
+<h2><span id="po-su-bei-xie-si-naive-bayesian-algorithm">朴素贝叶斯(Naive Bayesian algorithm)</span><a href="#po-su-bei-xie-si-naive-bayesian-algorithm" class="header-anchor">#</a></h2><p><img src="https://pic2.zhimg.com/80/v2-a2a73f43adcbb0bf4b9bae19b9495f81_1440w.png" alt="avatar"></p>
 <p><strong>p(不帅、性格不好、身高矮、不上进|嫁) &#x3D; p(不帅|嫁)*p(性格不好|嫁)*p(身高矮|嫁)*p(不上进|嫁)</strong></p>
-<h3 id="拉普拉斯平滑处理-Laplace-Smoothing"><a href="#拉普拉斯平滑处理-Laplace-Smoothing" class="headerlink" title="拉普拉斯平滑处理(Laplace Smoothing)"></a>拉普拉斯平滑处理(Laplace Smoothing)</h3><p>主要用于解决某些特征未出现在数据集中，从而导致P(特征|类别)为0而导致计算出现问题。</p>
+<h3><span id="la-pu-la-si-ping-hua-chu-li-laplace-smoothing">拉普拉斯平滑处理(Laplace Smoothing)</span><a href="#la-pu-la-si-ping-hua-chu-li-laplace-smoothing" class="header-anchor">#</a></h3><p>主要用于解决某些特征未出现在数据集中，从而导致P(特征|类别)为0而导致计算出现问题。</p>
 <p>性格特征的个数为爆好，好，不好，三种情况，那么<img src="https://www.zhihu.com/equation?tex=S_%7Bj%7D+" alt="[公式]">为3，则最终概率为1&#x2F;9 （<strong>嫁的个数为6+特征个数为3</strong>)<br>$$<br>\frac{1}{此特征数量+此标签的数量}<br>$$</p>
-<h2 id="损失函数-loss-function-或代价函数-cost-function"><a href="#损失函数-loss-function-或代价函数-cost-function" class="headerlink" title="损失函数(loss function)或代价函数(cost function)"></a>损失函数(loss function)或代价函数(cost function)</h2><p>用于度量预测错误的程度。</p>
-<h3 id="平方损失函数-quadratic-loss-function"><a href="#平方损失函数-quadratic-loss-function" class="headerlink" title="平方损失函数(quadratic loss function)"></a>平方损失函数(quadratic loss function)</h3><p>$$<br>L(Y,f(x)) &#x3D; (Y-f(x))^2<br>$$</p>
-<h3 id="经验损失-empirical-loss-R-emp"><a href="#经验损失-empirical-loss-R-emp" class="headerlink" title="经验损失(empirical loss) $R_{emp}$"></a>经验损失(empirical loss) $R_{emp}$</h3><p>$$<br>R_{emp}(f)&#x3D;\frac{1}{N}\sum_i L(y_i,f(x_i))<br>$$</p>
+<h2><span id="sun-shi-han-shu-loss-function-huo-dai-jie-han-shu-cost-function">损失函数(loss function)或代价函数(cost function)</span><a href="#sun-shi-han-shu-loss-function-huo-dai-jie-han-shu-cost-function" class="header-anchor">#</a></h2><p>用于度量预测错误的程度。</p>
+<h3><span id="ping-fang-sun-shi-han-shu-quadratic-loss-function">平方损失函数(quadratic loss function)</span><a href="#ping-fang-sun-shi-han-shu-quadratic-loss-function" class="header-anchor">#</a></h3><p>$$<br>L(Y,f(x)) &#x3D; (Y-f(x))^2<br>$$</p>
+<h3><span id="jing-yan-sun-shi-empirical-loss-r-emp">经验损失(empirical loss) $R_{emp}$</span><a href="#jing-yan-sun-shi-empirical-loss-r-emp" class="header-anchor">#</a></h3><p>$$<br>R_{emp}(f)&#x3D;\frac{1}{N}\sum_i L(y_i,f(x_i))<br>$$</p>
 <p>当样本容量很小时候，经验风险会产生过拟合。所以需要结构风险最小化(structural risk minimization,SRM),萎了防止过拟合:<br>$$<br>R_{srm}(f)&#x3D;\frac{1}{N}\sum_i L(y_i.f(x_i))+\lambda J(f)<br>$$</p>
 <blockquote>
 <p>J(f)为模型复杂度，$\lambda \ge 0$</p>
 </blockquote>
 <p>结构风险小，需要经验风险与复杂度同时小<br>$$<br>min_f\frac{1}{N}\sum_i L(y_i.f(x_i))+\lambda J(f)<br>$$</p>
-<h3 id="Regression-Loss"><a href="#Regression-Loss" class="headerlink" title="Regression Loss"></a>Regression Loss</h3><h4 id="l-1-Loss-x2F-Laplace-Loss-x2F-Absolute-Loss"><a href="#l-1-Loss-x2F-Laplace-Loss-x2F-Absolute-Loss" class="headerlink" title="$l_1$ Loss &#x2F; Laplace Loss &#x2F; Absolute Loss"></a>$l_1$ Loss &#x2F; Laplace Loss &#x2F; Absolute Loss</h4><p>$l_1$ &#x3D; $\lvert r \rvert$</p>
+<h3><span id="regression-loss">Regression Loss</span><a href="#regression-loss" class="header-anchor">#</a></h3><h4><span id="l-1-loss-x2f-laplace-loss-x2f-absolute-loss">$l_1$ Loss &#x2F; Laplace Loss &#x2F; Absolute Loss</span><a href="#l-1-loss-x2f-laplace-loss-x2f-absolute-loss" class="header-anchor">#</a></h4><p>$l_1$ &#x3D; $\lvert r \rvert$</p>
 <blockquote>
 <p>缺点：不可微分</p>
 </blockquote>
-<h4 id="l-2-Loss-x2F-Square-Loss"><a href="#l-2-Loss-x2F-Square-Loss" class="headerlink" title="$l_2$ Loss &#x2F; Square Loss"></a>$l_2$ Loss &#x2F; Square Loss</h4><p>$l_2$ &#x3D; $r^2$</p>
+<h4><span id="l-2-loss-x2f-square-loss">$l_2$ Loss &#x2F; Square Loss</span><a href="#l-2-loss-x2f-square-loss" class="header-anchor">#</a></h4><p>$l_2$ &#x3D; $r^2$</p>
 <blockquote>
 <p>缺点：$l_2$ 受outlier 的影响比$l_1$影响大，所以不robust</p>
 </blockquote>
-<h4 id="Huber-Loss"><a href="#Huber-Loss" class="headerlink" title="Huber Loss"></a>Huber Loss</h4><blockquote>
+<h4><span id="huber-loss">Huber Loss</span><a href="#huber-loss" class="header-anchor">#</a></h4><blockquote>
 <p>robust 而且可微分 </p>
 </blockquote>
 <p><img src="https://upload-images.jianshu.io/upload_images/27695029-4f327793a9d758b6.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Loss 对比.JPG"></p>
-<h3 id="Classification-Loss"><a href="#Classification-Loss" class="headerlink" title="Classification Loss"></a>Classification Loss</h3><h4 id="Margin"><a href="#Margin" class="headerlink" title="Margin"></a>Margin</h4><p>$$1\ if\ y &#x3D; \hat{y}$$<br>$$-1\ if\ y\neq\hat{y}$$</p>
+<h3><span id="classification-loss">Classification Loss</span><a href="#classification-loss" class="header-anchor">#</a></h3><h4><span id="margin">Margin</span><a href="#margin" class="header-anchor">#</a></h4><p>$$1\ if\ y &#x3D; \hat{y}$$<br>$$-1\ if\ y\neq\hat{y}$$</p>
 <blockquote>
 <p>不可微，非凸</p>
 </blockquote>
-<h4 id="Zero-one"><a href="#Zero-one" class="headerlink" title="Zero-one"></a>Zero-one</h4><p>$l_{0-1}&#x3D;1\ if\ m\leq0$ </p>
+<h4><span id="zero-one">Zero-one</span><a href="#zero-one" class="header-anchor">#</a></h4><p>$l_{0-1}&#x3D;1\ if\ m\leq0$ </p>
 <blockquote>
 <p>m&gt;0 分类正确<br>##SVM&#x2F;Hinge<br>$l_{Hinge}&#x3D;max(1-m,0)$<br>##Logistic&#x2F;Log loss<br>$l_{logistic} &#x3D; log(1+e^{-m})$<br>可微</p>
 </blockquote>
@@ -425,37 +543,37 @@ MathJax.Hub.Queue(function() {
 <p>对比</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/27695029-6c25b23439b92b7a.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="z_h_l.JPG"></p>
 </blockquote>
-<h2 id="Gramm矩阵"><a href="#Gramm矩阵" class="headerlink" title="Gramm矩阵"></a>Gramm矩阵</h2><p>如果有x1,x2,x3,则:<br>$$<br>\left[<br> \begin{matrix}<br>   x_1\cdot x_1 &amp; x_2\cdot x_1 &amp; x_3\cdot x_1 \<br>   x_1\cdot x_2 &amp; x_2\cdot x_2 &amp; x_3\cdot x_2 \<br>   x_1\cdot x_3 &amp; x_2\cdot x_3 &amp; x_3\cdot x_3<br>  \end{matrix}<br>  \right] \tag{3}<br>$$</p>
+<h2><span id="gramm-ju-zhen">Gramm矩阵</span><a href="#gramm-ju-zhen" class="header-anchor">#</a></h2><p>如果有x1,x2,x3,则:<br>$$<br>\left[<br> \begin{matrix}<br>   x_1\cdot x_1 &amp; x_2\cdot x_1 &amp; x_3\cdot x_1 \<br>   x_1\cdot x_2 &amp; x_2\cdot x_2 &amp; x_3\cdot x_2 \<br>   x_1\cdot x_3 &amp; x_2\cdot x_3 &amp; x_3\cdot x_3<br>  \end{matrix}<br>  \right] \tag{3}<br>$$</p>
 <p>主要用于Kernel计算</p>
-<h2 id="Mercer’s-Theorem"><a href="#Mercer’s-Theorem" class="headerlink" title="Mercer’s Theorem"></a>Mercer’s Theorem</h2><p>主要用于判别，是否为Kernel function</p>
+<h2><span id="mercer-s-theorem">Mercer’s Theorem</span><a href="#mercer-s-theorem" class="header-anchor">#</a></h2><p>主要用于判别，是否为Kernel function</p>
 <p>半正定矩阵(Positive Semidefinite, psd)：<br>$$<br>X^TMX \geq 0<br>$$<br>with M &#x3D; $R^TR$, and Eigenvalue of M $\geq$ 0</p>
-<h2 id="Kernel-Trick"><a href="#Kernel-Trick" class="headerlink" title="Kernel Trick"></a>Kernel Trick</h2><p>用于线性不可分的情况下，提升维度<br>$$<br>&lt;\Phi(x),\Phi(x^{‘})&gt; &#x3D; &lt;x,x^{‘}&gt;^2<br>$$</p>
+<h2><span id="kernel-trick">Kernel Trick</span><a href="#kernel-trick" class="header-anchor">#</a></h2><p>用于线性不可分的情况下，提升维度<br>$$<br>&lt;\Phi(x),\Phi(x^{‘})&gt; &#x3D; &lt;x,x^{‘}&gt;^2<br>$$</p>
 <blockquote>
 <p>即核函数的内积等于原来的内积的平方</p>
 </blockquote>
 <p>线性核函数：<br>$$<br>\Phi(x) &#x3D; (x^2,\sqrt2xy,y^2)<br>\<br>x&#x3D;(x_1,y_1),x^{‘} &#x3D; (x_2,y_2)<br>\<br>&lt;x,x^{‘}&gt;^2&#x3D;(x_1x_2+y_1y_2)^2&#x3D;x_1^2x_2^2+2x_1x_2y_1y_2+y_1y_2^2&#x3D;&lt;\Phi(x),\Phi(x^{‘})&gt;<br>$$</p>
-<h2 id="杰森不等式-Jensen’s-inequality"><a href="#杰森不等式-Jensen’s-inequality" class="headerlink" title="杰森不等式(Jensen’s inequality)"></a>杰森不等式(Jensen’s inequality)</h2><p>杰森不等式其实就是凸函数的定义<br>$$<br>tf(x_1)+(1-t)f(x_2)\geq f(tx_1+(1-t)x_2)<br>$$</p>
+<h2><span id="jie-sen-bu-deng-shi-jensen-s-inequality">杰森不等式(Jensen’s inequality)</span><a href="#jie-sen-bu-deng-shi-jensen-s-inequality" class="header-anchor">#</a></h2><p>杰森不等式其实就是凸函数的定义<br>$$<br>tf(x_1)+(1-t)f(x_2)\geq f(tx_1+(1-t)x_2)<br>$$</p>
 <p>$$<br>E(f(x)) \geq f(E(x))<br>$$</p>
-<h2 id="凸函数"><a href="#凸函数" class="headerlink" title="凸函数"></a>凸函数</h2><p>凸函数的充要条件是Hessian矩阵为半正定<br>$$<br>f^{‘’}(x) \geq 0<br>$$</p>
-<h2 id="Weak-Max-Min-Inequality"><a href="#Weak-Max-Min-Inequality" class="headerlink" title="Weak Max-Min Inequality"></a>Weak Max-Min Inequality</h2><p>$$<br>\inf f(w,z_0) \leq f(w_0,z_0) \leq supf(w_0,z)<br>$$</p>
+<h2><span id="tu-han-shu">凸函数</span><a href="#tu-han-shu" class="header-anchor">#</a></h2><p>凸函数的充要条件是Hessian矩阵为半正定<br>$$<br>f^{‘’}(x) \geq 0<br>$$</p>
+<h2><span id="weak-max-min-inequality">Weak Max-Min Inequality</span><a href="#weak-max-min-inequality" class="header-anchor">#</a></h2><p>$$<br>\inf f(w,z_0) \leq f(w_0,z_0) \leq supf(w_0,z)<br>$$</p>
 <p>$$<br>d^*&#x3D;sup\ inf\ f(w,z) \leq inf\ sup\ f(w,z)&#x3D;p^*<br>$$</p>
-<h2 id="松弛互补（Complementary-slackness）"><a href="#松弛互补（Complementary-slackness）" class="headerlink" title="松弛互补（Complementary slackness）"></a>松弛互补（Complementary slackness）</h2><p>$$<br>p^*&#x3D;d^*&#x3D;f_0(x^*)&#x3D;g(\lambda^*)&#x3D;L(x^*,\lambda^*) \Rightarrow \lambda_i^<em>f_i(x^</em>)&#x3D;0<br>$$</p>
-<h2 id="两平行线距离公式"><a href="#两平行线距离公式" class="headerlink" title="两平行线距离公式"></a>两平行线距离公式</h2><p>$$<br>Ax+By&#x3D;C_1\ and\ Ax+By&#x3D;C_2<br>$$</p>
+<h2><span id="song-chi-hu-bu-complementary-slackness">松弛互补（Complementary slackness）</span><a href="#song-chi-hu-bu-complementary-slackness" class="header-anchor">#</a></h2><p>$$<br>p^*&#x3D;d^*&#x3D;f_0(x^*)&#x3D;g(\lambda^*)&#x3D;L(x^*,\lambda^*) \Rightarrow \lambda_i^<em>f_i(x^</em>)&#x3D;0<br>$$</p>
+<h2><span id="liang-ping-xing-xian-ju-chi-gong-shi">两平行线距离公式</span><a href="#liang-ping-xing-xian-ju-chi-gong-shi" class="header-anchor">#</a></h2><p>$$<br>Ax+By&#x3D;C_1\ and\ Ax+By&#x3D;C_2<br>$$</p>
 <p>$$<br>Distance &#x3D; \frac{\mid C_1-C_2\mid}{\sqrt{A^2+B^2}}<br>$$</p>
-<h2 id="PDF-Probability-density-function"><a href="#PDF-Probability-density-function" class="headerlink" title="PDF(Probability density function)"></a>PDF(Probability density function)</h2><p><img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Normalverteilung.PNG" alt="z_h_l.JPG"></p>
-<h2 id="CDF-Cumulative-distribution-function"><a href="#CDF-Cumulative-distribution-function" class="headerlink" title="CDF(Cumulative distribution function)"></a>CDF(Cumulative distribution function)</h2><p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Normal_Distribution_CDF.svg/1920px-Normal_Distribution_CDF.svg.png" alt="z_h_l.JPG"></p>
-<h2 id="PMF-probability-mass-function"><a href="#PMF-probability-mass-function" class="headerlink" title="PMF(probability mass function)"></a>PMF(probability mass function)</h2><p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Discrete_probability_distrib.svg/1920px-Discrete_probability_distrib.svg.png" alt="z_h_l.JPG"></p>
-<h2 id="泊松分布-Poisson-distribution"><a href="#泊松分布-Poisson-distribution" class="headerlink" title="泊松分布(Poisson distribution)"></a>泊松分布(Poisson distribution)</h2><p>是离散分布<br>$$<br>P(X&#x3D;k) &#x3D; \frac{e^{-\lambda}\lambda^k}{k!}<br>$$<br>PMF:</p>
+<h2><span id="pdf-probability-density-function">PDF(Probability density function)</span><a href="#pdf-probability-density-function" class="header-anchor">#</a></h2><p><img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Normalverteilung.PNG" alt="z_h_l.JPG"></p>
+<h2><span id="cdf-cumulative-distribution-function">CDF(Cumulative distribution function)</span><a href="#cdf-cumulative-distribution-function" class="header-anchor">#</a></h2><p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Normal_Distribution_CDF.svg/1920px-Normal_Distribution_CDF.svg.png" alt="z_h_l.JPG"></p>
+<h2><span id="pmf-probability-mass-function">PMF(probability mass function)</span><a href="#pmf-probability-mass-function" class="header-anchor">#</a></h2><p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Discrete_probability_distrib.svg/1920px-Discrete_probability_distrib.svg.png" alt="z_h_l.JPG"></p>
+<h2><span id="bo-song-fen-bu-poisson-distribution">泊松分布(Poisson distribution)</span><a href="#bo-song-fen-bu-poisson-distribution" class="header-anchor">#</a></h2><p>是离散分布<br>$$<br>P(X&#x3D;k) &#x3D; \frac{e^{-\lambda}\lambda^k}{k!}<br>$$<br>PMF:</p>
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Poisson_pmf.svg/488px-Poisson_pmf.svg.png" alt="z_h_l.JPG"></p>
 <p>CDF:</p>
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Poisson_cdf.svg/1024px-Poisson_cdf.svg.png" alt="z_h_l.JPG"></p>
-<h2 id="Variance"><a href="#Variance" class="headerlink" title="Variance"></a>Variance</h2><p>$$<br>Var(X) &#x3D; {E(X-\mu)^2}\<br>&#x3D;E(X^2)-2E(X)E(X) + E(X)^2\<br>&#x3D;E(X^2)-E(X)^2\<br>E(X^2)&#x3D;\sigma^2+\mu^2<br>$$</p>
-<h2 id="伯努利分布和二项分布"><a href="#伯努利分布和二项分布" class="headerlink" title="伯努利分布和二项分布"></a>伯努利分布和二项分布</h2><p>二项分布就是很多次伯努利分布</p>
-<h2 id="Z分布和T分布"><a href="#Z分布和T分布" class="headerlink" title="Z分布和T分布"></a>Z分布和T分布</h2><p>T分布用于小样本，Z分布用于大样本，当n大于等于30时，Z分布和T分布接近</p>
+<h2><span id="variance">Variance</span><a href="#variance" class="header-anchor">#</a></h2><p>$$<br>Var(X) &#x3D; {E(X-\mu)^2}\<br>&#x3D;E(X^2)-2E(X)E(X) + E(X)^2\<br>&#x3D;E(X^2)-E(X)^2\<br>E(X^2)&#x3D;\sigma^2+\mu^2<br>$$</p>
+<h2><span id="bo-nu-li-fen-bu-he-er-xiang-fen-bu">伯努利分布和二项分布</span><a href="#bo-nu-li-fen-bu-he-er-xiang-fen-bu" class="header-anchor">#</a></h2><p>二项分布就是很多次伯努利分布</p>
+<h2><span id="z-fen-bu-he-t-fen-bu">Z分布和T分布</span><a href="#z-fen-bu-he-t-fen-bu" class="header-anchor">#</a></h2><p>T分布用于小样本，Z分布用于大样本，当n大于等于30时，Z分布和T分布接近</p>
 <p>Z分布：<br>$$<br>z &#x3D; \frac{x-\mu}{\sigma&#x2F;\sqrt{n}}<br>$$<br>T分布：<br>$$<br>t&#x3D;\frac{x-\mu}{s&#x2F;\sqrt{n}}\ with\ s样本方差：\frac{\sum(x-\mu)}{n-1}<br>$$</p>
-<h2 id="蒙特卡洛积分"><a href="#蒙特卡洛积分" class="headerlink" title="蒙特卡洛积分"></a>蒙特卡洛积分</h2><p>$$<br>F&#x3D;\frac{1}{N}\sum{\frac{f(x)}{pdf(x)}}<br>$$</p>
+<h2><span id="meng-te-qia-luo-ji-fen">蒙特卡洛积分</span><a href="#meng-te-qia-luo-ji-fen" class="header-anchor">#</a></h2><p>$$<br>F&#x3D;\frac{1}{N}\sum{\frac{f(x)}{pdf(x)}}<br>$$</p>
 <p><img src="https://www.qiujiawei.com/images/2016.8/1.png" alt="z_h_l.JPG"></p>
-<h2 id="判别模型和生成模型"><a href="#判别模型和生成模型" class="headerlink" title="判别模型和生成模型"></a>判别模型和生成模型</h2><p>二者目的都是在使后验概率最大化，判别式是直接对后验概率建模，但是生成模型通过贝叶斯定理这一“桥梁”使问题转化为求联合概率</p>
+<h2><span id="pan-bie-mo-xing-he-sheng-cheng-mo-xing">判别模型和生成模型</span><a href="#pan-bie-mo-xing-he-sheng-cheng-mo-xing" class="header-anchor">#</a></h2><p>二者目的都是在使后验概率最大化，判别式是直接对后验概率建模，但是生成模型通过贝叶斯定理这一“桥梁”使问题转化为求联合概率</p>
 <p>假设有四个samples： </p>
 <p><img src="https://pic1.zhimg.com/50/v2-5eb5e035330831cd01d8fbea8d5b51e7_720w.jpg?source=1940ef5c" alt="img"><img src="https://pic1.zhimg.com/80/v2-5eb5e035330831cd01d8fbea8d5b51e7_1440w.jpg?source=1940ef5c" alt="img"></p>
 <p>生成式模型的世界是这个样子：</p>
@@ -463,51 +581,51 @@ MathJax.Hub.Queue(function() {
 <p>而判定式模型的世界是这个样子：</p>
 <p><img src="https://pic2.zhimg.com/50/v2-11f8a39d629e2649146bf12794fe310c_720w.jpg?source=1940ef5c" alt="img"><img src="https://pic2.zhimg.com/80/v2-11f8a39d629e2649146bf12794fe310c_1440w.jpg?source=1940ef5c" alt="img"></p>
 <p><img src="https://www.zhihu.com/equation?tex=%5Csum_%7By%7D%7BP(y+%7C+x)%7D+=+1+" alt="[公式]"></p>
-<h2 id="极大似然估计-MLE"><a href="#极大似然估计-MLE" class="headerlink" title="极大似然估计(MLE)"></a>极大似然估计(MLE)</h2><p>知道数据来推求模型参数，假设不知道$\theta$ 的先验分布<br>$$<br>P(X|\theta)&#x3D;\prod\theta^x(1-\theta)^{1-x}<br>$$</p>
+<h2><span id="ji-da-si-ran-gu-ji-mle">极大似然估计(MLE)</span><a href="#ji-da-si-ran-gu-ji-mle" class="header-anchor">#</a></h2><p>知道数据来推求模型参数，假设不知道$\theta$ 的先验分布<br>$$<br>P(X|\theta)&#x3D;\prod\theta^x(1-\theta)^{1-x}<br>$$</p>
 <p>$$<br>log(y) &#x3D; \sum xlog\theta+(1-x)(1-\theta)<br>$$</p>
 <p>$$<br>d(logy)&#x3D;\frac{\sum x}{\theta}+\frac{\sum 1-x}{1-\theta}&#x3D;0 \<br>\theta &#x3D; \frac{\sum x}{n}<br>$$</p>
-<h2 id="最大后验概率-MAP"><a href="#最大后验概率-MAP" class="headerlink" title="最大后验概率 (MAP)"></a>最大后验概率 (MAP)</h2><p>假设$\theta$ 符合一定的先验分布，则后验概率为<br>$$<br>P(\theta|X)&#x3D;\frac{P(X|\theta)P(\theta)}{P(X)}<br>$$<br>P(X)为常数，可省略<br>$$<br>log(y)&#x3D;log(P(X|\theta))+log(P(\theta))<br>$$</p>
+<h2><span id="zui-da-hou-yan-gai-lu-map">最大后验概率 (MAP)</span><a href="#zui-da-hou-yan-gai-lu-map" class="header-anchor">#</a></h2><p>假设$\theta$ 符合一定的先验分布，则后验概率为<br>$$<br>P(\theta|X)&#x3D;\frac{P(X|\theta)P(\theta)}{P(X)}<br>$$<br>P(X)为常数，可省略<br>$$<br>log(y)&#x3D;log(P(X|\theta))+log(P(\theta))<br>$$</p>
 <p>$$<br>d(logy)&#x3D;\frac{\sum x}{n} + log(P(\theta))&#x3D;0<br>$$</p>
-<h2 id="泰勒展开"><a href="#泰勒展开" class="headerlink" title="泰勒展开"></a>泰勒展开</h2><p>$$<br>g(x)\approx g(x_0)+ \frac{f^{‘}(x_0)}{1!}(x-x_0)+\frac{f^{‘’}(x_0)}{2!}(x-x_0)<br>$$</p>
-<h2 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h2><p>$$<br>J(\theta) &#x3D; \frac{1}{2m}\sum_i(y-\sum_j\theta x)^2<br>$$</p>
+<h2><span id="tai-le-zhan-kai">泰勒展开</span><a href="#tai-le-zhan-kai" class="header-anchor">#</a></h2><p>$$<br>g(x)\approx g(x_0)+ \frac{f^{‘}(x_0)}{1!}(x-x_0)+\frac{f^{‘’}(x_0)}{2!}(x-x_0)<br>$$</p>
+<h2><span id="ti-du-xia-jiang-fa">梯度下降法</span><a href="#ti-du-xia-jiang-fa" class="header-anchor">#</a></h2><p>$$<br>J(\theta) &#x3D; \frac{1}{2m}\sum_i(y-\sum_j\theta x)^2<br>$$</p>
 <p>$$<br>\frac{\delta J(\theta)}{\delta \theta_j} &#x3D; -\frac{1}{m}\sum_i(y-\sum \theta x)x_j<br>$$</p>
 <p>$$<br>\theta_{j+1} &#x3D; \theta_j - \frac{\delta J(\theta)}{\delta \theta_j}<br>$$</p>
-<h2 id="牛顿法"><a href="#牛顿法" class="headerlink" title="牛顿法"></a>牛顿法</h2><p>基本牛顿法是一种是用导数的算法，它每一步的迭代方向都是沿着当前点函数值下降的方向。<br>    我们主要集中讨论在一维的情形，对于一个需要求解的优化函数，求函数的极值的问题可以转化为求导函数。对函数进行泰勒展开到二阶，得到</p>
+<h2><span id="niu-dun-fa">牛顿法</span><a href="#niu-dun-fa" class="header-anchor">#</a></h2><p>基本牛顿法是一种是用导数的算法，它每一步的迭代方向都是沿着当前点函数值下降的方向。<br>    我们主要集中讨论在一维的情形，对于一个需要求解的优化函数，求函数的极值的问题可以转化为求导函数。对函数进行泰勒展开到二阶，得到</p>
 <p><img src="http://latex.codecogs.com/gif.latex?f%5Cleft&space;(&space;x&space;%5Cright&space;)=f%5Cleft&space;(&space;x_k&space;%5Cright&space;)+%7Bf%7D%27%5Cleft&space;(&space;x_k&space;%5Cright&space;)%5Cleft&space;(&space;x-x_k&space;%5Cright&space;)+%5Cfrac%7B1%7D%7B2%7D%7Bf%7D%27%27%5Cleft&space;(&space;x_k&space;%5Cright&space;)%5Cleft&space;(&space;x-x_k&space;%5Cright&space;)%5E2" alt="z_h_l.JPG"></p>
 <p>对上式求导并令其为0，则为</p>
 <p><img src="http://latex.codecogs.com/gif.latex?%7Bf%7D%27%5Cleft&space;(&space;x_k&space;%5Cright&space;)+%7Bf%7D%27%27%5Cleft&space;(&space;x_k&space;%5Cright&space;)%5Cleft&space;(&space;x-x_k&space;%5Cright&space;)=0" alt="z_h_l.JPG"></p>
 <p>即得到</p>
 <p><img src="http://latex.codecogs.com/gif.latex?x=x_k-%5Cfrac%7B%7Bf%7D%27%5Cleft&space;(&space;x_k&space;%5Cright&space;)%7D%7B%7Bf%7D%27%27%5Cleft&space;(&space;x_k&space;%5Cright&space;)%7D" alt="z_h_l.JPG"></p>
 <p>这就是牛顿法的更新公式。</p>
-<h1 id="机器学习基础"><a href="#机器学习基础" class="headerlink" title="机器学习基础"></a>机器学习基础</h1><h2 id="无监督学习算法（unsupervised-learning-algorithm）"><a href="#无监督学习算法（unsupervised-learning-algorithm）" class="headerlink" title="无监督学习算法（unsupervised learning algorithm）"></a>无监督学习算法（unsupervised learning algorithm）</h2><p>训练含有很多特征的数据集，然后学习出这个数据集上有用的结构性质。</p>
-<h2 id="监督学习算法（supervised-learning-algorithm"><a href="#监督学习算法（supervised-learning-algorithm" class="headerlink" title="监督学习算法（supervised learning algorithm)"></a>监督学习算法（supervised learning algorithm)</h2><p>训练含有很多特征的数据集，不过数据集中的样本都有一个标签（label）或目标（target）。</p>
-<h2 id="强化学习（rein-forcement-learning）算法"><a href="#强化学习（rein-forcement-learning）算法" class="headerlink" title="强化学习（rein-forcement learning）算法"></a>强化学习（rein-forcement learning）算法</h2><p>会和环境进行交互，所以学习系统和它的训练过程会有反馈回路</p>
-<h2 id="设计矩阵（design-matrix）"><a href="#设计矩阵（design-matrix）" class="headerlink" title="设计矩阵（design matrix）"></a>设计矩阵（design matrix）</h2><p>设计矩阵的每一行包含一个不同的样本。每一列对应不同的特征。</p>
-<h2 id="训练误差（training-error）"><a href="#训练误差（training-error）" class="headerlink" title="训练误差（training error）"></a>训练误差（training error）</h2><p>以线性回归为例子:<br>$$<br>\frac{1}{m_{train}}\lVert X_{train}w-y_{train}\rVert_2^2<br>$$</p>
-<h2 id="测试误差（test-error）"><a href="#测试误差（test-error）" class="headerlink" title="测试误差（test error）"></a>测试误差（test error）</h2><p>以线性回归为例子:</p>
+<h1><span id="ji-qi-xue-xi-ji-chu">机器学习基础</span><a href="#ji-qi-xue-xi-ji-chu" class="header-anchor">#</a></h1><h2><span id="wu-jian-du-xue-xi-suan-fa-unsupervised-learning-algorithm">无监督学习算法（unsupervised learning algorithm）</span><a href="#wu-jian-du-xue-xi-suan-fa-unsupervised-learning-algorithm" class="header-anchor">#</a></h2><p>训练含有很多特征的数据集，然后学习出这个数据集上有用的结构性质。</p>
+<h2><span id="jian-du-xue-xi-suan-fa-supervised-learning-algorithm">监督学习算法（supervised learning algorithm)</span><a href="#jian-du-xue-xi-suan-fa-supervised-learning-algorithm" class="header-anchor">#</a></h2><p>训练含有很多特征的数据集，不过数据集中的样本都有一个标签（label）或目标（target）。</p>
+<h2><span id="qiang-hua-xue-xi-rein-forcement-learning-suan-fa">强化学习（rein-forcement learning）算法</span><a href="#qiang-hua-xue-xi-rein-forcement-learning-suan-fa" class="header-anchor">#</a></h2><p>会和环境进行交互，所以学习系统和它的训练过程会有反馈回路</p>
+<h2><span id="she-ji-ju-zhen-design-matrix">设计矩阵（design matrix）</span><a href="#she-ji-ju-zhen-design-matrix" class="header-anchor">#</a></h2><p>设计矩阵的每一行包含一个不同的样本。每一列对应不同的特征。</p>
+<h2><span id="xun-lian-wu-chai-training-error">训练误差（training error）</span><a href="#xun-lian-wu-chai-training-error" class="header-anchor">#</a></h2><p>以线性回归为例子:<br>$$<br>\frac{1}{m_{train}}\lVert X_{train}w-y_{train}\rVert_2^2<br>$$</p>
+<h2><span id="ce-shi-wu-chai-test-error">测试误差（test error）</span><a href="#ce-shi-wu-chai-test-error" class="header-anchor">#</a></h2><p>以线性回归为例子:</p>
 <p>$$<br>\frac{1}{m_{test}}\lVert X_{test}w-y_{test}\rVert_2^2<br>$$</p>
-<h2 id="奥卡姆剃刀-Occam’s-Razor"><a href="#奥卡姆剃刀-Occam’s-Razor" class="headerlink" title="奥卡姆剃刀 Occam’s Razor"></a>奥卡姆剃刀 Occam’s Razor</h2><ul>
+<h2><span id="ao-qia-mu-ti-dao-occam-s-razor">奥卡姆剃刀 Occam’s Razor</span><a href="#ao-qia-mu-ti-dao-occam-s-razor" class="header-anchor">#</a></h2><ul>
 <li>If two models correctly predict the data, the one that makes fewer assumptions should be preferred because simplicity is desirable in itself.</li>
 <li>If two models correctly predict the data, the one that makes fewer assumptions should be preferred because it is likely to have lower generalization error</li>
 </ul>
-<h2 id="Vapnik-Chervonenkis-维度"><a href="#Vapnik-Chervonenkis-维度" class="headerlink" title="Vapnik-Chervonenkis 维度"></a>Vapnik-Chervonenkis 维度</h2><p>VC维定义为该分类器能够分类的训练样本的最大数目。假设存在m 个不同x 点的训练集，分类器可以任意地标记该m 个不同的x 点，VC维被定义为m的最大可能值。</p>
+<h2><span id="vapnik-chervonenkis-wei-du">Vapnik-Chervonenkis 维度</span><a href="#vapnik-chervonenkis-wei-du" class="header-anchor">#</a></h2><p>VC维定义为该分类器能够分类的训练样本的最大数目。假设存在m 个不同x 点的训练集，分类器可以任意地标记该m 个不同的x 点，VC维被定义为m的最大可能值。</p>
 <p>统计学习理论中最重要的结论阐述了训练误差和泛化误差之间差异的上界随着模型容量增长而增长，但随着训练样本增多而下降</p>
 <p><img src="https://raw.githubusercontent.com/PPPPan/PPPPan.github.io/master/images/model.JPG"></p>
-<h2 id="贝叶斯误差（Bayes-error）"><a href="#贝叶斯误差（Bayes-error）" class="headerlink" title="贝叶斯误差（Bayes error）"></a>贝叶斯误差（Bayes error）</h2><p>从预先知道的真实分布p(x; y) 预测而出现的误差被称为贝叶斯误差</p>
-<h2 id="没有免费午餐定理（no-freelunch-theorem）"><a href="#没有免费午餐定理（no-freelunch-theorem）" class="headerlink" title="没有免费午餐定理（no freelunch theorem）"></a>没有免费午餐定理（no freelunch theorem）</h2><p>在某种意义上，没有一个机器学习算法总是比其他的要好。</p>
-<h2 id="权重衰减（weight-decay）"><a href="#权重衰减（weight-decay）" class="headerlink" title="权重衰减（weight decay）"></a>权重衰减（weight decay）</h2><p>修改线性回归的训练标准。<br>$$<br>J(w) &#x3D; MSE + \lambda w^tw<br>$$<br>当$\lambda$非常大时，我们可以强迫模型学习到了一个没有斜率的函数。由于它只能表示一个常数函数，所以会导致欠拟合。取一个适当的$\lambda$时，学习算法能够用一个正常的形状来恢复曲率。即使模型能够用更复杂的形状来来表示函数，权重衰减鼓励用一个带有更小参数的更简单的模型来描述它。当权重衰减趋近于0会导致严重的过拟合.</p>
-<h2 id="正则化（regularization）"><a href="#正则化（regularization）" class="headerlink" title="正则化（regularization）"></a>正则化（regularization）</h2><p>正则化是指我们修改学习算法，使其降低泛化误差而非训练误差。</p>
+<h2><span id="bei-xie-si-wu-chai-bayes-error">贝叶斯误差（Bayes error）</span><a href="#bei-xie-si-wu-chai-bayes-error" class="header-anchor">#</a></h2><p>从预先知道的真实分布p(x; y) 预测而出现的误差被称为贝叶斯误差</p>
+<h2><span id="mei-you-mian-fei-wu-can-ding-li-no-freelunch-theorem">没有免费午餐定理（no freelunch theorem）</span><a href="#mei-you-mian-fei-wu-can-ding-li-no-freelunch-theorem" class="header-anchor">#</a></h2><p>在某种意义上，没有一个机器学习算法总是比其他的要好。</p>
+<h2><span id="quan-chong-shuai-jian-weight-decay">权重衰减（weight decay）</span><a href="#quan-chong-shuai-jian-weight-decay" class="header-anchor">#</a></h2><p>修改线性回归的训练标准。<br>$$<br>J(w) &#x3D; MSE + \lambda w^tw<br>$$<br>当$\lambda$非常大时，我们可以强迫模型学习到了一个没有斜率的函数。由于它只能表示一个常数函数，所以会导致欠拟合。取一个适当的$\lambda$时，学习算法能够用一个正常的形状来恢复曲率。即使模型能够用更复杂的形状来来表示函数，权重衰减鼓励用一个带有更小参数的更简单的模型来描述它。当权重衰减趋近于0会导致严重的过拟合.</p>
+<h2><span id="zheng-ze-hua-regularization">正则化（regularization）</span><a href="#zheng-ze-hua-regularization" class="header-anchor">#</a></h2><p>正则化是指我们修改学习算法，使其降低泛化误差而非训练误差。</p>
 <p>正则化与模型的复杂度相关，模型越复杂，正则化值就越大。经验损失 + $\lambda J(\theta)$</p>
-<h3 id="Lasso-Regularization"><a href="#Lasso-Regularization" class="headerlink" title="Lasso Regularization"></a>Lasso Regularization</h3><p>$\lambda \parallel \omega \parallel_1$, where $\parallel \omega \parallel_1 $ &#x3D; $\mid \omega_1 \mid + \mid \omega_2 \mid + \dots+\mid \omega_d \mid$</p>
-<h3 id="Ridge-Regularization"><a href="#Ridge-Regularization" class="headerlink" title="Ridge Regularization"></a>Ridge Regularization</h3><p>$\lambda \parallel \omega \parallel_2^2$, where $\parallel \omega \parallel_1 $ &#x3D; $\omega_1^2 + \omega_2^2 + \dots+\omega_d^2$</p>
-<h3 id="为什么Lasso-比Ridge-更稀疏，-Ridge比Lasso更平滑"><a href="#为什么Lasso-比Ridge-更稀疏，-Ridge比Lasso更平滑" class="headerlink" title="为什么Lasso 比Ridge 更稀疏， Ridge比Lasso更平滑"></a>为什么Lasso 比Ridge 更稀疏， Ridge比Lasso更平滑</h3><p><img src="https://pica.zhimg.com/v2-a026e24156e13a1d14c43df26b9bd2a4_r.jpg?source=1940ef5c"></p>
+<h3><span id="lasso-regularization">Lasso Regularization</span><a href="#lasso-regularization" class="header-anchor">#</a></h3><p>$\lambda \parallel \omega \parallel_1$, where $\parallel \omega \parallel_1 $ &#x3D; $\mid \omega_1 \mid + \mid \omega_2 \mid + \dots+\mid \omega_d \mid$</p>
+<h3><span id="ridge-regularization">Ridge Regularization</span><a href="#ridge-regularization" class="header-anchor">#</a></h3><p>$\lambda \parallel \omega \parallel_2^2$, where $\parallel \omega \parallel_1 $ &#x3D; $\omega_1^2 + \omega_2^2 + \dots+\omega_d^2$</p>
+<h3><span id="wei-shi-me-lasso-bi-ridge-geng-xi-shu-ridge-bi-lasso-geng-ping-hua">为什么Lasso 比Ridge 更稀疏， Ridge比Lasso更平滑</span><a href="#wei-shi-me-lasso-bi-ridge-geng-xi-shu-ridge-bi-lasso-geng-ping-hua" class="header-anchor">#</a></h3><p><img src="https://pica.zhimg.com/v2-a026e24156e13a1d14c43df26b9bd2a4_r.jpg?source=1940ef5c"></p>
 <p><img src="https://pica.zhimg.com/v2-f6edae58134c5a26687c3883af48d5d5_r.jpg?source=1940ef5c"></p>
 <p><img src="https://pic3.zhimg.com/v2-3aaa69f70754c469bca5c8e4c3e161db_r.jpg?source=1940ef5c"></p>
-<h2 id="交叉验证"><a href="#交叉验证" class="headerlink" title="交叉验证"></a>交叉验证</h2><p>将数据集分成固定的训练集和固定的测试集后，若测试集的误差很小，这将是有问题的。这些过程是基于在原始数据上随机采样或分离出的不同数据集上重复训练和测试的想法。最常见的是k-折交叉验证过程，将数据集分成k 个<br>不重合的子集。测试误差可以估计为k 次计算后的平均测试误差。在第i 次测试时，数据的第i 个子集用于测试集，其他的数据用于训练集。</p>
-<h2 id="预测误差（measures-prediction-error-MSE）"><a href="#预测误差（measures-prediction-error-MSE）" class="headerlink" title="预测误差（measures prediction error,MSE）"></a>预测误差（measures prediction error,MSE）</h2><p>$$<br>MSE &#x3D; E[(\hat \theta-\theta)^2]&#x3D;Bias(\hat \theta)^2+Var(\hat \theta)&#x3D;E[\hat \theta-\theta]^2+E[(\hat \theta-E[\theta])^2]<br>$$</p>
+<h2><span id="jiao-cha-yan-zheng">交叉验证</span><a href="#jiao-cha-yan-zheng" class="header-anchor">#</a></h2><p>将数据集分成固定的训练集和固定的测试集后，若测试集的误差很小，这将是有问题的。这些过程是基于在原始数据上随机采样或分离出的不同数据集上重复训练和测试的想法。最常见的是k-折交叉验证过程，将数据集分成k 个<br>不重合的子集。测试误差可以估计为k 次计算后的平均测试误差。在第i 次测试时，数据的第i 个子集用于测试集，其他的数据用于训练集。</p>
+<h2><span id="yu-ce-wu-chai-measures-prediction-error-mse">预测误差（measures prediction error,MSE）</span><a href="#yu-ce-wu-chai-measures-prediction-error-mse" class="header-anchor">#</a></h2><p>$$<br>MSE &#x3D; E[(\hat \theta-\theta)^2]&#x3D;Bias(\hat \theta)^2+Var(\hat \theta)&#x3D;E[\hat \theta-\theta]^2+E[(\hat \theta-E[\theta])^2]<br>$$</p>
 <p>用MSE度量泛化误差（偏差和方差对于泛化误差都是有意义的）时，增加容量会增加方差，降低偏差，即Bias,Variance Tradoff. 当模型复杂时，bias往往时比较小的，这时候误差主要来源于Variance。反之，模型比较简单，Bias较大，Variance较小。Bias代表的是模型的预测准确性，Variance代表的是模型对特定数据集的敏感程度</p>
 <p><img src="https://raw.githubusercontent.com/PPPPan/PPPPan.github.io/master/images/MSE.JPG"></p>
-<h2 id="感知机-Perceptron"><a href="#感知机-Perceptron" class="headerlink" title="感知机(Perceptron)"></a>感知机(Perceptron)</h2><p>为二项线性分类模型<br>$$<br>f(x)&#x3D;sign(wx+b)<br>$$</p>
+<h2><span id="gan-zhi-ji-perceptron">感知机(Perceptron)</span><a href="#gan-zhi-ji-perceptron" class="header-anchor">#</a></h2><p>为二项线性分类模型<br>$$<br>f(x)&#x3D;sign(wx+b)<br>$$</p>
 <blockquote>
 <p>+1 x$\ge$ 0</p>
 <p>-1 x&lt;0</p>
@@ -533,15 +651,15 @@ MathJax.Hub.Queue(function() {
 </ol>
 <p><strong>感知机的对偶形式:</strong></p>
 <p>将模型改写为:<br>$$<br>L(w,b) &#x3D; y_i(\sum_j \alpha_j y_j x_j x_i+b)<br>$$</p>
-<h2 id="监督学习"><a href="#监督学习" class="headerlink" title="监督学习"></a>监督学习</h2><h3 id="逻辑回归（logistic-regression）"><a href="#逻辑回归（logistic-regression）" class="headerlink" title="逻辑回归（logistic regression）"></a>逻辑回归（logistic regression）</h3><p>该模型用于分类而非回归。logistic sigmoid 函数， 分为两类。</p>
-<h3 id="支持向量机（support-vector-machine-SVM"><a href="#支持向量机（support-vector-machine-SVM" class="headerlink" title="支持向量机（support vector machine, SVM)"></a>支持向量机（support vector machine, SVM)</h3><p>基于线性函数$w^Tx+b$，当为正时，支持向量机预测属于正类。为负数时候，支持向量机预测属于负类。</p>
+<h2><span id="jian-du-xue-xi">监督学习</span><a href="#jian-du-xue-xi" class="header-anchor">#</a></h2><h3><span id="luo-ji-hui-gui-logistic-regression">逻辑回归（logistic regression）</span><a href="#luo-ji-hui-gui-logistic-regression" class="header-anchor">#</a></h3><p>该模型用于分类而非回归。logistic sigmoid 函数， 分为两类。</p>
+<h3><span id="zhi-chi-xiang-liang-ji-support-vector-machine-svm">支持向量机（support vector machine, SVM)</span><a href="#zhi-chi-xiang-liang-ji-support-vector-machine-svm" class="header-anchor">#</a></h3><p>基于线性函数$w^Tx+b$，当为正时，支持向量机预测属于正类。为负数时候，支持向量机预测属于负类。</p>
 <p>支持向量机中的线性函数可以重写为:<br>$$<br>w^Tx+b&#x3D;b+\sum_i \alpha_i x^Tx^{(i)}<br>$$</p>
 <blockquote>
 <p>$x^{(i)}$是训练样本,$\alpha$是系数向量</p>
 </blockquote>
 <p>我们将x 替换为特征函数ϕ(x) 的输出，点积替换为被称为<strong>核函数（kernel function）</strong>的函数</p>
 <p>k(x, $x^{(i)}$) &#x3D; ϕ(x) ϕ($x^{(i)}$)。<br>$$<br>f(x)&#x3D;b+\sum_i \alpha_i k(x,x^{(i)})<br>$$<br>核技巧十分强大有两个原因。首先，它使我们能够使用保证有效收敛的凸优化技术来学习非线性模型（关于x 的函数）。这是可能的，因为我们可以认为ϕ 是固定的，仅优化$\alpha$，即优化算法可以将决策函数视为不同空间中的线性函数。其二，核函数k 的实现方法通常有比直接构建ϕ(x) 再算点积高效很多。</p>
-<h3 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h3><p>常用的决策树有ID3，C4.5和CART（Classification And Regression Tree），CART的分类效果一般优于其他决策树。</p>
+<h3><span id="jue-ce-shu">决策树</span><a href="#jue-ce-shu" class="header-anchor">#</a></h3><p>常用的决策树有ID3，C4.5和CART（Classification And Regression Tree），CART的分类效果一般优于其他决策树。</p>
 <p><strong>ID3: 信息增益来进行决策树的划分属性选择来决定那个做父节点，那个节点需要分裂。对于一组数据，信息增益越大说明分类结果越好</strong></p>
 <p><img src="https://img-blog.csdnimg.cn/img_convert/9c16e9482a860b7f354bcd8a4d5c418e.png" alt="avatar"></p>
 <ol>
@@ -581,7 +699,7 @@ MathJax.Hub.Queue(function() {
 <p><strong>CART分类树算法使用基尼系数选择特征</strong>，基尼系数代表了模型的不纯度，<strong>基尼系数越小，不纯度越低，特征越好</strong>。</p>
 <p>数据集D的纯度可用基尼值来度量：</p>
 <p><img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Baligned%7DGini(D)&=%5Csum_%7Bi=1%7D%5E%7Bn%7D%7Bp(x_i)*(1-p(x_i))%7D+%5C%5C&=1-%5Csum_%7Bi=1%7D%5E%7Bn%7D%7B%7Bp(x_i)%7D%5E2%7D%5Cend%7Baligned%7D++%5C%5C" alt="avatar"></p>
-<h3 id="KNN"><a href="#KNN" class="headerlink" title="KNN"></a>KNN</h3><p>输入带标签的数据训练，然后给新输入的数据与已知数据比对，找出前k个最近的数据，在这k个相近的数据中，给新输入的数据填上最接近的标签。</p>
+<h3><span id="knn">KNN</span><a href="#knn" class="header-anchor">#</a></h3><p>输入带标签的数据训练，然后给新输入的数据与已知数据比对，找出前k个最近的数据，在这k个相近的数据中，给新输入的数据填上最接近的标签。</p>
 <ol>
 <li>假设有一个带有标签的样本数据集（训练样本集），其中包含每条数据与所属分类的对应关系。</li>
 <li>输入没有标签的新数据后，将新数据的每个特征与样本集中数据对应的特征进行比较。<ol>
@@ -592,13 +710,13 @@ MathJax.Hub.Queue(function() {
 </li>
 <li>求 k 个数据中出现次数最多的分类标签作为新数据的分类。</li>
 </ol>
-<h2 id="K-Mean-算法"><a href="#K-Mean-算法" class="headerlink" title="K Mean 算法"></a>K Mean 算法</h2><ul>
+<h2><span id="k-mean-suan-fa">K Mean 算法</span><a href="#k-mean-suan-fa" class="header-anchor">#</a></h2><ul>
 <li>随机选K个值作为k个聚类的平均值</li>
 <li>讲每个样本与这几个均值作距离，将其归为最近的类</li>
 <li>得到新的三个聚类，再求均值</li>
 <li>再重复，直至收敛(mean 不发生变化)</li>
 </ul>
-<h2 id="EM算法"><a href="#EM算法" class="headerlink" title="EM算法"></a>EM算法</h2><p>用于概率模型中含有观测变量(observable variable),以及隐变量(latent variable).</p>
+<h2><span id="em-suan-fa">EM算法</span><a href="#em-suan-fa" class="header-anchor">#</a></h2><p>用于概率模型中含有观测变量(observable variable),以及隐变量(latent variable).</p>
 <p>主要分为两部分:</p>
 <ul>
 <li>E部分，求期望 Expectation</li>
@@ -609,13 +727,13 @@ MathJax.Hub.Queue(function() {
 <p>但是我们在投掷的过程中不记录硬币的类型，而是硬币的正反面。那么我们如何求A与B各自的概率呢。</p>
 <p>首先假设A的概率为0.6，B的概率为0.5</p>
 <p>则A的概率为:<br>$$<br>P_A &#x3D; \frac{0.6^5 0.4^5}{(0.6^5 0.4^5)+(0.5^50.5^5)} &#x3D; 0.45<br>$$</p>
-<h2 id="bootstrap-采样法"><a href="#bootstrap-采样法" class="headerlink" title="bootstrap 采样法"></a>bootstrap 采样法</h2><p>即有放回的采样方法。</p>
+<h2><span id="bootstrap-cai-yang-fa">bootstrap 采样法</span><a href="#bootstrap-cai-yang-fa" class="header-anchor">#</a></h2><p>即有放回的采样方法。</p>
 <p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/2fe7849758309b19fa49cad2f5e214fb4fbb8044" alt="avatar"></p>
 <p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/e76702c87ce1c681ed1da8213125963524ca0ee6" alt="avatar"></p>
 <p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/5decdfc7edb14bc3f4dd541d39559ea9a3088f61" alt="avatar"><br>$$<br>\frac{1}{e}&#x3D;lim(1-\frac{1}{n})^n<br>$$<br>则，从来没取到的概率为0.368，取到的概率为0.632</p>
-<h2 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h2><p>优化最小误差<br>$$<br>\frac{1}{2}min\sum{(y_i-w^Tx_i)^2} &#x3D; \frac{1}{2}(y-Xw)^T(y-Xw)<br>$$<br>ordinary least squares or OLS solution:</p>
+<h2><span id="xian-xing-hui-gui">线性回归</span><a href="#xian-xing-hui-gui" class="header-anchor">#</a></h2><p>优化最小误差<br>$$<br>\frac{1}{2}min\sum{(y_i-w^Tx_i)^2} &#x3D; \frac{1}{2}(y-Xw)^T(y-Xw)<br>$$<br>ordinary least squares or OLS solution:</p>
 <p>D is small, N&lt;1000<br>$$<br>w_{OLS} &#x3D; (X^TX)^{-1}X^Ty<br>$$</p>
-<h2 id="随机森林"><a href="#随机森林" class="headerlink" title="随机森林"></a>随机森林</h2><p>为bagging为思想的集成学习方法，利用很多弱分类器，然后经过一定的结合原理，而得到强分类器的算法。</p>
+<h2><span id="sui-ji-sen-lin">随机森林</span><a href="#sui-ji-sen-lin" class="header-anchor">#</a></h2><p>为bagging为思想的集成学习方法，利用很多弱分类器，然后经过一定的结合原理，而得到强分类器的算法。</p>
 <p>弱分类器：</p>
 <ul>
 <li>具有较低的分类能力，但是比乱猜强</li>
@@ -623,8 +741,8 @@ MathJax.Hub.Queue(function() {
 </ul>
 <p>使用bootstrap采样则，从来没取到的概率为0.368，取到的概率为0.632。</p>
 <p>在对预测输出进行结合时，Bagging通常<strong>对分类任务使用简单投票法</strong>，<strong>对回归任务使用简单平均法</strong></p>
-<h2 id="Boosting-and-bagging"><a href="#Boosting-and-bagging" class="headerlink" title="Boosting and bagging"></a>Boosting and bagging</h2><p>Boosting主要关注降低偏差，因此Boosting能基于泛化性能相当弱的学习器构建出很强的集成；Bagging主要关注降低方差，因此它在不剪枝的决策树、神经网络等学习器上效用更为明显。</p>
-<h2 id="XGBoost"><a href="#XGBoost" class="headerlink" title="XGBoost"></a>XGBoost</h2><p>对比原算法GBDT，XGBoost主要从下面三个方面做了优化：</p>
+<h2><span id="boosting-and-bagging">Boosting and bagging</span><a href="#boosting-and-bagging" class="header-anchor">#</a></h2><p>Boosting主要关注降低偏差，因此Boosting能基于泛化性能相当弱的学习器构建出很强的集成；Bagging主要关注降低方差，因此它在不剪枝的决策树、神经网络等学习器上效用更为明显。</p>
+<h2><span id="xgboost">XGBoost</span><a href="#xgboost" class="header-anchor">#</a></h2><p>对比原算法GBDT，XGBoost主要从下面三个方面做了优化：</p>
 <ul>
 <li><p>一是算法本身的优化：在算法的弱学习器模型选择上，对比GBDT只支持决策树，还可以直接很多其他的弱学习器。在算法的损失函数上，除了本身的损失，还加上了正则化部分。在算法的优化方式上，GBDT的损失函数只对误差部分做负梯度（一阶泰勒）展开，而XGBoost损失函数对误差部分做二阶泰勒展开，更加准确。算法本身的优化是我们后面讨论的重点。</p>
 </li>
@@ -634,21 +752,64 @@ MathJax.Hub.Queue(function() {
 </li>
 </ul>
 <p>在GBDT损失函数L(y,ft−1(x)+ht(x))L(y,ft−1(x)+ht(x))的基础上，我们加入正则化项如下：<br>$$<br>Ω(ht)&#x3D;γJ+λ2∑_{j&#x3D;1}^Jw^2_{tj}<br>$$</p>
-<h2 id="Local-Linear-Embedding-LLE"><a href="#Local-Linear-Embedding-LLE" class="headerlink" title="Local Linear Embedding (LLE)"></a>Local Linear Embedding (LLE)</h2><ol>
+<h2><span id="local-linear-embedding-lle">Local Linear Embedding (LLE)</span><a href="#local-linear-embedding-lle" class="header-anchor">#</a></h2><ol>
 <li>根据欧几里得距离，选择K个neighbor</li>
 <li>$Cost &#x3D; (X-wX_{neighbor})(X-wX_{neighbor})^T, \sum w &#x3D; 1,如果不是邻居则w_j&#x3D;0$ -&gt; $Cost&#x3D;w^TCw,C&#x3D;(X-X_{neighbor})(X-X_{neighbor})$</li>
 <li>用拉格朗日乘子法-&gt; 求出$2wC-\lambda&#x3D;0$  -&gt; $w等价于C^{-1}1$</li>
 <li>然后映射回低维，同样保持相同的关系， $(Y-wY)^T(Y-wY)-&gt;Y^T(1-w)^T(1-w)Y$ , 我们设定，$Y^TY&#x3D;1, \sum Y &#x3D;0$ ,改写为，$Y^TMY$ </li>
 <li>然后拉格朗日求梯度，$2YM&#x3D;2\lambda Y$, 所以映射的新坐标为M的Eigenvector，第一个特征向量为全一，所以要从第二个特征向量开始，即可完成降维</li>
 </ol>
-<h2 id="SNE-and-t-SNE"><a href="#SNE-and-t-SNE" class="headerlink" title="SNE and t-SNE"></a>SNE and t-SNE</h2><p>主要思想是高维与低维的分布一致或者类似，</p>
-<h3 id="SNE"><a href="#SNE" class="headerlink" title="SNE"></a>SNE</h3><p>SNE是高维度使用高斯分布来拟合，然后用KL散度来用已知的高维分布去得到低维分布，前后默认都是高斯分布。已知原来的高维分布，然后初始化低维数据，然后用梯度下讲拟合。</p>
+<h2><span id="sne-and-t-sne">SNE and t-SNE</span><a href="#sne-and-t-sne" class="header-anchor">#</a></h2><p>主要思想是高维与低维的分布一致或者类似，</p>
+<h3><span id="sne">SNE</span><a href="#sne" class="header-anchor">#</a></h3><p>SNE是高维度使用高斯分布来拟合，然后用KL散度来用已知的高维分布去得到低维分布，前后默认都是高斯分布。已知原来的高维分布，然后初始化低维数据，然后用梯度下讲拟合。</p>
 <p>但是由于高斯分布对outlier敏感，所以SNE效果并不好，会出现重叠。</p>
-<h3 id="t-SNE"><a href="#t-SNE" class="headerlink" title="t-SNE"></a>t-SNE</h3><p>t-SNE可以认为是对SNE的一个优化，基本思想一致，都是用低维的去拟合高维的，只是低维拟合不再使用高斯分布，而是使用t分布，因为t分布对outlier跟具有鲁棒性，所以效果更好。</p>
+<p>高维分布：</p>
+<p><img src="https://github.com/PPPPan/PPPPan.github.io/blob/master/images/sne_1.JPG?raw=true"></p>
+<p>低维分布：</p>
+<p><img src="https://github.com/PPPPan/PPPPan.github.io/blob/master/images/sne2.JPG?raw=true"></p>
+<p>使用KL散度去拟合，并用梯度最小化优化：</p>
+<p><img src="https://github.com/PPPPan/PPPPan.github.io/blob/master/images/sne3.JPG?raw=true"></p>
+<p><img src="https://github.com/PPPPan/PPPPan.github.io/blob/master/images/sne4.JPG?raw=true" alt="sne4.JPG"></p>
+<p>算法流程：</p>
+<p><img src="https://github.com/PPPPan/PPPPan.github.io/blob/master/images/sne6.JPG?raw=true" alt="sne6.JPG"></p>
+<h3><span id="t-sne">t-SNE</span><a href="#t-sne" class="header-anchor">#</a></h3><p>t-SNE可以认为是对SNE的一个优化，基本思想一致，都是用低维的去拟合高维的，只是低维拟合不再使用高斯分布，而是使用t分布，因为t分布对outlier跟具有鲁棒性，所以效果更好。</p>
+<p>低维分布使用t-分布：</p>
+<p><img src="https://github.com/PPPPan/PPPPan.github.io/blob/master/images/sne5.JPG?raw=true" alt="sne5.JPG"></p>
 <p>SNE主要用于高维数据的可视化。</p>
 
   <p><a class="classtest-link" href="/tags/ML/" rel="tag">ML</a> — Feb 13, 2022</p>
   
+  <hr>
+<section id="comments" class="mt-2 mb-3">
+
+  <div id="disqus_thread">
+    <a href="#" class="button button-primary" onclick="loadDisqus();return false;">View / Make Comments</a>
+  </div>
+
+  <script>
+    var disqus_config = function() {
+      this.page.url = 'http://example.com/2022/02/13/ML/index.html';
+      this.page.identifier = '2022/02/13/ML/index.html';
+      this.page.title = 'Machine Learning';
+    };
+
+    var is_disqus_loaded = false;
+
+    function loadDisqus() {
+      if (!is_disqus_loaded) {
+        is_disqus_loaded = true;
+
+        var d = document,
+          s = d.createElement('script');
+        s.src = 'https://https-adisaktijrs-github-io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+    }
+
+  </script>
+  <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
 
 
         </div>
@@ -661,6 +822,7 @@ MathJax.Hub.Queue(function() {
   <div></div>
 </div>
         <div class="row mt-2">
+  <hr style="margin-bottom: 0.6rem">
   
     <div class="eight columns">
       <p id="madewith">Made with ❤ and
