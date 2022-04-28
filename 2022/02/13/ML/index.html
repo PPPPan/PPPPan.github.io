@@ -546,7 +546,7 @@ MathJax.Hub.Queue(function() {
 <p><img src="https://img-blog.csdnimg.cn/img_convert/9c16e9482a860b7f354bcd8a4d5c418e.png" alt="avatar"></p>
 <ol>
 <li>计算总体D</li>
-<li>计算信息熵</li>
+<li>计算信息熵, 即总体的减去特征的，如果信息熵比较大，则说明次特征更稳定</li>
 <li>计算信息增益，找出最大值为下个节点</li>
 </ol>
 <p>缺点：ID3算法会去选择子类别多的特征，因为这样分裂出来的结果会更纯，熵会更小，这有偏于我们的初衷，我们要的纯不是想通过让它分类分的更细，产生过拟合</p>
@@ -634,6 +634,18 @@ MathJax.Hub.Queue(function() {
 </li>
 </ul>
 <p>在GBDT损失函数L(y,ft−1(x)+ht(x))L(y,ft−1(x)+ht(x))的基础上，我们加入正则化项如下：<br>$$<br>Ω(ht)&#x3D;γJ+λ2∑_{j&#x3D;1}^Jw^2_{tj}<br>$$</p>
+<h2 id="Local-Linear-Embedding-LLE"><a href="#Local-Linear-Embedding-LLE" class="headerlink" title="Local Linear Embedding (LLE)"></a>Local Linear Embedding (LLE)</h2><ol>
+<li>根据欧几里得距离，选择K个neighbor</li>
+<li>$Cost &#x3D; (X-wX_{neighbor})(X-wX_{neighbor})^T, \sum w &#x3D; 1,如果不是邻居则w_j&#x3D;0$ -&gt; $Cost&#x3D;w^TCw,C&#x3D;(X-X_{neighbor})(X-X_{neighbor})$</li>
+<li>用拉格朗日乘子法-&gt; 求出$2wC-\lambda&#x3D;0$  -&gt; $w等价于C^{-1}1$</li>
+<li>然后映射回低维，同样保持相同的关系， $(Y-wY)^T(Y-wY)-&gt;Y^T(1-w)^T(1-w)Y$ , 我们设定，$Y^TY&#x3D;1, \sum Y &#x3D;0$ ,改写为，$Y^TMY$ </li>
+<li>然后拉格朗日求梯度，$2YM&#x3D;2\lambda Y$, 所以映射的新坐标为M的Eigenvector，第一个特征向量为全一，所以要从第二个特征向量开始，即可完成降维</li>
+</ol>
+<h2 id="SNE-and-t-SNE"><a href="#SNE-and-t-SNE" class="headerlink" title="SNE and t-SNE"></a>SNE and t-SNE</h2><p>主要思想是高维与低维的分布一致或者类似，</p>
+<h3 id="SNE"><a href="#SNE" class="headerlink" title="SNE"></a>SNE</h3><p>SNE是高维度使用高斯分布来拟合，然后用KL散度来用已知的高维分布去得到低维分布，前后默认都是高斯分布。已知原来的高维分布，然后初始化低维数据，然后用梯度下讲拟合。</p>
+<p>但是由于高斯分布对outlier敏感，所以SNE效果并不好，会出现重叠。</p>
+<h3 id="t-SNE"><a href="#t-SNE" class="headerlink" title="t-SNE"></a>t-SNE</h3><p>t-SNE可以认为是对SNE的一个优化，基本思想一致，都是用低维的去拟合高维的，只是低维拟合不再使用高斯分布，而是使用t分布，因为t分布对outlier跟具有鲁棒性，所以效果更好。</p>
+<p>SNE主要用于高维数据的可视化。</p>
 
   <p><a class="classtest-link" href="/tags/ML/" rel="tag">ML</a> — Feb 13, 2022</p>
   
