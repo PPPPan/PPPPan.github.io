@@ -46,8 +46,11 @@
 <meta property="og:image" content="https://github.com/PPPPan/PPPPan.github.io/blob/master/images/NLP/17.JPG?raw=true">
 <meta property="og:image" content="https://github.com/PPPPan/PPPPan.github.io/blob/master/images/NLP/18.JPG?raw=true">
 <meta property="og:image" content="https://github.com/PPPPan/PPPPan.github.io/blob/master/images/NLP/19.JPG?raw=true">
+<meta property="og:image" content="https://github.com/PPPPan/PPPPan.github.io/blob/master/images/NLP/20.JPG?raw=true">
+<meta property="og:image" content="https://github.com/PPPPan/PPPPan.github.io/blob/master/images/NLP/21.JPG?raw=true">
+<meta property="og:image" content="https://github.com/PPPPan/PPPPan.github.io/blob/master/images/NLP/22.JPG?raw=true">
 <meta property="article:published_time" content="2022-05-03T14:47:35.877Z">
-<meta property="article:modified_time" content="2022-05-03T19:06:34.096Z">
+<meta property="article:modified_time" content="2022-05-03T19:26:30.619Z">
 <meta property="article:author" content="Xinjian Pan  👨🏻‍💻">
 <meta property="article:tag" content="NLP">
 <meta name="twitter:card" content="summary">
@@ -202,7 +205,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-05-03 16:47:35 / Modified: 21:06:34" itemprop="dateCreated datePublished" datetime="2022-05-03T16:47:35+02:00">2022-05-03</time>
+              <time title="Created: 2022-05-03 16:47:35 / Modified: 21:26:30" itemprop="dateCreated datePublished" datetime="2022-05-03T16:47:35+02:00">2022-05-03</time>
             </span>
 
           
@@ -246,6 +249,7 @@
 </li>
 </ul>
 </li>
+<li><a href="#word2vec">Word2Vec</a></li>
 </ul>
 <!-- tocstop -->
 
@@ -333,6 +337,20 @@
 <ol>
 <li>矩阵还是稀疏</li>
 </ol>
+<p>解决稀疏性的办法：</p>
+<ol>
+<li>SVD分解</li>
+</ol>
+<p>为什么我们需要dense vector：</p>
+<ol>
+<li>能提供更多信息</li>
+<li>训练模型时，参数更少</li>
+</ol>
+<h2><span id="word2vec">Word2Vec</span></h2><p><img src="https://github.com/PPPPan/PPPPan.github.io/blob/master/images/NLP/20.JPG?raw=true" alt="20.JPG"></p>
+<p><img src="https://github.com/PPPPan/PPPPan.github.io/blob/master/images/NLP/21.JPG?raw=true" alt="21.JPG"></p>
+<p><img src="https://github.com/PPPPan/PPPPan.github.io/blob/master/images/NLP/22.JPG?raw=true" alt="22.JPG"></p>
+<p>CBOW:给定一些语句，输出一个target</p>
+<p>Skip-Gram:给定target，输出一些相关的词语</p>
 
     </div>
 
@@ -413,7 +431,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Vector Representation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">Bag of N-Gram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">Bag of Words</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">TF-IDF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.4.</span> <span class="nav-text">使用scikit-learn来提取特征</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Word Embedding</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">One-Hot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.2.</span> <span class="nav-text">Document-Term Matrix</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.3.</span> <span class="nav-text">Term-Term Matrix</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.4.</span> <span class="nav-text">Pointwise Mutual Information (PMI)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.4.1.</span> <span class="nav-text">Positive Pointwise Mutual Information(PPMI)</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Vector Representation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">Bag of N-Gram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">Bag of Words</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">TF-IDF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.4.</span> <span class="nav-text">使用scikit-learn来提取特征</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Word Embedding</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">One-Hot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.2.</span> <span class="nav-text">Document-Term Matrix</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.3.</span> <span class="nav-text">Term-Term Matrix</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.4.</span> <span class="nav-text">Pointwise Mutual Information (PMI)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.4.1.</span> <span class="nav-text">Positive Pointwise Mutual Information(PPMI)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">Word2Vec</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
